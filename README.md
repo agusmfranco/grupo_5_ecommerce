@@ -1,7 +1,4 @@
-# Proyecto integrador: Web de eCommerce dedicada a la venta de libros nuevos #
-## Grupo número 5 ##
-
----
+# Proyecto integrador: Web de eCommerce dedicada a la venta de libros nuevos - Grupo número 5 #
 
 ## Integrantes ##
 
