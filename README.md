@@ -8,7 +8,7 @@ Agustín Franco, Hernán Poncetta, Tadeo Caputo.
 
 Nuestro sitio web de eCommerce brindará el servicio de venta de libros nuevos de diferentes géneros y categorias. Los productos a la venta estarán a cargo unicamente del sitio web. El objetivo es crear un sitio web en donde la simpleza y la intuición predominen, y así lograr que la experiencia de elegir y comprar el libro deseado, sea más rápida, sencilla y placentera.
 
-Apuntamos a un público adulto y apasionado por la lectura, por lo tanto ajustaremos nuestra web a personas adolescentes y mayores, y no a niños. Enfatizaremos en las reseñas y seremos claros en las descripciones de los productos. Las portadas de los libros van a jugar un papel principal en la estética de nuestro sito web.
+Apuntamos a que nuestro sitio web pueda ser navegado por cualquier tipo de persona sin importar la edad. Seremos claros en las descripciones de los productos y las portadas de los libros van a jugar un papel principal en la estética de nuestro sito web.
 
 ## Descripción de los integrandes del grupo ##
 
