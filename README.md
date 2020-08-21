@@ -14,7 +14,7 @@ Apuntamos a un público adulto y apasionado por la lectura, por lo tanto ajustar
 
 **Agustín Franco:** Nacido y crecido en la ciudad de La Plata, 28 años. Estuvo interesado desde muy pequeño en la informática, dando sus primeros pasos gracias a su faceta Gamer. Posee conocimientos variados: electrónica, hardware, software, redes, y actualmente estudia desarrollo web Full Stack en Digital House. Tuvo paso por la UNLP estudiando Licenciatura en Informática durante dos años y Administración durante tres. Diez años trabajando junto a su familia en el negocio familiar.
 
-**Tadeo Caputo:**
+**Tadeo Caputo:** Nací en plena Capital Federal, pero simpatizado con Mar del Plata. 18 años y recién egresado del secundario ORT con especialización en informática. Siempre me gustó la informática y basicamente nací con ella. Actualmente estudio Analista de Sistemas en ORT y en paralelo realizo distintos cursos como el de Full Stack en Digital House. 
 
 **Hernán Poncetta:** Al igual que Agustín también es platense de nacimiento. Siempre se interesó en nuevas tecnologías, eso lo llevo a juntar dos pasiones y estudiar Música y Técnologia en la Universidad de Quilmes. Actualmente se encuentra terminando las carrera de Ingeniería Mecánica en la Universidad Técnologica Nacional y participando en varios desafíos en Open Data Science Latinoamerica.
 
@@ -22,7 +22,7 @@ Apuntamos a un público adulto y apasionado por la lectura, por lo tanto ajustar
 
 [Ovni Press](https://www.ovnipress.net/) 
 
-Nos gusta mucho la estética y la distribución de este sitio web. Nos gusta también el tamaño de las imagenes y lo facil que es nevegar por el sitio.
+Nos gusta mucho la estética y la distribución de este sitio web. Nos gusta también el tamaño de las imagenes y lo facil que es navegar por el sitio.
 
 [La comiquería](https://www.lacomiqueria.com.ar/)
 
@@ -35,7 +35,6 @@ Es la pagina de un de los principales grupos editoriales del mundo y del país. 
 [Thrift Books](https://www.thriftbooks.com/)
 
 Es una de las webs más importantes de venta de libros en Estados Unidos. Tienen un interesante modelo de negocios y un diseño simple y funcional.
-
 
 [Better World Books](https://www.betterworldbooks.com/)
 
