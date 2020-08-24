@@ -18,6 +18,13 @@ Apuntamos a que nuestro sitio web pueda ser navegado por cualquier tipo de perso
 
 **Hernán Poncetta:** Al igual que Agustín también es platense de nacimiento. Siempre se interesó en nuevas tecnologías, eso lo llevo a juntar dos pasiones y estudiar Música y Técnologia en la Universidad de Quilmes. Actualmente se encuentra terminando las carrera de Ingeniería Mecánica en la Universidad Técnologica Nacional y participando en varios desafíos en Open Data Science Latinoamerica.
 
+## Inspiración en referentes del mercado ##
+
+"En el mundo antiguo, dedicabas un 30% de tu tiempo en crear un gran servicio y un 70% en difundirlo. En el nuevo tiempo, eso se invierte." 
+"Los libros no están muriendo, solo se están volviendo digitales."
+Jeff Bezos.
+
+
 ## Sitios web de referencia ##
 
 [Ovni Press](https://www.ovnipress.net/) 
