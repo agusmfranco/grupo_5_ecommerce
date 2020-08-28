@@ -24,7 +24,6 @@ Apuntamos a que nuestro sitio web pueda ser navegado por cualquier tipo de perso
 "Los libros no están muriendo, solo se están volviendo digitales."
 Jeff Bezos.
 
-
 ## Sitios web de referencia ##
 
 [Ovni Press](https://www.ovnipress.net/) 
