@@ -1,0 +1,46 @@
+body {
+    font-family: 'Archivo Narrow', sans-serif;
+}
+
+footer {
+    width: 100%;
+    color: white;
+    background-color:#008575;
+    padding: 12px;
+    display: flex;
+}
+
+.social {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #e2e2e2;
+    padding-left: 20px;
+}
+
+.site-map {
+    padding-left: 20px;
+    width: 66%;
+    display: flex;
+    align-content: space-center;
+}
+
+ .social i {
+    color: white;
+    font-size: 30px;
+    margin-right: 20px;
+}
+
+footer ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+footer .site-map div {
+    width: 33%;
+}
+
+footer li {
+    margin-top: 15px;
+}
