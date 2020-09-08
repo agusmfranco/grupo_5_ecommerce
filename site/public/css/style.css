@@ -1,9 +1,10 @@
+/* HEADER */
 header {
     background-color: lightgreen;
     display: flex;
 }
 
-.search {
+.header__search {
     width: 30%;
 }
 
@@ -16,10 +17,12 @@ header {
     border-radius: 8px; 
 }
 
-.logo {
+.header__logo {
     width: 30%;
 }
 
-.picture {
+.header__picture {
     width: 100%;
 }
+
+/* HEADER */
