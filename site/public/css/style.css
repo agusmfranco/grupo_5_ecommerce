@@ -1,0 +1,25 @@
+header {
+    background-color: lightgreen;
+    display: flex;
+}
+
+.search {
+    width: 30%;
+}
+
+.searchbar {
+    position: relative;
+    top: 5cm;
+    left: 3cm;
+    width: 100%;
+    height: 30px;
+    border-radius: 8px; 
+}
+
+.logo {
+    width: 30%;
+}
+
+.picture {
+    width: 100%;
+}
