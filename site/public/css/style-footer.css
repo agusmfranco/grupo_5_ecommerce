@@ -2,7 +2,7 @@ body {
     margin: 0px;
 }
 
-.footer {
+footer {
     font-family: 'Cabin', sans-serif;
     background-color: #008575;
     color: white;
@@ -10,7 +10,7 @@ body {
     padding: 25px;
 }
 
-.links-ul {
+.footer-site-map ul {
     list-style: none;
     margin-left: 0px;
     padding-left: 0px;
@@ -29,7 +29,7 @@ body {
     color: white;
 }
 
-.links {
+.footer-site-map div {
     margin-bottom: 30px;
 }
 
@@ -37,12 +37,12 @@ body {
     margin-bottom: 30px;
 }
 
-.icon-container {
+.footer-social div {
     display: flex;
     justify-content: space-between;
 }
 
-.social-icons-footer {
+.footer-social div a {
     color: white;
     font-size: 30px;
     margin-right: 40px;
@@ -60,7 +60,7 @@ body {
         margin-bottom: 60px;
     }
 
-    .social-title {
+    .footer-social h3 {
         align-self: center;
     }
 
@@ -70,11 +70,11 @@ body {
         margin-bottom: 30px;
     }
 
-    .icon-container {
+    .footer-social div {
         display: flex;
         justify-content: center;
     }
-    .social-icons {
+    .footer-social a {
         margin-left: 20px;
         margin-right: 20px;
     }
@@ -91,31 +91,24 @@ body {
         display: flex;
     }
 
-    .links {
-        margin-right: 25px;
+    .footer-site-map div {
+        margin-right: 130px;
     }
 
     .footer-social {
         justify-content: flex-start;
-        border-left: solid 1px white;
-        padding-left: 30px;
     }
 
-    .social-title {
+    .footer-social h3 {
         align-self: flex-start;
     }
 
-    .social-icons {
+    .footer-social div a {
         margin-right: 30px;
         margin-left: 0px;
     }
 
     .footer-bottom {
         justify-content: flex-start;
-    }
-
-    .footer-bottom {
-        border-top: solid 1px white;
-        padding-top: 30px;
     }
 }

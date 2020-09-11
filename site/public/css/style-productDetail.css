@@ -167,6 +167,7 @@ body {
     .container {
         margin-left: 200px;
         margin-right: 200px;
+        margin-bottom: 40px;
     }
 
     .secction-2-right {
@@ -176,4 +177,12 @@ body {
     .book-cover {
         margin: 0px;
     }
+
+    .container-biography {
+        background-color: rosybrown;
+        width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 }
