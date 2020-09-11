@@ -27,6 +27,9 @@ app.get('/register', (req, res) => {
     res.sendFile(__dirname + '/register.html')
 });
 
+app.get('/footer', (req, res) => {
+    res.sendFile(__dirname + '/footer.html')
+});
 
 app.listen(3000, () => {
     console.log('Servidor corriendo en el puerto 3000')
