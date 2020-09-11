@@ -33,6 +33,7 @@ body {
     margin: 0px;
     padding: 0px;
     display: none;
+    color: #008575;
 }
 
 .checkout-title {
@@ -101,4 +102,78 @@ body {
 
 .data-tip {
     color: black;
+}
+
+@media screen and (min-width: 768px) {
+    .main-book {
+        display: flex;
+    }
+
+    .cover-container-mobile {
+        display: none;
+    }
+
+    .section-1 {
+        order: 1;
+    }
+
+    .section-2 {
+        order: 2;
+        padding-left: 20px;
+        display: flex;
+        flex-flow: column;
+    }
+
+    .cover-container {
+        display: block;
+    }
+    
+    .book-cover {
+        width: 200px;
+    }
+
+    .container {
+        padding: 30px;
+    }
+
+    .data-sheet-mobile {
+        display: none;
+    }
+
+    .data-sheet {
+        display: block;
+    }
+
+    .secction-2-right {
+        margin: 0px;
+        box-sizing: border-box;
+        display: flex;
+        flex-flow: column;
+        width: 150px;
+    }
+
+    .section-2-top {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+    }
+
+    .checkout-button {
+        width: 150px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+
+    .secction-2-right {
+        width: 250px;
+    }
+
+    .book-cover {
+        margin: 0px;
+    }
 }
