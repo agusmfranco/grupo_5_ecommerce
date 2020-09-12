@@ -17,7 +17,7 @@ footer {
 }
 
 .footer-site-map li {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .footer-site-map li:hover {
@@ -30,7 +30,7 @@ footer {
 }
 
 .footer-site-map div {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 .footer-social {
@@ -91,8 +91,8 @@ footer {
         display: flex;
     }
 
-    .footer-site-map div {
-        margin-right: 130px;
+    .links {
+        margin-right: 85px;
     }
 
     .footer-social {

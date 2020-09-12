@@ -104,6 +104,30 @@ body {
     color: black;
 }
 
+.author-photo img {
+    width: 175px;
+    padding: 25px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.biography-article {
+    font-family: 'Cabin', sans-serif;
+}
+
+.container-biography {
+    background-color: #d6ebe871;
+    padding: 10px;
+}
+
+.biography {
+    background-color: white;
+    padding: 10px;
+}
+
 @media screen and (min-width: 768px) {
     .main-book {
         display: flex;
@@ -161,6 +185,16 @@ body {
     .checkout-button {
         width: 150px;
     }
+
+    .biography {
+        background-color: white;
+        display: flex;
+        padding: 30px;
+    }
+
+    .container-biography {
+        padding: 30px;
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -179,10 +213,28 @@ body {
     }
 
     .container-biography {
-        background-color: rosybrown;
-        width: 250px;
-        margin-left: auto;
-        margin-right: auto;
+        background-color: #d6ebe871;
+        margin-left: 200px;
+        margin-right: 200px;
+        margin-bottom: 40px;
+        padding: 35px;
+    }
+
+    .biography {
+        background-color: white;
+        display: flex;
+    }
+
+    .biography-article {
+        font-family: 'Cabin', sans-serif;
+        padding-left: 30px;
+    }
+
+    .author-photo img {
+        width: 175px;
+        padding: 25px;
+        border-radius: 50%;
+        box-sizing: border-box;
     }
 
 }
