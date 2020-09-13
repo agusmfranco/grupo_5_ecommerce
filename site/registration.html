@@ -13,46 +13,48 @@
     </header>
     <div class="container">
         <main class="registration">
-            <div class="registration-title">
-                <h1>Completá tus datos</h1>
-            </div>
-            <section class="data">
-                <section class="reg-data">
-                    <div class="reg-data-left">
-                        <div class="input-container">
-                            <input type="text" id="name" placeholder="Nombre" autofocus>
-                        </div>
-                        <div class="input-container">
-                            <input type="text" id="surname-left" placeholder="Apellido">
-                        </div>
-                        <div class="input-container">
-                            <input type="tel" id="p-id" placeholder="DNI" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}">
-                        </div>
-                        <div class="input-container">
-                            <input type="email" id="eMail" placeholder="E-mail">
-                        </div>
-                        <div class="input-container">
-                            <input type="password" id="pass-left" placeholder="Clave">
-                        </div>
-                    </div>
-                    <div class="reg-data-right">
-                        <div class="input-container">
-                            <input type="text" id="surname-right" placeholder="Apellido">
+            <form action="">
+                <div class="registration-title">
+                    <h1>Completá tus datos</h1>
+                </div>
+                <section class="data">
+                    <section class="reg-data">
+                        <div class="reg-data-left">
                             <div class="input-container">
-                                <input type="password-right" id="pass" placeholder="Clave">
+                                <input type="text" id="name" placeholder="Nombre" autofocus>
                             </div>
-                    </div>
+                            <div class="input-container">
+                                <input type="text" id="surname-left" placeholder="Apellido">
+                            </div>
+                            <div class="input-container">
+                                <input type="tel" id="p-id" placeholder="DNI" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}">
+                            </div>
+                            <div class="input-container">
+                                <input type="email" id="eMail" placeholder="E-mail">
+                            </div>
+                            <div class="input-container">
+                                <input type="password" id="pass-left" placeholder="Clave">
+                            </div>
+                        </div>
+                        <div class="reg-data-right">
+                            <div class="input-container">
+                                <input type="text" id="surname-right" placeholder="Apellido">
+                                <div class="input-container">
+                                    <input type="password-right" id="pass" placeholder="Clave">
+                                </div>
+                        </div>
+                    </section>
+                    <section class="term-condi">
+                        <div class="check-container">
+                            <input type="checkbox" id="condi-check" name="checkbox-condi" value="Acepto">
+                            <label for="condi-check">Acepto los Términos y Condiciones y autorizo el uso de mis datos de acuerdo a la Declaración de Privacidad.</label>
+                        </div>
+                    </section>
                 </section>
-                <section class="term-condi">
-                    <div class="check-container">
-                        <input type="checkbox" id="condi-check" name="checkbox-condi" value="Acepto">
-                        <label for="condi-check">Acepto los Términos y Condiciones y autorizo el uso de mis datos de acuerdo a la Declaración de Privacidad.</label>
-                    </div>
-                </section>
-            </section>
-            <div class="container-boton">
-                <button type="submit" class="accept-button">Continuar</button>
-            </div>
+                <div class="container-boton">
+                    <button type="submit" class="accept-button">Continuar</button>
+                </div>
+            </form>
         </main>
     </div>
 </body>
