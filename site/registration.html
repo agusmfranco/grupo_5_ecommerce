@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrate en eCommerce</title>
+    <link rel="stylesheet" href="/css/style-register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        Header LOGO
+    </header>
+    <div class="container">
+        <main class="register">
+            <div class="register-title">
+                <h1>Completá tus datos</h1>
+            </div>
+            <section class="data">
+                <section class="reg-data">
+                    <div class="reg-data-left">
+                        <div class="input-container">
+                            <input type="text" placeholder="Nombre" autofocus>
+                        </div>
+                        <div class="input-container">
+                            <input type="tel" placeholder="Apellido">
+                        </div>
+                        <div class="input-container">
+                            <input type="number" placeholder="DNI" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}">
+                        </div>
+                        <div class="input-container">
+                            <input type="email" placeholder="E-mail">
+                        </div>
+                        <div class="input-container">
+                            <input type="password" placeholder="Clave">
+                        </div>
+                    </div>
+                    <div class="reg-data-right"></div>
+                </section>
+                <section class="term-condi">
+                    <div class="check-container">
+                        <input type="checkbox" id="condi-check" name="checkbox-condi" value="Acepto">
+                        <label for="condi-check">Acepto los Términos y Condiciones y autorizo el uso de mis datos de acuerdo a la Declaración de Privacidad.</label>
+                    </div>
+                </section>
+            </section>
+            <div class="container-boton">
+                <button type="submit" class="accept-button">Continuar</button>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <span class="copyr">Copyright © 2020 eCommerce. Todos los derechos reservados.</span>
+    </footer>
+</body>
+</html>

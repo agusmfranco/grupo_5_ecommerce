@@ -1,0 +1,111 @@
+body {
+    margin: 0px;
+}
+
+.container {
+    font-family: 'Cabin', sans-serif;
+    padding: 15px;
+    margin-bottom: 50px;
+}
+
+.register-title {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+.reg-data {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+
+.input-container input {
+    width: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: solid 1px;
+    border-color: #008575;
+    font-size: large;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.input-container input:focus {
+    background-color: #86c2bb33;
+    transition: 0.4s;
+}
+
+.input-container input:hover {
+    background-color: #86c2bb33;
+    transition: 0.4s;
+}
+
+.reg-data {
+    margin-bottom: 35px;
+}
+
+.check-container {
+    box-sizing: border-box;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    margin-bottom: 35px;
+}
+
+.check-container input {
+    margin-left: 0px;
+    margin-right: 10px;
+    background-color: red;
+}
+
+.check-container label {
+    font-size: small;
+}
+
+.accept-button {
+    display: block;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 45px;
+    font-size: larger;
+    font-family: 'Cabin', sans-serif;
+    background-color: #45c5b6b0;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.accept-button:hover {
+    background-color: #369489b0;
+}
+
+footer {
+    font-family: 'Cabin', sans-serif;
+    color: white;
+    font-size: smaller;
+    background-color: #008575;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+header {
+    font-family: 'Cabin', sans-serif;
+    color: white;
+    font-size: smaller;
+    background-color: #008575;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}

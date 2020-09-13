@@ -23,8 +23,8 @@ app.get('/productDetail', (req, res) => {
     res.sendFile(__dirname + '/productDetail.html')
 });
 
-app.get('/register', (req, res) => {
-    res.sendFile(__dirname + '/register.html')
+app.get('/registration', (req, res) => {
+    res.sendFile(__dirname + '/registration.html')
 });
 
 app.get('/footer', (req, res) => {
