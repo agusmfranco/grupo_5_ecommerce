@@ -31,6 +31,10 @@ app.get('/footer', (req, res) => {
     res.sendFile(__dirname + '/footer.html')
 });
 
+app.get('/header', (req, res) => {
+    res.sendFile(__dirname + '/header.html')
+});
+
 app.listen(3000, () => {
     console.log('Servidor corriendo en el puerto 3000')
 })
