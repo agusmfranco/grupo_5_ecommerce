@@ -45,3 +45,7 @@ Es una de las webs más importantes de venta de libros en Estados Unidos. Tienen
 [Better World Books](https://www.betterworldbooks.com/)
 
 Una de las webs de venta de libros más importantes. Sirve como referencia de tope de gama.
+
+## Tablero de trabajo ##
+
+[Tablero-BiBlo](https://trello.com/b/abM3TLYK/tablero-biblo)
