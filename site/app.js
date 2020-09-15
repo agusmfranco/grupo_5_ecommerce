@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express();
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public')); //setea para que busque en site/public los archivos a ejecutar
 
 app.get('/', (req, res) => {
     res.send('Servidor Corriendo')

@@ -1,5 +1,6 @@
 body {
     margin: 0px;
+    font-family: Montserrat, sans-serif;
 }
 
 header {
@@ -69,7 +70,7 @@ header {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-.header__navbar{
+/*.header__navbar{
     display: flex;
     width: 100%;
     margin-top: 18px;
@@ -86,6 +87,34 @@ header {
     border: none;
     background-color:#c2ffd2;
 }
+*/
+
+.nav__list {
+    background: whitesmoke;
+    box-shadow: 0px 0px 10px #cfd8dc;
+    padding: 1rem 0;
+    border-radius: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.4rem;
+}
+
+.nav__item {
+    list-style: none; /*remuevo los puntos*/
+    margin-right: 2rem;
+}
+
+.nav__item a {
+    text-decoration: none;
+    color: black;
+    transition: all 100ms ease-in;
+  }
+
+.nav__item a:hover {
+    color: #29e6a7;
+  }
+  
 
 @media (min-width: 768px){
 .header__logo {
@@ -99,9 +128,11 @@ header {
     position: relative;
 }
 
+/*
 .header__navbar_button {
     left: 25%;
 }
+*/
 }
 
 @media (min-width: 1024px){
@@ -148,15 +179,18 @@ header {
     top: 25%;
 }
 
+
 .header__navbar{
     width: 100%;
     position: absolute;
     top: 40vh;
 }
 
+/*
 .header__navbar_button{
     left: 23%;
     padding-left: 60px;
     padding-right: 60px;
 }
+*/
 }

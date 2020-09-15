@@ -46,6 +46,12 @@ Es una de las webs más importantes de venta de libros en Estados Unidos. Tienen
 
 Una de las webs de venta de libros más importantes. Sirve como referencia de tope de gama.
 
+<<<<<<< HEAD
 ## Tablero Trello ##
 
 https://trello.com/b/abM3TLYK/proyecto-dh
+=======
+## Tablero de trabajo ##
+
+[Tablero-BiBlo](https://trello.com/b/abM3TLYK/tablero-biblo)
+>>>>>>> 6372e1b3480aa70272df734a805e1283a3171b66
