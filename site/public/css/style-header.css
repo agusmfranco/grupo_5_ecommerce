@@ -2,41 +2,42 @@
 
 body {
     margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: Montserrat, sans-serif;
 }
 
-nav{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.header-container {
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Cabin', sans-serif;
+  margin-bottom: 40px;
+}
+
+header {
   background-color: #008575;
-  box-shadow: 0px 0px 10px #cfd8dc;
-  padding: 1rem 0;
-  border-radius: 0.2rem;
-  min-height: 7vh;  
+  margin: 0px;
+  padding: 0px;
 }
-
 
 .logo {
-    width: 60px;
-    align-content: flex-start;
-    justify-content: flex-start;
+  margin-top: 15px;
+  margin-left: 15px;
+  width: 50px;
+  align-content: flex-start;
+  justify-content: flex-start;
 }
 
 /*Navlist*/
 
 .nav__list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    padding-bottom: 10px;
 }
 
 .nav__item {
     list-style: none; /*remuevo los puntos*/
-    margin-right: 2rem;
     font-size: 18px; 
+    margin-bottom: 10px;
+    color: white;
 }
 
 .nav__item a {
@@ -46,7 +47,8 @@ nav{
 }
 
 .nav__item a:hover {
-    color: yellow;
+    text-decoration: underline;
+    color: white;
   }
 
 /*DROPDOWNLIST*/
@@ -70,8 +72,13 @@ nav{
 /*NavbarRight*/
 
 .navbar-right{
-  display: flex;
-  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px  #51d6c780;
 }
 
 .nav__login{
@@ -79,64 +86,124 @@ nav{
 }
 
 .header__searchbar {
-    width: 300px;
-    padding: 2px 2px 2px 32px;
-    border-radius: 20px;
-    border-color: grey;
-    height: 40px;
-    background-color: rgb(255, 255, 255);
-    margin-right: 8rem;
-    width: 18vw;
+  box-sizing: border-box;
+  display: block;
+  padding: 2px 2px 2px 32px;
+  border-color: grey;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  border: none;
+  font-size: large;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
   
 .icon { 
     position: absolute; 
-    padding: 12px; 
-    min-width: 50px; 
+    padding: 0px; 
     text-align: start; 
+    margin-top: 12px;
+    margin-left: 5px;
+    color: #008575;
 } 
+.input-icons {
+  width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-@media screen and (max-width: 1200px){
-  nav{
-    flex-wrap: wrap;
-    justify-content: center;
+.navbar-left {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-bottom: solid 1px  #51d6c780;
+}
+
+.fa-user {
+  color: white;
+  font-size: 25px;
+}
+
+.fa-shopping-cart {
+  color: white;
+  font-size: 25px;
+  margin-left: 15px;
+}
+
+.div-login-carrito {
+  margin-top: 15px;
+  display: flex;
+  margin-right: 15px;
+}
+
+
+.input-icons-desktop {
+  display: none;
+}
+
+.nav__list-desktop {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .header-container {
+    max-width: 768px;
   }
 
-
-  .navbar-right{
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 15px;
+  .input-icons {
+    width: 95%;
   }
 
-  .div-login-carrito{
+  .nav__list {
     display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-    width: 35%;
+    justify-content: space-around;
+    padding-left: 0px;
   }
 
-  .nav__list{
-      padding: 0;
-      font-size: 10px;
+  .input-icons-desktop {
+    display: none;
   }
 
-  .nav__item{
-    display: inline-block;
-    margin-right: 1rem;
-  }
-
-  .nav__item:last-child/*Le saca el margin al último hijo*/{
-      margin: 0;
-  }
-
-  .nav__login{
-    margin: 0px;
-  }
-
-  .header__searchbar{
-      width: 90vw;
-      margin-right: 0;
+  .nav__list-desktop {
+    display: none;
   }
 
 }
+
+@media screen and (min-width: 1024px){
+  .header-container {
+    max-width: 1024px;
+  }
+
+  .navbar-right {
+    display: none;
+  }
+
+  .input-icons-desktop {
+    margin-top: 20px;
+    width: 300px;
+  }
+
+  .nav__list-desktop {
+    display: flex;
+    flex-flow: row;
+    margin-top: 30px;
+  }
+
+  .nav__list-desktop li {
+    margin-right: 30px;
+  }
+
+  .nav__list {
+    display: none;
+  }
+
+  .input-icons-desktop {
+    display: block;
+  }
+
+  .div-login-carrito {
+    margin-top: 30px;
+  }

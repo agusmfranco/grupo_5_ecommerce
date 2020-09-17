@@ -110,7 +110,7 @@ footer {
 
     .footer-social {
         justify-content: flex-start;
-        border-left: solid white 1px;
+        border-left: solid #51d6c780 1px;
         padding-left: 30px;
     }
 
@@ -125,7 +125,7 @@ footer {
 
     .footer-bottom {
         justify-content: flex-start;
-        border-top: white 1px solid;
+        border-top: solid 1px  #51d6c780;
         padding-top: 20px;
     }
 }
