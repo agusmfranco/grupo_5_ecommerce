@@ -2,6 +2,10 @@ body {
     margin: 0px;
 }
 
+.cart {
+    margin-bottom: 45px;
+}
+
 .container {
     box-sizing: border-box;
     font-family: 'Cabin', sans-serif;
