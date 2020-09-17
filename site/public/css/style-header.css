@@ -1,3 +1,5 @@
+/*BODY Y NAV*/
+
 body {
     margin: 0px;
     padding: 0px;
@@ -9,12 +11,13 @@ nav{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: white;
+  background-color: #008575;
   box-shadow: 0px 0px 10px #cfd8dc;
   padding: 1rem 0;
   border-radius: 0.2rem;
   min-height: 7vh;  
 }
+
 
 .logo {
     width: 60px;
@@ -22,6 +25,7 @@ nav{
     justify-content: flex-start;
 }
 
+/*Navlist*/
 
 .nav__list {
     display: flex;
@@ -37,13 +41,33 @@ nav{
 
 .nav__item a {
     text-decoration: none;
-    color: black;
+    color: white;
     transition: all 100ms ease-in;
 }
 
 .nav__item a:hover {
-    color: red;
+    color: yellow;
   }
+
+/*DROPDOWNLIST*/
+
+.categorias{
+    position: relative;
+  }
+  
+  .dropdown{
+    display: none;
+    position: absolute;
+    top: 24px;
+    background-color: white;
+    padding: 12px;
+  }
+  
+  .categorias:hover .dropdown{
+    display: block !important;
+  }
+
+/*NavbarRight*/
 
 .navbar-right{
   display: flex;
@@ -51,23 +75,7 @@ nav{
 }
 
 .nav__login{
-  margin: 0px 20px 0px 30px;
-}
-
-.categorias{
-  position: relative;
-}
-
-.dropdown{
-  display: none;
-  position: absolute;
-  top: 24px;
-  background-color: white;
-  padding: 12px;
-}
-
-.categorias:hover .dropdown{
-  display: block !important;
+  margin: 0px 30px 0px 30px;
 }
 
 .header__searchbar {
@@ -78,6 +86,7 @@ nav{
     height: 40px;
     background-color: rgb(255, 255, 255);
     margin-right: 8rem;
+    width: 18vw;
 }
   
 .icon { 
