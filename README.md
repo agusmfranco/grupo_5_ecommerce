@@ -48,4 +48,4 @@ Una de las webs de venta de libros más importantes. Sirve como referencia de to
 
 ## Tablero Trello ##
 
-https://trello.com/b/abM3TLYK/proyecto-dh
+[BiBlo Trello] (https://trello.com/b/abM3TLYK/proyecto-dh)
