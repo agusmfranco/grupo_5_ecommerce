@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "proyecto-ecommerce-5",
   "version": "0.0.0",
   "private": true,
@@ -21,22 +20,4 @@
   "devDependencies": {
     "nodemon": "^2.0.4"
   }
-=======
-  "name": "grupo5_ecommerce",
-  "version": "1.0.0",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  },
-  "description": ""
->>>>>>> a358f0af0990935965396c5bd2e7d9d07db02221
 }
