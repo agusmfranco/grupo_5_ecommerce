@@ -30,23 +30,23 @@ app.use('/users', usersRouter);
 //Rutas
 
 app.get('/index', (req, res) => {
-  res.render(__dirname + 'views/index.html')
+  res.render(__dirname + '/views/index')
 });
 
 app.get('/login', (req, res) => {
-  res.render(__dirname + 'views/login.html')
+  res.render(__dirname + '/views/login')
 });
 
 app.get('/productCart', (req, res) => {
-  res.render(__dirname + 'views/productCart.html')
+  res.render(__dirname + '/views/productCart')
 });
 
 app.get('/productDetail', (req, res) => {
-  res.render(__dirname + 'views/productDetail.html')
+  res.render(__dirname + '/views/productDetail')
 });
 
 app.get('/registration', (req, res) => {
-  res.render(__dirname + 'views/registration.html')
+  res.render(__dirname + '/views/registration')
 });
 
 
