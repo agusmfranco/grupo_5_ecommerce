@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblo - Tu compra</title>
+    <link rel="stylesheet" href="/stylesheets/style-productCart.css">
+    <script src="https://kit.fontawesome.com/a1a9c21e8c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <%- include('./partials/header') %>
+    <div class="container">
+        <section class="cart-title">
+            <h1>Tu compra</h1>
+        </section>
+        <section class="cart">
+            <div class="item-detail">
+                <div class="book-detail">
+                    <div class="cover-container">
+                        <img src="/images/cn-cover.jpg" alt="Portada de Crónicas Marcianas">
+                    </div>
+                    <div class="data-container">
+                        <h3 class="book-title">Crónicas Marcianas</h3>
+                        <h4 class="book-author">Ray Bradbury</h4>
+                        <ul class="data-sheet">
+                            <li>Condición: <span class="data-tip">Nuevo</span></li>
+                            <li>Formato: <span class="data-tip">Tapa blanda</span></li> 
+                        </u>
+                    </div>
+                </div>
+                <div class="item-check-detail">
+                    <div class="item-check-detail-top">
+                        <div class="quantity">Cantidad: 1</div>
+                        <div class="subtotal">Subtotal: <span>$500,00</span></div>
+                    </div>
+                    <div class="item-check-detail-bottom">
+                        <div><i class="fas fa-heart"></i><span class="icon-label"> Agregar a favoritos</span></div>
+                        <div><i class="fas fa-bookmark"></i> <span class="icon-label"> Guardar para depués</span></div>
+                        <div><i class="fas fa-times"></i><span class="icon-label"> Eliminar</span></div>
+                    </div>
+                </div>
+            </div>
+            <form action="" class="checkout">
+                <div class="check-out-title">
+                    <h2>Detalle del pedido</h2>
+                </div>
+                <div class="shipping">
+                    <label for="envio">Método de envío</label>
+                    <select id="envio" name="envio">
+                        <option value="correo">Retiro en el correo</option>
+                        <option value="domicilio">Envío a domicilio</option>
+                        <option value="rapido">Envío rápido</option>
+                    </select>
+                </div>
+                <div class="summary">
+                    <table class="summary-table">
+                        <tr>
+                            <th class="th-left">Productos(1)</th>
+                            <th class="th-right">$500,00</th>
+                        </tr>
+                        <tr>
+                            <th class="th-left">Envío</th>
+                            <th class="th-right">$90,00</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="total">
+                    <table class="summary-table">
+                        <tr>
+                            <th class="th-left">Total</th>
+                            <th class="th-right">$590,00</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="checkout-button">
+                    <button type="submit" class="accept-button">Continuar</button>
+                </div>
+            </form>
+        </section>
+        <%- include('./partials/footer') %>
+    </div>
+</body>
+</html>
