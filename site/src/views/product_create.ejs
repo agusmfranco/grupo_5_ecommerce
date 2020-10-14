@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body class="bg-biblogreen-300">
+    <h1>Nuevo libro</h1>
+    <form action="/products/create" method="POST">
+        <div>
+            <div>
+                <label for="titulo">Título</label>
+            </div>
+            <div>
+                <input id="titulo" type="text" name="titulo">
+            </div>
+        </div>
+        <div>
+            <div>
+                <label for="autor">Autor</label>
+            </div>
+            <div>
+                <input id="autor" type="text" name="autor">
+            </div>
+        </div>
+        <div>
+            <div>
+                <label for="editorial">Editorial</label>
+            </div>
+            <div>
+                <input id="editorial" type="text" name="editorial">
+            </div>
+        </div>
+        <div>
+            <div>
+                <label for="genero">Género</label>
+            </div>
+            <div>
+                <input id="genero" type="text" name="genero">
+            </div>
+        </div>
+        <div>
+            <div>
+                <label for="isbn">ISBN</label>
+            </div>
+            <div>
+                <input id="isbn" type="number" name="isbn">
+            </div>
+        </div>
+        <div>
+            <div>
+                <label for="sinopsis">Sinopsis</label>
+            </div>
+            <div>
+                <textarea name="sinopsis" id="sinopsis" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+        <div>
+            <div>
+                <label for="biografia">Biografia</label>
+            </div>
+            <textarea name="biografia" id="biografia" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <div>
+                <label for="portada">Portada</label>
+            </div>
+            <input id="portada" type="file" name="portada">
+        </div>
+        <input type="submit" value="Guardar">
+    </form>
+</body>
+</html>

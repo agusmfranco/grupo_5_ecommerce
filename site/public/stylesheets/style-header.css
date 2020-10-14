@@ -1,14 +1,14 @@
 /*BODY Y NAV*/
 
 body {
-    margin: 0px;
+  margin: 0px;
 }
 
 .header-container {
   max-width: 360px;
   margin-left: auto;
   margin-right: auto;
-  font-family: 'Cabin', sans-serif;
+  font-family: "Cabin", sans-serif;
   margin-bottom: 40px;
 }
 
@@ -29,59 +29,59 @@ header {
 /*Navlist*/
 
 .nav__list {
-    display: block;
-    padding-bottom: 10px;
+  display: block;
+  padding-bottom: 10px;
 }
 
 .nav__item {
-    list-style: none; /*remuevo los puntos*/
-    font-size: 18px; 
-    margin-bottom: 10px;
-    color: white;
+  list-style: none; /*remuevo los puntos*/
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
 }
 
 .nav__item a {
-    text-decoration: none;
-    color: white;
-    transition: all 100ms ease-in;
+  text-decoration: none;
+  color: white;
+  transition: all 100ms ease-in;
 }
 
 .nav__item a:hover {
-    text-decoration: underline;
-    color: white;
-  }
+  text-decoration: underline;
+  color: white;
+}
 
 /*DROPDOWNLIST*/
 
-.categorias{
-    position: relative;
-  }
-  
-  .dropdown{
-    display: none;
-    position: absolute;
-    top: 24px;
-    background-color: white;
-    padding: 12px;
-  }
-  
-  .categorias:hover .dropdown{
-    display: block !important;
-  }
+.categorias {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 24px;
+  background-color: white;
+  padding: 12px;
+}
+
+.categorias:hover .dropdown {
+  display: block !important;
+}
 
 /*NavbarRight*/
 
-.navbar-right{
+.navbar-right {
   box-sizing: border-box;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
   padding-bottom: 10px;
-  border-bottom: solid 1px  #51d6c780;
+  border-bottom: solid 1px #51d6c780;
 }
 
-.nav__login{
+.nav__login {
   margin: 0px 30px 0px 30px;
 }
 
@@ -99,15 +99,15 @@ header {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-  
-.icon { 
-    position: absolute; 
-    padding: 0px; 
-    text-align: start; 
-    margin-top: 12px;
-    margin-left: 5px;
-    color: #008575;
-} 
+
+.icon {
+  position: absolute;
+  padding: 0px;
+  text-align: start;
+  margin-top: 12px;
+  margin-left: 5px;
+  color: #008575;
+}
 .input-icons {
   width: 340px;
   margin-left: auto;
@@ -118,7 +118,7 @@ header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  border-bottom: solid 1px  #51d6c780;
+  border-bottom: solid 1px #51d6c780;
 }
 
 .fa-user {
@@ -137,7 +137,6 @@ header {
   display: flex;
   margin-right: 15px;
 }
-
 
 .input-icons-desktop {
   display: none;
@@ -169,10 +168,9 @@ header {
   .nav__list-desktop {
     display: none;
   }
-
 }
 
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1024px) {
   .header-container {
     max-width: 1024px;
   }
