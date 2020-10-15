@@ -8,7 +8,7 @@
 </head>
 <body class="bg-biblogreen-300">
     <h1>Nuevo libro</h1>
-    <form action="/products/create" method="POST">
+    <form action="/products/create" method="POST" enctype="multipart/form-data">
         <div>
             <div>
                 <label for="titulo">Título</label>
@@ -46,7 +46,7 @@
                 <label for="isbn">ISBN</label>
             </div>
             <div>
-                <input id="isbn" type="number" name="isbn">
+                <input id="isbn" type="number" name="isbn" min="0000000000" max="9999999999999">
             </div>
         </div>
         <div>
@@ -68,6 +68,14 @@
                 <label for="portada">Portada</label>
             </div>
             <input id="portada" type="file" name="portada">
+        </div>
+        <div>
+            <div>
+                <label for="precio">Precio</label>
+            </div>
+            <div>
+                <input id="precio" type="number" name="precio" min="0.01" step="0.01">
+            </div>
         </div>
         <input type="submit" value="Guardar">
     </form>

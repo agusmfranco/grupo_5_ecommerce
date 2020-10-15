@@ -1,3 +1,5 @@
+const { body } = require("express-validator");
+
 exports.productDetail = function (req, res) {
   res.render("product_detail");
 };
@@ -11,6 +13,6 @@ exports.productCreate = function (req, res) {
 };
 
 exports.newProduct = function (req, res) {
-  console.log(req.body)
+  console.log(req.errors);
   res.redirect("/index");
 };
