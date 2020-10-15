@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-<body class="bg-biblogreen-300">
+<body class="bg-biblogreen-100">
     <h1>Nuevo libro</h1>
     <form action="/products/create" method="POST" enctype="multipart/form-data">
         <div>
@@ -68,6 +68,12 @@
                 <label for="portada">Portada</label>
             </div>
             <input id="portada" type="file" name="portada">
+        </div>
+        <div>
+            <div>
+                <label for="foto_autor">Foto del Autor</label>
+            </div>
+            <input id="foto_autor" type="file" name="foto_autor">
         </div>
         <div>
             <div>
