@@ -13,10 +13,6 @@ router.get("/checkout", products_controller.checkOut);
 
 // Rutas para crear producto
 router.get("/create", products_controller.productCreate);
-router.post(
-  "/create",
-  products_upload.upload,
-  products_controller.newProduct
-);
+router.post("/create", products_upload.upload, products_validator.validateNewBook, products_controller.newProduct);
 
 module.exports = router;
