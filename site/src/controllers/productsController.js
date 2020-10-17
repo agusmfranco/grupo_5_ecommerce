@@ -1,4 +1,4 @@
-const { body } = require("express-validator");
+const { check, validationResult, body } = require("express-validator");
 
 exports.productDetail = function (req, res) {
   res.render("product_detail");
@@ -13,6 +13,10 @@ exports.productCreate = function (req, res) {
 };
 
 exports.newProduct = function (req, res) {
-  console.log(req.errors);
-  res.redirect("/index");
+  errors = validationResult(req).mapped();
+  if (errors.isEmpty) {
+    res.redirect("/index");
+  } else {
+    res.render("product_create", { errors: errors });
+  }
 };

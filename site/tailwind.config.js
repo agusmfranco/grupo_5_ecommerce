@@ -3,7 +3,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
     defaultLineHeights: true,
-    standardFontWeights: true
+    standardFontWeights: true,
   },
   purge: [],
   theme: {
@@ -22,20 +22,20 @@ module.exports = {
         },
       },
       boxShadow: {
-        biblofocus: '0 0 0 3px #b2dad5',
+        biblofocus: "0 0 0 3px #b2dad5",
       },
       fontFamily: {
-        'biblofont': ['Cabin']
-      }
+        biblofont: ["Cabin"],
+      },
     },
   },
   variants: {
-    backgroundColor: ['responsive', 'hover', 'focus', 'active'],
-    boxShadow: ['responsive', 'hover', 'focus', 'active'],
-    borderStyle: ['responsive', 'hover', 'focus', 'active']
+    backgroundColor: ["responsive", "hover", "focus", "active"],
+    boxShadow: ["responsive", "hover", "focus", "active"],
+    borderStyle: ["responsive", "hover", "focus", "active"],
   },
   plugins: [
-    require('@tailwindcss/custom-forms'),
-    require('tailwindcss-shadow-outline-colors')(),
+    require("@tailwindcss/custom-forms"),
+    require("tailwindcss-shadow-outline-colors")(),
   ],
 };

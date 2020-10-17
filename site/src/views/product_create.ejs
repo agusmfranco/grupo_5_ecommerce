@@ -3,72 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Nuevo libro</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
 </head>
 <body class="bg-biblogreen-100">
-    <div class="px-8 py-10 w-full font-biblofont">
-        <h1 class="text-grey-800 text-4xl font-bold tracking-wider mb-6 mt-6">nuevo libro</h1>
-        <form action="/products/create" method="POST" enctype="multipart/form-data">
-            <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4">
-                <div>
-                    <label for="titulo" class="block text-gray-900 mb-2">Título</label>
-                    <input id="titulo" type="text" name="titulo" placeholder="Título" class=" block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 mb-5">
+        <div class="px-8 py-10 w-full font-biblofont sm:px-16 md:max-w-screen-md mx-auto">
+            <h1 class="text-gray-900 text-4xl font-bold tracking-wider mb-6 mt-6">nuevo libro</h1>
+            <form action="/products/create" method="POST" enctype="multipart/form-data">
+                <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4 hover:shadow-lg md:flex md:flex-col">
+                    <div class="mb-5 md:flex">
+                        <div class="md:w-1/2 md:mr-3">
+                            <label for="titulo" class="block text-gray-900 mb-2">Título</label>
+                            <input id="titulo" type="text" name="titulo" placeholder="Título" autofocus class=" block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                            <% if(typeof errors !== "undefined") { %>
+                                <% if('titulo' in errors) { %>
+                                    <span class="text-xs text-red-600"> <%= errors.titulo.msg %>  </span>
+                                <% } %> 
+                            <% } %>  
+                        </div>
+                        <div class="md:w-1/2 md:ml-3">
+                            <label for="autor" class="block text-gray-900 mb-2">Autor</label>
+                            <input id="autor" type="text" name="autor" placeholder="Autor" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                            <% if(typeof errors !== "undefined") { %>
+                                <% if('autor' in errors) { %>
+                                    <span class="text-xs text-red-600"> <%= errors.autor.msg %>  </span>
+                                <% } %> 
+                            <% } %>  
+                        </div>
+                    </div>
+                    <div class="mb-5 md:flex">
+                        <div class="md:w-1/2 md:mr-3">
+                            <label for="editorial" class="block text-gray-900 mb-2">Editorial</label>
+                            <input id="editorial" type="text" name="editorial" placeholder="Editorial" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                            <% if(typeof errors !== "undefined") { %>
+                                <% if('editorial' in errors) { %>
+                                    <span class="text-xs text-red-600"> <%= errors.editorial.msg %>  </span>
+                                <% } %> 
+                            <% } %> 
+                        </div>
+                        <div class="md:w-1/2 md:ml-3">
+                            <label for="genero" class="block text-gray-900 mb-2">Género</label>
+                            <input id="genero" type="text" name="genero" placeholder="Género" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                            <% if(typeof errors !== "undefined") { %>
+                                <% if('genero' in errors) { %>
+                                    <span class="text-xs text-red-600"> <%= errors.genero.msg %>  </span>
+                                <% } %> 
+                            <% } %> 
+                        </div>
+                    </div>
+                    <div class="mb-5 md:flex">
+                        <div class="md:w-1/2 md:mr-3">
+                            <label for="isbn" class="block text-gray-900 mb-2">ISBN</label>
+                            <input id="isbn" type="number" name="isbn" min="0000000000" max="9999999999999" placeholder="ISBN" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300" >
+                            <% if(typeof errors !== "undefined") { %>
+                                <% if('isbn' in errors) { %>
+                                    <span class="text-xs text-red-600"> <%= errors.isbn.msg %>  </span>
+                                <% } %> 
+                            <% } %> 
+                        </div>
+                        <div class="md:w-1/2 md:ml-3">
+                            <label for="precio" class="block text-gray-900 mb-2">Precio</label>
+                            <input id="precio" type="number" name="precio" min="0.01" step="0.01" placeholder="Precio" class="form-input block w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                            <% if(typeof errors !== "undefined") { %>
+                                <% if('precio' in errors) { %>
+                                    <span class="text-xs text-red-600"> <%= errors.precio.msg %>  </span>
+                                <% } %> 
+                            <% } %>  
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4 hover:shadow-lg md:flex">
+                    <div class="mb-6 md:w-1/2 md:mr-3">
+                        <label for="sinopsis" class="block text-gray-900 mb-2">Sinopsis</label>
+                        <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"></textarea>
+                        <% if(typeof errors !== "undefined") { %>
+                            <% if('sinopsis' in errors) { %>
+                                <span class="text-xs text-red-600"> <%= errors.sinopsis.msg %>  </span>
+                            <% } %> 
+                        <% } %> 
+                    </div>
+                    <div class="mb-6 md:w-1/2 md:ml-3">
+                        <label for="biografia" class="block text-gray-900 mb-2">Biografía</label>
+                        <textarea name="biografia" id="biografia" cols="30" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"></textarea>
+                        <% if(typeof errors !== "undefined") { %>
+                            <% if('biografia' in errors) { %>
+                                <span class="text-xs text-red-600"> <%= errors.biografia.msg %>  </span>
+                            <% } %> 
+                        <% } %> 
+                    </div>
+                </div>
+                <div class="sm:flex">
+                    <div class=" mb-4 sm:w-1/2 sm:mr-3 p-6 bg-white box-border border-biblogreen-200 shadow-md hover:shadow-lg rounded-md">
+                        <label for="portada" class="cursor-pointer text-center block form-input w-full border-biblogreen-300 border-dashed py-8 box-border tracking-wide rounded-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-13 0 50 25" stroke="currentColor" class="text-biblogreen-700 text-opacity-50 mx-auto hover:text-biblogreen-800">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            <span class="block text-biblogreen-700 font-medium text-opacity-75 text-lg">Portada del libro</span>
+                            <input id="portada" type="file" name="portada" class="hidden">
+                        </label>
+                    </div>
+                    <div class=" mb-4 sm:w-1/2 sm:ml-3 p-6 bg-white box-border border-biblogreen-200 shadow-md hover:shadow-lg rounded-md">
+                        <label for="foto_autor" class="cursor-pointer text-center block form-input w-full border-biblogreen-300 border-dashed py-8 box-border tracking-wide rounded-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-13 0 50 25" stroke="currentColor" class="text-biblogreen-700 text-opacity-50 mx-auto hover:text-biblogreen-800">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            <span class="block text-biblogreen-700 font-medium text-opacity-75 text-lg">Foto del Autor</span>
+                            <input id="foto_autor" type="file" name="foto_autor" class="hidden">
+                        </label>
+                    </div>
                 </div>
                 <div>
-                    <label for="autor" class="block text-gray-900 mb-2">Autor</label>
-                    <input id="autor" type="text" name="autor" placeholder="Autor" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 mb-5">
+                    <button type="submit" class="block w-full bg-biblogreen-700 py-4 box-border rounded-md shadow-md text-gray-200 hover:bg-biblogreen-800 hover:shadow-lg text-lg tracking-widest focus:outline-none focus:shadow-biblofocus focus:bg-biblogreen-400">GUARDAR</button>
                 </div>
-                <div>
-                    <label for="editorial" class="block text-gray-900 mb-2">Editorial</label>
-                    <input id="editorial" type="text" name="editorial" placeholder="Editorial" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 mb-5">
-                </div>
-                <div>
-                    <label for="genero" class="block text-gray-900 mb-2">Género</label>
-                    <input id="genero" type="text" name="genero" placeholder="Genero" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 mb-5">
-                </div>
-                <div>
-                    <label for="isbn" class="block text-gray-900 mb-2">ISBN</label>
-                    <input id="isbn" type="number" name="isbn" min="0000000000" max="9999999999999" placeholder="ISBN" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 mb-5">
-                </div>
-                <div>
-                    <label for="precio" class="block text-gray-900 mb-2">Precio</label>
-                    <input id="precio" type="number" name="precio" min="0.01" step="0.01" placeholder="Precio" class="form-input block w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 mb-5">
-                </div>
-            </div>
-            <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4">
-                <div>
-                    <label for="sinopsis" class="block text-gray-900 mb-2">Sinopsis</label>
-                    <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 mb-6"></textarea>
-                </div>
-                <div>
-                    <label for="biografia" class="block text-gray-900 mb-2">Biografía</label>
-                    <textarea name="biografia" id="biografia" cols="30" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 mb-6"></textarea>
-                </div>
-            </div>
-            <div>
-                <label for="portada" class="text-center block form-input w-full border-biblogreen-200 border-dashed mb-5 py-8 box-border shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25" stroke="currentColor" class="text-biblogreen-700 text-opacity-50 w-32 h-40 mx-auto hover:text-biblogreen-800">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                    </svg>
-                    <span class="block text-biblogreen-700 font-medium text-opacity-75 text-lg tracking-wide">Imagen de portada</span>
-                    <input id="portada" type="file" name="portada" class="hidden">
-                </label>
-            </div>
-            <div>
-                <label for="foto_autor" class="text-center block form-input w-full border-biblogreen-200 border-dashed mb-5 py-8 box-border tracking-wide shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25" stroke="currentColor" class="text-biblogreen-700 text-opacity-50 w-32 h-40 mx-auto hover:text-biblogreen-800">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                    </svg>
-                    <span class="block text-biblogreen-700 font-medium text-opacity-75 text-lg">Foto del Autor</span>
-                    <input id="foto_autor" type="file" name="foto_autor" class="hidden">
-                </label>
-            </div>
-            <div>
-                <button type="submit" class="block w-full bg-biblogreen-400 py-4 box-border rounded-md shadow-md text-gray-200 hover:bg-biblogreen-600 text-lg tracking-widest focus:outline-none focus:shadow-biblofocus focus:bg-biblogreen-800">GUARDAR</button>
-            </div>
-        </form>
-    </div>
-</body>
-</html>
+            </form>
+        </div> 
+    </body>
+    </html>
