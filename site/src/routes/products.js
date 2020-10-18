@@ -17,7 +17,15 @@ router.post(
   "/create",
   products_upload.upload,
   products_validator.validateNewBook,
-  products_controller.newProduct
+  products_controller.productCreated,
+);
+
+router.get("/update", products_controller.productUpDate);
+router.put(
+  "/update",
+  products_upload.upload,
+  products_validator.validateNewBook,
+  products_controller.productUpdated,
 );
 
 module.exports = router;

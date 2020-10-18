@@ -25,26 +25,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(methodOverride("_method"));
 
+//Rutas
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 
-//Rutas
-
-app.get("/index", (req, res) => {
-  res.render(__dirname + "/views/index");
-});
-
 app.get("/login", (req, res) => {
   res.render(__dirname + "/views/login");
-});
-
-app.get("/productCart", (req, res) => {
-  res.render(__dirname + "/views/productCart");
-});
-
-app.get("/productDetail", (req, res) => {
-  res.render(__dirname + "/views/productDetail");
 });
 
 app.get("/registration", (req, res) => {
