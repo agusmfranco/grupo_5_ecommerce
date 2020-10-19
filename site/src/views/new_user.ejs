@@ -1,64 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrate en BiBlo</title>
-    <link rel="stylesheet" href="/stylesheets/style-register.css">
+    <title>Nuevo libro</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
 </head>
-<body>
-    <header>
-        <div class="logo-container">
-            <img src="/images/logo/biblo_blanco.svg" alt="">
+<body class="bg-biblogreen-100">
+    <%- include('./partials/header_slim') %> 
+        <div class="px-8 py-10 w-full font-biblofont max-w-md md:max-w-screen-md mx-auto">
+            <% if(typeof old_data !=="undefined") { %>
+                <h1 class="text-gray-900 text-2xl font-bold tracking-wider mb-6 mt-6">Estas modificando: <span class="text-biblogreen-800 block text-4xl"> <%= old_data.titulo %> </span></h1>    
+            <% } else { %>
+                <h1 class="text-gray-900 text-2xl font-bold tracking-wider mb-6 mt-6">nuevo usuario</h1>
+            <% } %>  
+            <% if(typeof old_data !=="undefined") { %>
+                <form action="/users/update?_method=PUT" method="POST" enctype="multipart/form-data">
+            <% } else { %>
+                <form action="/users/register" method="POST"  enctype="multipart/form-data">
+                <% } %>    
+                    <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4 hover:shadow-lg md:flex md:flex-col">
+                        <div class="mb-5 md:flex">
+                            <div class="md:w-1/2 md:mr-3">
+                                <label for="nombre" class="block text-gray-900 mb-2">Nombre</label>
+                                <% if(typeof old_data !== "undefined") { %>
+                                    <input id="nombre" type="text" name="nombre" value="<%=old_data.nombre%>" placeholder="Nombre" autofocus class=" block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } else { %>
+                                    <input id="nombre" type="text" name="nombre" placeholder="Nombre" autofocus class=" block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } %>   
+                                <% if(typeof errors !== "undefined") { %>
+                                    <% if('nombre' in errors) { %>
+                                        <span class="text-xs text-red-600"> <%= errors.nombre.msg %>  </span>
+                                    <% } %> 
+                                <% } %>  
+                            </div>
+                            <div class="md:w-1/2 md:ml-3">
+                                <label for="apellido" class="block text-gray-900 mb-2">Apellido</label>
+                                <% if(typeof old_data !== "undefined") { %>
+                                    <input id="apellido" type="text" name="apellido" value="<%=old_data.apellido%>" placeholder="Apellido" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } else { %>
+                                    <input id="apellido" type="text" name="apellido" placeholder="Apellido" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } %>  
+                                <% if(typeof errors !== "undefined") { %>
+                                    <% if('apellido' in errors) { %>
+                                        <span class="text-xs text-red-600"> <%= errors.apellido.msg %>  </span>
+                                    <% } %> 
+                                <% } %>  
+                            </div>
+                        </div>
+                        <div class="mb-5 md:flex">
+                            <div class="md:w-1/2 md:mr-3">
+                                <label for="dni" class="block text-gray-900 mb-2">DNI</label>
+                                <% if(typeof old_data !== "undefined") { %>
+                                    <input id="dni" type="number" name="dni" value="<%=old_data.dni%>" min="00000000" max="99999999" placeholder="DNI" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300" >
+                                <% } else { %>
+                                    <input id="dni" type="number" name="dni" min="00000000" max="99999999" placeholder="DNI" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300" >
+                                <% } %>  
+                                <% if(typeof errors !== "undefined") { %>
+                                    <% if('dni' in errors) { %>
+                                        <span class="text-xs text-red-600"> <%= errors.dni.msg %>  </span>
+                                    <% } %> 
+                                <% } %> 
+                            </div>
+                            <div class="md:w-1/2 md:ml-3">
+                                <label for="nacimiento" class="block text-gray-900 mb-2">Fecha de nacimiento</label>
+                                <% if(typeof old_data !== "undefined") { %>
+                                    <input id="nacimiento" type="date" name="nacimiento" value="<%=old_data.nacimiento%>" placeholder="Fecha de nacimento" class="form-input block w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } else { %>
+                                    <input id="nacimiento" type="date" name="nacimento" placeholder="Precio" class="form-input block w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } %>  
+                                <% if(typeof errors !== "undefined") { %>
+                                    <% if('nacimiento' in errors) { %>
+                                        <span class="text-xs text-red-600"> <%= errors.nacimiento.msg %>  </span>
+                                    <% } %> 
+                                <% } %>  
+                            </div>
+                        </div>
+                        <div class="mb-5 md:flex">
+                            <div class="md:w-1/2 md:mr-3">
+                                <label for="direccion" class="block text-gray-900 mb-2">Dirección</label>
+                                <% if(typeof old_data !== "undefined") { %>
+                                    <input id="direccion" type="text" name="direccion" value="<%=old_data.direccion%>" placeholder="Dirección" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300" >
+                                <% } else { %>
+                                    <input id="direccion" type="text" name="direccion" placeholder="Dirección" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300" >
+                                <% } %>  
+                                <% if(typeof errors !== "undefined") { %>
+                                    <% if('direccion' in errors) { %>
+                                        <span class="text-xs text-red-600"> <%= errors.direccion.msg %>  </span>
+                                    <% } %> 
+                                <% } %> 
+                            </div>
+                            <div class="md:w-1/2 md:ml-3">
+                                <label for="cp" class="block text-gray-900 mb-2">Código postal</label>
+                                <% if(typeof old_data !== "undefined") { %>
+                                    <input id="cp" type="text" name="cp" value="<%=old_data.cp%>" placeholder="Código postal" class="form-input block w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } else { %>
+                                    <input id="cp" type="text" name="cp" placeholder="Código postal" class="form-input block w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } %>  
+                                <% if(typeof errors !== "undefined") { %>
+                                    <% if('cp' in errors) { %>
+                                        <span class="text-xs text-red-600"> <%= errors.cp.msg %>  </span>
+                                    <% } %> 
+                                <% } %>  
+                            </div>
+                        </div>
+                        <div class="mb-5 md:flex">
+                            <div class="md:w-1/2 md:mr-3">
+                                <label for="email" class="block text-gray-900 mb-2">Correo electrónico</label>
+                                <% if(typeof old_data !== "undefined") { %>
+                                    <input id="email" type="email" name="email" value="<%=old_data.email%>" placeholder="Correo electronico" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } else { %>
+                                    <input id="email" type="email" name="email" placeholder="Correo electronico" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } %>  
+                                <% if(typeof errors !== "undefined") { %>
+                                    <% if('email' in errors) { %>
+                                        <span class="text-xs text-red-600"> <%= errors.email.msg %>  </span>
+                                    <% } %> 
+                                <% } %> 
+                            </div>
+                            <div class="md:w-1/2 md:ml-3">
+                                <label for="email2" class="block text-gray-900 mb-2">Repetí tu correo</label>
+                                <% if(typeof old_data !== "undefined") { %>
+                                    <input id="email2" type="email" name="email2" value="<%=old_data.email2%>" placeholder="Repetí tu correo" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } else { %>
+                                    <input id="email2" type="email" name="email" placeholder="Repetí tu correo" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } %> 
+                                <% if(typeof errors !== "undefined") { %>
+                                    <% if('email2' in errors) { %>
+                                        <span class="text-xs text-red-600"> <%= errors.email2.msg %>  </span>
+                                    <% } %> 
+                                <% } %> 
+                            </div>
+                        </div>
+                        <div class="mb-5 md:flex">
+                            <div class="md:w-1/2 md:mr-3">
+                                <label for="password" class="block text-gray-900 mb-2">Contraseña</label>
+                                <% if(typeof old_data !== "undefined") { %>
+                                    <input id="password" type="password" name="password" value="<%=old_data.password%>" placeholder="Contraseña" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } else { %>
+                                    <input id="password" type="password" name="password" placeholder="Contraseña" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } %>  
+                                <% if(typeof errors !== "undefined") { %>
+                                    <% if('password' in errors) { %>
+                                        <span class="text-xs text-red-600"> <%= errors.password.msg %>  </span>
+                                    <% } %> 
+                                <% } %> 
+                            </div>
+                            <div class="md:w-1/2 md:ml-3">
+                                <label for="password2" class="block text-gray-900 mb-2">Repetí tu contraseña</label>
+                                <% if(typeof old_data !== "undefined") { %>
+                                    <input id="password2" type="password" name="password2" value="<%=old_data.password2%>" placeholder="Repetí tu contraseña" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } else { %>
+                                    <input id="password2" type="password" name="password2" placeholder="Repetí tu contraseña" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } %> 
+                                <% if(typeof errors !== "undefined") { %>
+                                    <% if('password2' in errors) { %>
+                                        <span class="text-xs text-red-600"> <%= errors.password2.msg %>  </span>
+                                    <% } %> 
+                                <% } %> 
+                            </div>
+                        </div>
+                    </div>
+                    <% if(typeof old_data !=="undefined") { %>
+                        <div class="md:flex">
+                            <button type="submit" class="mb-4 block w-full bg-biblogreen-700 py-4 box-border rounded-md shadow-md text-gray-200 hover:bg-biblogreen-800 hover:shadow-lg text-lg tracking-widest focus:outline-none focus:shadow-biblofocus focus:bg-biblogreen-400 md:mr-3">GUARDAR</button>
+                            <button type="submit" formaction="/users/update?_method=DELETE" class="mb-4 block w-full bg-biblogreen-700 py-4 box-border rounded-md shadow-md text-gray-200 hover:bg-biblogreen-800 hover:shadow-lg text-lg tracking-widest focus:outline-none focus:shadow-biblofocus focus:bg-biblogreen-400 md:ml-3">ELIMINAR</button>
+                        </div>
+                    <% } else { %>
+                        <div>
+                            <button type="submit" class="block w-full bg-biblogreen-700 py-4 box-border rounded-md shadow-md text-gray-200 hover:bg-biblogreen-800 hover:shadow-lg text-lg tracking-widest focus:outline-none focus:shadow-biblofocus focus:bg-biblogreen-400">GUARDAR</button>
+                        </div>
+                    <% } %>  
+                </form>
         </div>
-    </header>
-    <div class="container">
-        <main class="registration">
-            <form action="">
-                <div class="registration-title">
-                    <h1>Completá tus datos</h1>
-                </div>
-                <section class="data">
-                    <section class="reg-data">
-                        <div class="reg-data-left">
-                            <div class="input-container">
-                                <input type="text" id="name" placeholder="Nombre" autofocus>
-                            </div>
-                            <div class="input-container">
-                                <input type="text" id="surname-left" placeholder="Apellido">
-                            </div>
-                            <div class="input-container">
-                                <input type="tel" id="p-id" placeholder="DNI" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}">
-                            </div>
-                            <div class="input-container">
-                                <input type="email" id="eMail" placeholder="E-mail">
-                            </div>
-                            <div class="input-container">
-                                <input type="password" id="pass-left" placeholder="Clave">
-                            </div>
-                        </div>
-                        <div class="reg-data-right">
-                            <div class="input-container">
-                                <input type="text" id="surname-right" placeholder="Apellido">
-                                <div class="input-container">
-                                    <input type="password-right" id="pass" placeholder="Clave">
-                                </div>
-                        </div>
-                    </section>
-                    <section class="term-condi">
-                        <div class="check-container">
-                            <input type="checkbox" id="condi-check" name="checkbox-condi" value="Acepto">
-                            <label for="condi-check">Acepto los Términos y Condiciones y autorizo el uso de mis datos de acuerdo a la Declaración de Privacidad.</label>
-                        </div>
-                    </section>
-                </section>
-                <div class="container-boton">
-                    <button type="submit" class="accept-button">Continuar</button>
-                </div>
-            </form>
-        </main>
-    </div>
-</body>
-</html>
+    </body>
+    </html>

@@ -1,4 +1,4 @@
-cm_data = {
+dummy_data = {
   titulo: "Crónicas Marcianas",
   autor: "Ray Bradbury",
   editorial: "Minotauro",
@@ -13,4 +13,4 @@ cm_data = {
   foto_autor: "bradbury-photo.png",
 };
 
-module.exports = cm_data;
+module.exports = dummy_data;

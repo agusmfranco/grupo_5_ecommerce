@@ -8,9 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
 </head>
 <body class="bg-biblogreen-100">
-        <div class="px-8 py-10 w-full font-biblofont sm:px-16 md:max-w-screen-md mx-auto">
+    <%- include('./partials/header_slim') %> 
+        <div class="px-8 py-10 w-full font-biblofont max-w-md md:max-w-screen-md mx-auto">
             <% if(typeof old_data !=="undefined") { %>
-                <h1 class="text-gray-900 text-2xl font-bold tracking-wider mb-6 mt-6">Estas modificando: <span class="text-biblogreen-800 text-4xl"> <%= old_data.titulo %> </span></h1>    
+                <h1 class="text-gray-900 text-2xl font-bold tracking-wider mb-6 mt-6">Estas modificando: <span class="text-biblogreen-800 block text-4xl"> <%= old_data.titulo %> </span></h1>    
             <% } else { %>
                 <h1 class="text-gray-900 text-2xl font-bold tracking-wider mb-6 mt-6">nuevo libro</h1>
             <% } %>  
@@ -153,9 +154,16 @@
                             </label>
                         </div>
                     </div>
-                    <div>
-                        <button type="submit" class="block w-full bg-biblogreen-700 py-4 box-border rounded-md shadow-md text-gray-200 hover:bg-biblogreen-800 hover:shadow-lg text-lg tracking-widest focus:outline-none focus:shadow-biblofocus focus:bg-biblogreen-400">GUARDAR</button>
-                    </div>
+                    <% if(typeof old_data !=="undefined") { %>
+                        <div class="md:flex">
+                            <button type="submit" class="mb-4 block w-full bg-biblogreen-700 py-4 box-border rounded-md shadow-md text-gray-200 hover:bg-biblogreen-800 hover:shadow-lg text-lg tracking-widest focus:outline-none focus:shadow-biblofocus focus:bg-biblogreen-400 md:mr-3">GUARDAR</button>
+                            <button type="submit" formaction="/users/update?_method=DELETE" class="mb-4 block w-full bg-biblogreen-700 py-4 box-border rounded-md shadow-md text-gray-200 hover:bg-biblogreen-800 hover:shadow-lg text-lg tracking-widest focus:outline-none focus:shadow-biblofocus focus:bg-biblogreen-400 md:ml-3">ELIMINAR</button>
+                        </div>
+                    <% } else { %>
+                        <div>
+                            <button type="submit" class="block w-full bg-biblogreen-700 py-4 box-border rounded-md shadow-md text-gray-200 hover:bg-biblogreen-800 hover:shadow-lg text-lg tracking-widest focus:outline-none focus:shadow-biblofocus focus:bg-biblogreen-400">GUARDAR</button>
+                        </div>
+                    <% } %>  
                 </form>
         </div> 
     </body>

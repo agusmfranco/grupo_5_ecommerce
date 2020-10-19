@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 var products_controller = require("../controllers/productsController");
-var products_validator = require("../middlewares/productsValidator");
+var forms_validators = require("../middlewares/formsValidators");
 var products_upload = require("../middlewares/productsUpload");
 
 // Rutas para detalle
@@ -16,16 +16,17 @@ router.get("/create", products_controller.productCreate);
 router.post(
   "/create",
   products_upload.upload,
-  products_validator.validateNewBook,
-  products_controller.productCreated,
+  forms_validators.validateNewBook,
+  products_controller.productCreated
 );
 
 router.get("/update", products_controller.productUpDate);
 router.put(
   "/update",
   products_upload.upload,
-  products_validator.validateNewBook,
-  products_controller.productUpdated,
+  forms_validators.validateNewBook,
+  products_controller.productUpdated
 );
+router.delete("/delete", products_controller.productDelete);
 
 module.exports = router;

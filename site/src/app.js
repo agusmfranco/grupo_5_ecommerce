@@ -31,14 +31,6 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 
-app.get("/login", (req, res) => {
-  res.render(__dirname + "/views/login");
-});
-
-app.get("/registration", (req, res) => {
-  res.render(__dirname + "/views/registration");
-});
-
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

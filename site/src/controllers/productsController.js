@@ -1,5 +1,5 @@
 const { check, validationResult, body } = require("express-validator");
-const cm_data = require("./cm_data");
+const dummy_data = require("./dummy_data");
 
 exports.productDetail = function (req, res) {
   res.render("product_detail");
@@ -23,15 +23,22 @@ exports.productCreated = function (req, res) {
 };
 
 exports.productUpDate = function (req, res) {
-  res.render("product_create", { old_data: cm_data });
+  res.render("product_create", { old_data: dummy_data });
 };
 
 exports.productUpdated = function (req, res) {
-  errors = validationResult(req)
+  errors = validationResult(req);
   console.log(errors.isEmpty());
   if (errors.isEmpty()) {
     res.redirect("/index");
   } else {
-    res.render("product_create", { errors: errors.mapped(), old_data: cm_data });
+    res.render("product_create", {
+      errors: errors.mapped(),
+      old_data: dummy_data,
+    });
   }
+};
+
+exports.productDelete = function (req, res) {
+  res.send("Delete no implementado");
 };

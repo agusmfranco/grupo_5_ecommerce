@@ -22,3 +22,18 @@ exports.validateNewBook = [
   check("sinopsis").notEmpty().withMessage("La sinopsis debe estar completa"),
   check("biografia").notEmpty().withMessage("La biografía debe estar completa"),
 ];
+
+exports.validateNewUser = [
+  check("nombre").notEmpty().withMessage("El nombre debe estar completo"),
+  check("apellido").notEmpty().withMessage("El apellido debe estar completo"),
+  check("dni").notEmpty().withMessage("El DNI debe estar completo"),
+  check("nacimiento")
+    .notEmpty()
+    .withMessage("La fecha de nacimiento debe estar completa"),
+  check("direccion").notEmpty().withMessage("La direccion debe estar completa"),
+  check("cp").notEmpty().withMessage("El coodigo postal debe estar completo"),
+  check("email")
+    .notEmpty()
+    .withMessage("El correo electronico debe estar completo"),
+  check("password").notEmpty().withMessage("La contraseña debe estar completa"),
+];
