@@ -13,7 +13,7 @@
             <% if(typeof old_data !=="undefined") { %>
                 <h1 class="text-gray-900 text-2xl font-bold tracking-wider mb-6 mt-6">Estas modificando: <span class="text-biblogreen-800 block text-4xl"> <%= old_data.titulo %> </span></h1>    
             <% } else { %>
-                <h1 class="text-gray-900 text-2xl font-bold tracking-wider mb-6 mt-6">nuevo usuario</h1>
+                <h1 class="text-gray-900 text-2xl font-bold tracking-wider mb-6 mt-6">Nuevo usuario</h1>
             <% } %>  
             <% if(typeof old_data !=="undefined") { %>
                 <form action="/users/update?_method=PUT" method="POST" enctype="multipart/form-data">
