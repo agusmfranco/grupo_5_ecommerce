@@ -10,12 +10,12 @@ exports.userSave = function (req, res) {
   if (errors.isEmpty()) {
     res.send("Usuario creado con exito! Falta implementar");
   } else {
-    res.render("new_user", { errors: errors.mapped(), body_data :req.body })
+    res.render("new_user", { errors: errors.mapped(), body_data: req.body });
   }
 };
 
 exports.userUpdate = function (req, res) {
-  res.render("user_update", { old_data: dummy_user});
+  res.render("user_update", { old_data: dummy_user });
 };
 
 exports.userUpdated = function (req, res) {

@@ -18,7 +18,10 @@ exports.productCreated = function (req, res) {
   if (errors.isEmpty()) {
     res.send("Producto creado con éxito!. No implementado");
   } else {
-    res.render("product_create", { errors: errors.mapped(), body_data :req.body });
+    res.render("product_create", {
+      errors: errors.mapped(),
+      body_data: req.body,
+    });
   }
 };
 

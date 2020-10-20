@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo libro</title>
+    <title>Biblo | Modificar libro</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico" />
 </head>
 <body class="bg-biblogreen-100">
     <%- include('./partials/header_slim') %> 
         <div class="px-8 py-10 w-full font-biblofont max-w-md md:max-w-screen-md mx-auto">
-            <h1 class="text-gray-900 text-2xl font-bold tracking-wider mb-6 mt-6">Estas modificando:</h1>    
+            <h1 class="text-gray-800 text-2xl font-bold tracking-wider mb-6 mt-6">Estas modificando: <span class="block text-4xl text-biblogreen-800"><%= old_data.titulo %></span></h1>
                 <form action="/products/update?_method=PUT" method="POST" enctype="multipart/form-data">    
                     <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4 hover:shadow-lg md:flex md:flex-col">
                         <div class="mb-5 md:flex">
                             <div class="md:w-1/2 md:mr-3">
-                                <label for="titulo" class="block text-gray-900 mb-2">Título</label>
+                                <label for="titulo" class="block text-gray-800 mb-2">Título</label>
                                 <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
                                     <% if("titulo" in errors) { %>
                                         <input id="titulo" type="text" name="titulo" placeholder="Título" autofocus class=" block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
@@ -32,7 +33,7 @@
                                 <% } %>  
                             </div>
                             <div class="md:w-1/2 md:ml-3">
-                                <label for="autor" class="block text-gray-900 mb-2">Autor</label>
+                                <label for="autor" class="block text-gray-800 mb-2">Autor</label>
                                 <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
                                     <% if("autor" in errors) { %>
                                         <input id="autor" type="text" name="autor" placeholder="Autor" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
@@ -51,7 +52,7 @@
                         </div>
                         <div class="mb-5 md:flex">
                             <div class="md:w-1/2 md:mr-3">
-                                <label for="editorial" class="block text-gray-900 mb-2">Editorial</label>
+                                <label for="editorial" class="block text-gray-800 mb-2">Editorial</label>
                                 <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
                                     <% if("editorial" in errors) { %>
                                         <input id="editorial" type="text" name="editorial" placeholder="Editorial" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
@@ -68,7 +69,7 @@
                                 <% } %> 
                             </div>
                             <div class="md:w-1/2 md:ml-3">
-                                <label for="genero" class="block text-gray-900 mb-2">Género</label>
+                                <label for="genero" class="block text-gray-800 mb-2">Género</label>
                                 <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
                                     <% if("genero" in errors) { %>
                                         <input id="genero" type="text" name="genero" placeholder="Género" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
@@ -87,7 +88,7 @@
                         </div>
                         <div class="mb-5 md:flex">
                             <div class="md:w-1/2 md:mr-3">
-                                <label for="isbn" class="block text-gray-900 mb-2">ISBN</label>
+                                <label for="isbn" class="block text-gray-800 mb-2">ISBN</label>
                                 <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
                                     <% if("isbn" in errors) { %>
                                         <input id="isbn" type="number" name="isbn" min="0000000000" max="9999999999999" placeholder="ISBN" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
@@ -104,7 +105,7 @@
                                 <% } %> 
                             </div>
                             <div class="md:w-1/2 md:ml-3">
-                                <label for="precio" class="block text-gray-900 mb-2">Precio</label>
+                                <label for="precio" class="block text-gray-800 mb-2">Precio</label>
                                 <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
                                     <% if("precio" in errors) { %>
                                         <input id="precio" type="number" name="precio" min="0.01" step="0.01" placeholder="Precio" class="form-input block w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
@@ -124,7 +125,7 @@
                     </div>
                     <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4 hover:shadow-lg md:flex">
                         <div class="mb-6 md:w-1/2 md:mr-3">
-                            <label for="sinopsis" class="block text-gray-900 mb-2">Sinopsis</label>
+                            <label for="sinopsis" class="block text-gray-800 mb-2">Sinopsis</label>
                             <% if(typeof old_data !== "undefined") { %>
                                 <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=old_data.sinopsis%></textarea>    
                             <% } else { %>
@@ -137,7 +138,7 @@
                             <% } %> 
                         </div>
                         <div class="mb-6 md:w-1/2 md:ml-3">
-                            <label for="biografia" class="block text-gray-900 mb-2">Biografía</label>
+                            <label for="biografia" class="block text-gray-800 mb-2">Biografía</label>
                             <% if(typeof old_data !== "undefined") { %>
                                 <textarea name="biografia" id="biografia" cols="30" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=old_data.sinopsis%></textarea>    
                             <% } else { %>
