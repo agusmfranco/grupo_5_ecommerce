@@ -10,37 +10,37 @@
 <body class="bg-biblogreen-100">
     <%- include('./partials/header_slim') %> 
         <div class="px-8 py-10 w-full font-biblofont max-w-md md:max-w-screen-md mx-auto">
-            <h1 class="text-gray-900 text-2xl font-bold tracking-wider mb-6 mt-6">nuevo libro</h1>
-                <form action="/products/create" method="POST"  enctype="multipart/form-data">
+            <h1 class="text-gray-900 text-2xl font-bold tracking-wider mb-6 mt-6">Estas modificando:</h1>    
+                <form action="/products/update?_method=PUT" method="POST" enctype="multipart/form-data">    
                     <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4 hover:shadow-lg md:flex md:flex-col">
                         <div class="mb-5 md:flex">
                             <div class="md:w-1/2 md:mr-3">
                                 <label for="titulo" class="block text-gray-900 mb-2">Título</label>
                                 <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
-                                    <% if('titulo' in errors) { %>
-                                        <input id="titulo" type="text" name="titulo" autofocus placeholder="Título" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">         
+                                    <% if("titulo" in errors) { %>
+                                        <input id="titulo" type="text" name="titulo" placeholder="Título" autofocus class=" block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                     <% } else { %>
-                                        <input id="titulo" type="text" name="titulo" value= "<%= body_data.titulo %>"  placeholder="Nombre" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
-                                    <% } %>  
+                                        <input id="titulo" type="text" name="titulo" value="<%=body_data.titulo%>" placeholder="Título" autofocus class=" block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                    <% } %> 
                                 <% } else { %>
-                                    <input id="nombre" type="text" name="nombre" autofocus placeholder="Nombre" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"> 
-                                <% } %> 
+                                    <input id="titulo" type="text" name="titulo" value="<%=old_data.titulo%>" placeholder="Título" autofocus class=" block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } %>   
                                 <% if(typeof errors !== "undefined") { %>
                                     <% if('titulo' in errors) { %>
                                         <span class="text-xs text-red-600"> <%= errors.titulo.msg %>  </span>
                                     <% } %> 
-                                <% } %> 
+                                <% } %>  
                             </div>
                             <div class="md:w-1/2 md:ml-3">
                                 <label for="autor" class="block text-gray-900 mb-2">Autor</label>
                                 <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
-                                    <% if('autor' in errors) { %>
-                                        <input id="autor" type="text" name="autor" autofocus placeholder="Autor" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">         
+                                    <% if("autor" in errors) { %>
+                                        <input id="autor" type="text" name="autor" placeholder="Autor" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                     <% } else { %>
-                                        <input id="autor" type="text" name="autor" value= "<%= body_data.autor %>"  placeholder="Autor" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
-                                    <% } %>  
+                                        <input id="autor" type="text" name="autor" value="<%=body_data.autor%>" placeholder="Autor" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                    <% } %>   
                                 <% } else { %>
-                                    <input id="autor" type="text" name="autor" autofocus placeholder="Autor" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"> 
+                                    <input id="autor" type="text" name="autor" value="<%=old_data.autor%>" placeholder="Autor" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                 <% } %>  
                                 <% if(typeof errors !== "undefined") { %>
                                     <% if('autor' in errors) { %>
@@ -53,14 +53,14 @@
                             <div class="md:w-1/2 md:mr-3">
                                 <label for="editorial" class="block text-gray-900 mb-2">Editorial</label>
                                 <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
-                                    <% if('editorial' in errors) { %>
-                                        <input id="editorial" type="text" name="editorial" autofocus placeholder="Editorial" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">         
+                                    <% if("editorial" in errors) { %>
+                                        <input id="editorial" type="text" name="editorial" placeholder="Editorial" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                     <% } else { %>
-                                        <input id="editorial" type="text" name="editorial" value= "<%= body_data.editorial %>"  placeholder="Editorial" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
-                                    <% } %>  
+                                        <input id="editorial" type="text" name="editorial" value="<%=body_data.editorial%>" placeholder="Editorial" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                    <% } %>   
                                 <% } else { %>
-                                    <input id="editorial" type="text" name="editorial" autofocus placeholder="Editorial" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"> 
-                                <% } %>   
+                                    <input id="editorial" type="text" name="editorial" value="<%=old_data.editorial%>" placeholder="Editorial" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <% } %>  
                                 <% if(typeof errors !== "undefined") { %>
                                     <% if('editorial' in errors) { %>
                                         <span class="text-xs text-red-600"> <%= errors.editorial.msg %>  </span>
@@ -70,13 +70,13 @@
                             <div class="md:w-1/2 md:ml-3">
                                 <label for="genero" class="block text-gray-900 mb-2">Género</label>
                                 <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
-                                    <% if('genero' in errors) { %>
-                                        <input id="genero" type="text" name="genero" autofocus placeholder="Género" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">         
+                                    <% if("genero" in errors) { %>
+                                        <input id="genero" type="text" name="genero" placeholder="Género" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                     <% } else { %>
-                                        <input id="genero" type="text" name="genero" value= "<%= body_data.genero %>"  placeholder="Género" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
-                                    <% } %>  
+                                        <input id="genero" type="text" name="genero" value="<%=body_data.genero%>" placeholder="Género" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                    <% } %>   
                                 <% } else { %>
-                                    <input id="genero" type="text" name="genero" autofocus placeholder="Géenero" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"> 
+                                    <input id="genero" type="text" name="genero" value="<%=old_data.genero%>" placeholder="Género" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                 <% } %> 
                                 <% if(typeof errors !== "undefined") { %>
                                     <% if('genero' in errors) { %>
@@ -90,12 +90,12 @@
                                 <label for="isbn" class="block text-gray-900 mb-2">ISBN</label>
                                 <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
                                     <% if("isbn" in errors) { %>
-                                        <input id="isbn" type="number" name="isbn" min="0000000000" max="9999999999999" placeholder="ISBN" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300" >
+                                        <input id="isbn" type="number" name="isbn" min="0000000000" max="9999999999999" placeholder="ISBN" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                     <% } else { %>
-                                        <input id="isbn" type="number" name="isbn" value="<%=body_data.isbn%>" min="0000000000" max="9999999999999" placeholder="ISBN" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300" >
+                                        <input id="isbn" type="number" name="isbn" value="<%=body_data.isbn%>" min="0000000000" max="9999999999999" placeholder="ISBN" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                     <% } %>   
                                 <% } else { %>
-                                    <input id="isbn" type="number" name="isbn" min="0000000000" max="9999999999999" placeholder="ISBN" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300" >
+                                    <input id="isbn" type="number" name="isbn" value="<%=old_data.isbn%>" min="0000000000" max="9999999999999" placeholder="ISBN" class="block form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300" >
                                 <% } %>  
                                 <% if(typeof errors !== "undefined") { %>
                                     <% if('isbn' in errors) { %>
@@ -112,7 +112,7 @@
                                         <input id="precio" type="number" name="precio" value="<%=body_data.precio%>" min="0.01" step="0.01" placeholder="Precio" class="form-input block w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                     <% } %>   
                                 <% } else { %>
-                                    <input id="precio" type="number" name="precio" min="0.01" step="0.01" placeholder="Precio" class="form-input block w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                    <input id="precio" type="number" name="precio" value="<%=old_data.precio%>" min="0.01" step="0.01" placeholder="Precio" class="form-input block w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                 <% } %>  
                                 <% if(typeof errors !== "undefined") { %>
                                     <% if('precio' in errors) { %>
@@ -125,12 +125,8 @@
                     <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4 hover:shadow-lg md:flex">
                         <div class="mb-6 md:w-1/2 md:mr-3">
                             <label for="sinopsis" class="block text-gray-900 mb-2">Sinopsis</label>
-                            <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
-                                <% if("sinopsis" in errors) { %>
-                                <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"></textarea>    
-                                <% } else { %>
-                                <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=body_data.sinopsis%></textarea>
-                                <% } %>   
+                            <% if(typeof old_data !== "undefined") { %>
+                                <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=old_data.sinopsis%></textarea>    
                             <% } else { %>
                                 <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"></textarea>
                             <% } %>  
@@ -142,12 +138,8 @@
                         </div>
                         <div class="mb-6 md:w-1/2 md:ml-3">
                             <label for="biografia" class="block text-gray-900 mb-2">Biografía</label>
-                            <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
-                                <% if("biografia" in errors) { %>
-                                    <textarea name="biografia" id="biografia" cols="30" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"></textarea>    
-                                <% } else { %>
-                                    <textarea name="biografia" id="biografia" cols="30" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=old_data.sinopsis%></textarea>
-                                <% } %>   
+                            <% if(typeof old_data !== "undefined") { %>
+                                <textarea name="biografia" id="biografia" cols="30" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=old_data.sinopsis%></textarea>    
                             <% } else { %>
                                 <textarea name="biografia" id="biografia" cols="30" rows="6" class="block form-textarea w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"></textarea>
                             <% } %>  
@@ -178,9 +170,10 @@
                             </label>
                         </div>
                     </div>
-                        <div>
-                            <button type="submit" class="block w-full bg-biblogreen-700 py-4 box-border rounded-md shadow-md text-gray-200 hover:bg-biblogreen-800 hover:shadow-lg text-lg tracking-widest focus:outline-none focus:shadow-biblofocus focus:bg-biblogreen-400">GUARDAR</button>
-                        </div> 
+                        <div class="md:flex">
+                            <button type="submit" class="mb-4 block w-full bg-biblogreen-700 py-4 box-border rounded-md shadow-md text-gray-200 hover:bg-biblogreen-800 hover:shadow-lg text-lg tracking-widest focus:outline-none focus:shadow-biblofocus focus:bg-biblogreen-400 md:mr-3">GUARDAR</button>
+                            <button type="submit" formaction="/users/update?_method=DELETE" class="mb-4 block w-full bg-biblogreen-700 py-4 box-border rounded-md shadow-md text-gray-200 hover:bg-biblogreen-800 hover:shadow-lg text-lg tracking-widest focus:outline-none focus:shadow-biblofocus focus:bg-biblogreen-400 md:ml-3">ELIMINAR</button>
+                        </div>
                 </form>
         </div> 
     </body>
