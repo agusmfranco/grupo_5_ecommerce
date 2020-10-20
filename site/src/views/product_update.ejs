@@ -9,8 +9,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico" />
 </head>
 <body class="bg-biblogreen-100">
-    <%- include('./partials/header_slim') %> 
-        <div class="px-8 py-10 w-full font-biblofont max-w-md md:max-w-screen-md mx-auto">
+        <%- include('./partials/header_slim') %> 
+        <div class="px-8 py-10 mx-auto font-biblofont max-w-md md:max-w-screen-md">
             <h1 class="text-gray-800 text-2xl font-bold tracking-wider mb-6 mt-6">Estas modificando: <span class="block text-4xl text-biblogreen-800"><%= old_data.titulo %></span></h1>
                 <form action="/products/update?_method=PUT" method="POST" enctype="multipart/form-data">    
                     <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4 hover:shadow-lg md:flex md:flex-col">
