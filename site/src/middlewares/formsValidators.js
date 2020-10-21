@@ -30,10 +30,10 @@ exports.validateNewUser = [
   check("nacimiento")
     .notEmpty()
     .withMessage("La fecha de nacimiento debe estar completa"),
-  check("direccion").notEmpty().withMessage("La direccion debe estar completa"),
-  check("cp").notEmpty().withMessage("El coodigo postal debe estar completo"),
+  check("direccion").notEmpty().withMessage("La dirección debe estar completa"),
+  check("cp").notEmpty().withMessage("El código postal debe estar completo"),
   check("email")
     .notEmpty()
-    .withMessage("El correo electronico debe estar completo"),
+    .withMessage("El correo electrónico debe estar completo"),
   check("password").notEmpty().withMessage("La contraseña debe estar completa"),
 ];
