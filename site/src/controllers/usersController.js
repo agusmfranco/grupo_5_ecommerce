@@ -38,3 +38,4 @@ exports.userDelete = function (req, res) {
 exports.userLogin = function (req, res) {
   res.render("login");
 };
+

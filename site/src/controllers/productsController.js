@@ -46,3 +46,5 @@ exports.productUpdated = function (req, res) {
 exports.productDelete = function (req, res) {
   res.send("Delete no implementado");
 };
+
+
