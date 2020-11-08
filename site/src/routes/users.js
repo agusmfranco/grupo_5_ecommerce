@@ -17,6 +17,7 @@ router.put(
   forms_validators.validateNewUser,
   users_controller.userUpdated
 );
+
 router.delete("/update", users_controller.userDelete);
 
 router.get("/login", users_controller.userLogin);
