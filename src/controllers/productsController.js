@@ -1,8 +1,16 @@
 const { check, validationResult, body } = require("express-validator");
-const dummy_data = require("./dummy_data");
+const fs = require('fs');
+const path = require('path');
+
+let db_libros = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'db_libros.json')));
+
 
 exports.productDetail = function (req, res) {
-  res.render("product_detail");
+  db_libros.forEach(libro => {
+    if(libro.id == req.params.id) {
+      res.render('productdetail', {libro: libro})
+    }
+  });
 };
 
 exports.checkOut = function (req, res) {

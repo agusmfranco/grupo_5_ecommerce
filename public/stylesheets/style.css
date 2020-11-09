@@ -11981,7 +11981,11 @@ video {
 }
 
 .font-biblofont {
-  font-family: Cabin;
+  font-family: Cabin, sans-serif;
+}
+
+.font-roboto {
+  font-family: Roboto, sans-serif;
 }
 
 .font-thin {
@@ -35221,7 +35225,11 @@ video {
   }
 
   .sm\:font-biblofont {
-    font-family: Cabin;
+    font-family: Cabin, sans-serif;
+  }
+
+  .sm\:font-roboto {
+    font-family: Roboto, sans-serif;
   }
 
   .sm\:font-thin {
@@ -57984,7 +57992,11 @@ video {
   }
 
   .md\:font-biblofont {
-    font-family: Cabin;
+    font-family: Cabin, sans-serif;
+  }
+
+  .md\:font-roboto {
+    font-family: Roboto, sans-serif;
   }
 
   .md\:font-thin {
@@ -80747,7 +80759,11 @@ video {
   }
 
   .lg\:font-biblofont {
-    font-family: Cabin;
+    font-family: Cabin, sans-serif;
+  }
+
+  .lg\:font-roboto {
+    font-family: Roboto, sans-serif;
   }
 
   .lg\:font-thin {
@@ -103510,7 +103526,11 @@ video {
   }
 
   .xl\:font-biblofont {
-    font-family: Cabin;
+    font-family: Cabin, sans-serif;
+  }
+
+  .xl\:font-roboto {
+    font-family: Roboto, sans-serif;
   }
 
   .xl\:font-thin {

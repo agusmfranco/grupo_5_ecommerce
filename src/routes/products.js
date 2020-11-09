@@ -6,7 +6,7 @@ var forms_validators = require("../middlewares/formsValidators");
 var products_upload = require("../middlewares/productsUpload");
 
 // Rutas para detalle
-router.get("/detail", products_controller.productDetail);
+router.get("/detail/:id", products_controller.productDetail);
 
 // Rutas para carrito
 router.get("/checkout", products_controller.checkOut);

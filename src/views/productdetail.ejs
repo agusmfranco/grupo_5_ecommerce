@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= libro.titulo %> | <%= libro.autor %>  </title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico" />
+    <link href="/css/all.css" rel="stylesheet">
+</head>
+<body class="bg-biblogreen-100" >
+    <div class="font-roboto bg-white p-3 text-gray-800 lg:max-w-screen-lg lg:mx-auto lg:px-16">
+        <div class="mb-6">
+            <span class="block text-gray-600 text-sm"><%= libro.autor %> </span>
+            <h1 class="text-xl font-bold tracking-wide text-gray-800"><%= libro.titulo %></h1>
+        </div>
+        <div class="lg:flex">
+            <div class="mb-6 lg:mr-10">
+                <img src="/portadas/<%= libro.portada %>" class="object-contain w-32 mx-auto lg:w-48" alt="Portada <%= libro.titulo %> ">
+            </div>
+            <div>
+                <div class="align-text-top mb-2">
+                    <span class="text-3xl tracking-tighter font-light mr-1">$</span><span class="text-3xl tracking-tighter font-light"><%= libro.precio %> </span><span class="align-top text-sm font-normal">00</span>
+                </div>
+                <div class="mb-4">
+                    <span class="text-xl font-medium text-biblogreen-700"><%= libro.estado %> </span>
+                </div>
+                <form action="" method="POST">
+                    <div class="mb-3">
+                        <label for="cantidad" class="block text-gray-800 mb-2">Cantidad</label>
+                        <input type="number" name="cantidad" id="cantidad" value="1" class="block text-gray-800 text-sm form-input w-1/4 lg:w-1/2 border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                    </div>
+                    <div class="flex mb-6 lg:flex-col">
+                        <button type="submit" class="block whitespace-no-wrap text-xs py-4 font-bold text-gray-800 form-input w-1/2 lg:w-auto border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 focus:outline-none  focus:bg-biblogreen-200 mr-1 lg:mr-0 lg:mb-3 duration-300">AGREGAR AL CARRITO</button>
+                        <button type="submit" formaction="/users/update?_method=DELETE" class="block whitespace-no-wrap text-xs py-4 font-bold text-gray-800 form-input w-1/2 lg:w-auto border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 focus:outline-none  focus:bg-biblogreen-200 ml-1 lg:ml-0">COMPRAR AHORA</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="mb-6">
+            <h3 class="font-semibold mb-2 tracking-wide">Sinopsis</h3>
+            <p class="text-sm font-medium"><%= libro.sinopsis %></p>
+        </div>
+        <div class="mb-6">
+            <h3 class="font-semibold mb-2 tracking-wide">Información del producto</h3>
+            <table class="text-left text-sm w-full">
+                <tr class="border-b border-t border-biblogreen-200">
+                    <th class="px-2 py-3 bg-biblogreen-100">Título</th>
+                    <td class="px-2 py-3"><%= libro.titulo %></td>
+                </tr>
+                <tr class=" border-b border-biblogreen-200">
+                    <th class="px-2 py-3 bg-biblogreen-100">Autor</th>
+                    <td class="px-2 py-3"><%= libro.autor %></td>
+                </tr>
+                <tr class="border-b border-biblogreen-200">
+                    <th class="px-2 py-3 bg-biblogreen-100">Género</th>
+                    <td class="px-2 py-3"><%= libro.genero %></td>
+                </tr>
+                <tr class="border-b border-biblogreen-200">
+                    <th class="px-2 py-3 bg-biblogreen-100">Editorial</th>
+                    <td class="px-2 py-3"><%= libro.editorial %></td>
+                </tr>
+                <tr class="border-b border-biblogreen-200">
+                    <th class="px-2 py-3 bg-biblogreen-100">ISBN</th>
+                    <td class="px-2 py-3"><%= libro.isbn %></td>
+                </tr>
+                <tr class="border-b border-biblogreen-200">
+                    <th class="px-2 py-3 bg-biblogreen-100">Estado</th>
+                    <td class="px-2 py-3"><%= libro.estado %></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3 class="font-semibold mb-2 tracking-wide">Sobre el autor</h3>
+            <div class="lg:flex">
+                <img class="rounded-full mb-auto w-32 lg:w-40 lg:mr-10" src="/fotos_autores/<%= libro.foto_autor %>" alt="Foto <%= libro.autor %> ">
+                <p class="text-sm"><%= libro.biografia %> </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
