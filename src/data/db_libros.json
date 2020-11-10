@@ -165,13 +165,14 @@
         "autor": "Nach",
         "editorial": "Editorial Planeta",
         "genero": "Poesía",
-        "isbn": "0000000000000",
+        "isbn": "9788408160441",
         "precio": "650",
         "sinopsis":
             "Hambriento es una travesía poética de ida y vuelta, repleta de reflexiones, aprendizajes y sensibilidad. Un río a contracorriente que fluye a borbotones hacia las cimas más altas. Nach escribe urgido por una voracidad de emociones y experiencias que parecen saciar un íntimo vacío. Así emprende, a dentelladas, un viaje por sí mismo con una sensación de hambre que sirve de combustible para la vida, porque el hambre nos mueve, nos vuelve osados y nos alimenta.",
         "biografia":
             "(Albacete,1974), licenciado en Sociología por la Universidad de Alicante, es uno de los máximos exponentes del género del hip hop en letra castellana y uno de los mejores representantes de la vertiente más poética del género. Con nueve discos publicados, entre los que destacan Mejor que el silencio, Poesía difusa, Un día en Suburbia o A través de mí, ha llegado a ser número uno de la lista general de ventas de música en España y cuenta con dos discos de oro en su haber. Es requerido por los festivales de música más importantes de España y Latinoamérica y ha sido nominado como mejor artista español en los premios MTV EMA (European Music Awards), al Goya en la categoría de mejor canción original por Verbo y también en los premios Grammy Latinos al mejor videoclip. Además, es un apasionado del baloncesto. Su último disco es Almanauta.",
-        "foto_autor": "bradbury-photo.png",
+        "portada": "h-cover.jpg",
+        "foto_autor": "nach-photo.png",
         "estado": "Agotado"
     },
     {
@@ -180,13 +181,14 @@
         "autor": "Arthur Miller",
         "editorial": "Tusquets",
         "genero": "Poesía",
-        "isbn": "0000000000000",
+        "isbn": "9788490661581",
         "precio": "650",
         "sinopsis":
             "Se estrenó en 1949 en Nueva York y obtuvo de inmediato tal éxito que catapultó a la fama a Arthur Miller. Esta pieza teatral se ha convertido en un símbolo de la tragedia del hombre corriente en una sociedad que lo aniquila. El protagonista, Willy Loman, casado y padre de dos hijos, ha trabajado toda su vida como viajante de comercio. Tiene sesenta años y está extenuado: le niegan un aumento de sueldo y acaba siendo despedido «por su propio bien». Entonces todo a su alrededor se derrumba: ¿qué error ha cometido? «El que siga habiendo tantos Willy en el mundo –afirmó Miller– se debe a que el hombre se supedita a las imperiosas necesidades de la sociedad o de la tecnología se aniquila como individuo",
         "biografia":
             "Arthur Miller (Nueva York, 1915-2005) escribió algunas de las obras maestras del teatro del siglo xx. Entre sus galardones se cuentan el Premio Pulitzer 1949, el de la crítica teatral neoyorquina y el Premio Príncipe de Asturias de las Letras 2002. Hombre público por su compromiso social, nadie como Miller ha sabido reflejar las frustraciones y los desengaños de la sociedad estadounidense.",
-        "foto_autor": "bradbury-photo.png",
+        "portada": "mv-cover.jpg",
+        "foto_autor": "miller-photo.png",
         "estado": "Diponible"
     },
     {
@@ -195,13 +197,14 @@
         "autor": "V.E. Schwab",
         "editorial": "Ediciones Destino",
         "genero": "Juvenil",
-        "isbn": "0000000000000",
+        "isbn": "9788445006016",
         "precio": "650",
         "sinopsis":
             "Kell es uno de los últimos magos viajeros con una extraña habilidad para viajar entre universos paralelos conectados por una ciudad mágica.Existe un Londres Gris, sin magia y con un rey loco: el rey George III. Un Londres Rojo, donde se honra la vida y la magia y donde Kell creció junto a Rhy Maresh, heredera de un imperio esplendoroso. Un Londres Blanco, donde la lucha por controlar la magia dejó una ciudad en ruinas. Y mucho tiempo atrás, había un Londres Negro. Pero ya nadie habla de eso.",
         "biografia":
             "V.E. Schwab es la autora de The Near Witch, novela escalofriante de horror; de la saga El Archivo, título que recibe el primer volumen, y de la continuación de este, El Vacío, así como también de muchas otras novelas por publicarse en español. Victoria sufre de un brutal caso de espíritu viajero y, cuando no anda al acecho de algún callejón parisino o recorriendo laderas inglesas, es posible encontrarla agazapada en la esquina de alguna cafetería de Nashville, tomando el té y soñando con criaturas monstruosas.",
-        "foto_autor": "bradbury-photo.png",
+        "portada": "mmo-cover.jpg",
+        "foto_autor": "schwab-photo.png",
         "estado": "Diponible"
     },
     {
@@ -210,13 +213,14 @@
         "autor": "Liz Kessler",
         "editorial": "Ediciones Destino",
         "genero": "Juvenil",
-        "isbn": "0000000000000",
+        "isbn": "9781780622118",
         "precio": "650",
         "sinopsis":
             "Ashleigh Walker está enamorada. La invade ese sentimiento conocido, esa emoción intensa que da palpitaciones, que consume y que solo genera el amor. Así, ya no le preocupan las malas notas en el colegio. Así, logra distraerse de los problemas matrimoniales de sus padres.Una sola cosa la inquieta… ¿Acaso no debería sentirse así por su novio, Dylan, y no por la señorita Murray, su profesora de Literatura?",
         "biografia":
             "Liz Kessler estudió Literatura en Loughborough University, trabajó como profesora y periodista y se recibió de magíster en Escritura Creativa en Manchester Metropolitan University. Liz vive ahora en Cornwall.",
-        "foto_autor": "bradbury-photo.png",
+        "foto_autor": "kessler-photo.png",
+        "portada": "rlb-cover.jpg",
         "estado": "Agotado"
     },
     {
@@ -225,13 +229,14 @@
         "autor": "Tomas Lifschitz",
         "editorial": "Editorial Planeta",
         "genero": "Juvenil",
-        "isbn": "0000000000000",
+        "isbn": "9789504969525",
         "precio": "650",
         "sinopsis":
             "El psicólogo Tomás Lifschitz reúne en este libro todo lo que un jugador de videojuegos, ya sea amateur o profesional, y los profesionales (especialmente los psicólogos) que se dedican a los eSports necesitan saber para trabajar sobre diversos factores psicológicos individuales de los deportistas, como la concentración, la comunicación y el control de la ansiedad, así como también aptitudes grupales en los juegos por equipos, con el objetivo de alcanzar el máximo rendimiento a la hora de competir.",
         "biografia":
             "Nació el 20 de abril de 1995 y es licenciado en Psicología (UBA). Escribió su tesis de licenciatura en relación con la psicología del deporte y la actividad física y la tituló: “Influencia de las redes sociales en los deportistas de alto rendimiento”. Luego se especializó en habilidades psicológicas en el alto rendimiento deportivo y en el deporte amateur. En la actualidad trabaja con equipos de diferentes deportes tradicionales y de eSports y también atiende pacientes en su consultorio particular. Este es su primer libro y surge de todo el material relacionado con los deportes electrónicos que pudo recopilar a lo largo de su experiencia.",
-        "foto_autor": "bradbury-photo.png",
+        "portada": "go-cover.jpg",
+        "foto_autor": "lifschitz-photo.png",
         "estado": "Diponible"
     },
     {
@@ -240,13 +245,14 @@
         "autor": "Fabián Sevilla",
         "editorial": "Editorial Planeta",
         "genero": "Juvenil",
-        "isbn": "0000000000000",
+        "isbn": "9789877671445",
         "precio": "650",
         "sinopsis":
             "Natalio recibe un beso, como esos de las películas que tanto se confunden con su vida real. Ramiro, el bravucón del curso y quien lo besó, pretendía ganar una apuesta a sus amigos pero la escena se viraliza en las redes. Ahora, ambos chicos deberán enfrentar las consecuencias: Ramiro, el descrédito y la vergüenza; Natalio, la confusión de creer que alguien se ha enamordado de él. Eso los llevará a conocer al otro, pero por sobre todo a descubrirse a sí mismos...",
         "biografia":
             "Nació en 1970, en Mendoza, Argentina, donde vive actualmente. Es escritor de libros de cuentos, novelas, obras de teatro y guiones de historietas.",
-        "foto_autor": "bradbury-photo.png",
+        "portada": "zc-cover.jpg",
+        "foto_autor": "sevilla-photo.png",
         "estado": "Diponible"
     }
 ]
