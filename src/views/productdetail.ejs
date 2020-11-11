@@ -16,9 +16,9 @@
             <span class="block text-gray-600 text-sm"><%= libro.autor %> </span>
             <h1 class="text-xl font-bold tracking-wide text-gray-800"><%= libro.titulo %></h1>
         </div>
-        <div class="lg:flex">
-            <div class="mb-6 lg:mr-10">
-                <img src="/portadas/<%= libro.portada %>" class="object-contain w-32 mx-auto lg:w-48" alt="Portada <%= libro.titulo %> ">
+        <div class="md:flex">
+            <div class="mb-6 md:mr-8 lg:mr-10">
+                <img src="/portadas/<%= libro.portada %>" class="object-contain w-32 sm:w-40 lg:w-48 mx-auto" alt="Portada <%= libro.titulo %> ">
             </div>
             <div>
                 <div class="align-text-top mb-2">
@@ -32,9 +32,9 @@
                         <label for="cantidad" class="block text-gray-800 mb-2">Cantidad</label>
                         <input type="number" name="cantidad" id="cantidad" value="1" class="block text-gray-800 text-sm form-input w-1/4 lg:w-1/2 border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                     </div>
-                    <div class="flex mb-6 lg:flex-col">
-                        <button type="submit" class="block whitespace-no-wrap text-xs py-4 font-bold text-gray-800 form-input w-1/2 lg:w-auto border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 focus:outline-none  focus:bg-biblogreen-200 mr-1 lg:mr-0 lg:mb-3">AGREGAR AL CARRITO</button>
-                        <button type="submit" formaction="/users/update?_method=DELETE" class="block whitespace-no-wrap text-xs py-4 font-bold text-gray-800 form-input w-1/2 lg:w-auto border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 focus:outline-none  focus:bg-biblogreen-200 ml-1 lg:ml-0">COMPRAR AHORA</button>
+                    <div class="flex mb-6 md:flex-col">
+                        <button type="submit" class="block whitespace-no-wrap text-xs py-4 font-bold text-gray-800 form-input w-1/2 md:w-auto border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 focus:outline-none  focus:bg-biblogreen-200 mr-1 md:mr-0 md:mb-3">AGREGAR AL CARRITO</button>
+                        <button type="submit" formaction="/users/update?_method=DELETE" class="block whitespace-no-wrap text-xs py-4 font-bold text-gray-800 form-input w-1/2 md:w-auto border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 focus:outline-none  focus:bg-biblogreen-200 ml-1 md:ml-0">COMPRAR AHORA</button>
                     </div>
                 </form>
             </div>
@@ -75,9 +75,9 @@
     </div>
     <div class="bg-white font-roboto rounded-md shadow-md px-3 py-5 mb-10 text-gray-800 lg:max-w-screen-lg lg:mx-auto lg:px-16">
         <h3 class="font-semibold mb-2 tracking-wide">Sobre el autor</h3>
-        <div class="lg:flex">
-            <img class="rounded-full mb-auto w-32 lg:w-40 lg:mr-10" src="/fotos_autores/<%= libro.foto_autor %>" alt="Foto <%= libro.autor %> ">
-            <p class="text-sm"><%= libro.biografia %> </p>
+        <div class="md:flex">
+            <img class="rounded-full mb-auto w-32 lg:w-40 md:mr-8 lg:mr-10" src="/fotos_autores/<%= libro.foto_autor %>" alt="Foto <%= libro.autor %> ">
+            <p class="text-sm pt-3"><%= libro.biografia %> </p>
         </div>
     </div>
     <%- include('./partials/footer') %>
