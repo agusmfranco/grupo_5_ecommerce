@@ -1,25 +1,35 @@
 <header class="sticky top-0">
-    <div class="bg-white font-roboto rounded-b-md px-3 pb-3 pt-5 shadow-md mb-10 text-gray-800 lg:max-w-screen-lg lg:mx-auto lg:px-8 lg:flex lg:items-center justify-between">
-        <div class="flex items-center w-full">
-            <div class="py-3 mr-16">
-                <img src="/logo/biblo_05.svg" class="w-20" alt="Biblo Logo">
+    <div class="bg-white font-roboto rounded-b-md px-3 pb-3 pt-2 lg:pt-5 shadow-md mb-10 text-gray-800 lg:max-w-screen-lg lg:mx-auto lg:px-8 lg:flex lg:items-center justify-between">
+        <div class="lg:flex lg:items-center w-full">
+            <div class="flex justify-between">
+                <div class="py-3 mr-16">
+                    <img src="/logo/biblo_05.svg" class="w-16 lg:w-20" alt="Biblo Logo">
+                </div>
+                <div class="flex items-center lg:hidden">
+                    <a href="" class="text-biblogreen-500 hover:text-biblogreen-700 text-xl pr-2 border-r border-biblogreen-300 flex">
+                        <i class="fas fa-user"></i><span class="text-sm ml-2">Ingresar</span>
+                    </a>
+                    <a href="" class="text-biblogreen-500 hover:text-biblogreen-700 text-xl pl-2 flex">
+                        <i class="fas fa-shopping-cart"></i><span class="text-sm ml-1">Carrito</span>
+                    </a>
+                </div>
             </div>
-            <div class="w-1/2">
+            <div class="lg:w-1/2">
                 <form action="#">
                     <div  class="flex items-center text-gray-800 text-sm form-input w-full mx-auto border-biblogreen-200">
                         <input type="text" class=" text-gray-800 text-sm w-full mx-auto border-0 p-0 outline-none">
                         <a href="#" class="text-biblogreen-300 text-base border-l pl-3 hover:text-biblogreen-600"><i class="fas fa-search"></i></a>
                     </div>
                 </form>
-                <div class="flex pt-4">
-                    <a href="#" class="text-sm text-biblogreen-600 pr-3 border-r border-biblogreen-300 hover:text-biblogreen-800">Libros</a>
-                    <a href="#" class="text-sm text-biblogreen-600 px-3 border-r border-biblogreen-300 hover:text-biblogreen-800">Novedades</a>
-                    <a href="#" class="text-sm text-biblogreen-600 px-3 border-r border-biblogreen-300 hover:text-biblogreen-800">Recomendados</a>
-                    <a href="#" class="text-sm text-biblogreen-600 px-3 hover:text-biblogreen-800">Sobre nosotros</a>
+                <div class="text-center pt-3 lg:flex lg:pt-4">
+                    <a href="#" class="text-sm text-biblogreen-600 pr-3 lg:border-r border-biblogreen-300 hover:text-biblogreen-800">Libros</a>
+                    <a href="#" class="text-sm text-biblogreen-600 px-3 lg:border-r border-biblogreen-300 hover:text-biblogreen-800">Novedades</a>
+                    <a href="#" class="text-sm text-biblogreen-600 px-3 lg:border-r border-biblogreen-300 hover:text-biblogreen-800">Recomendados</a>
+                    <a href="#" class="text-sm text-biblogreen-600 hidden lg:block lg:px-3 hover:text-biblogreen-800">Sobre nosotros</a>
                 </div>
             </div>
         </div>
-        <div class="flex">
+        <div class="hidden lg:flex">
             <a href="" class="text-biblogreen-500 hover:text-biblogreen-700 text-xl pr-2 border-r border-biblogreen-300 flex">
                 <i class="fas fa-user"></i><span class="text-sm ml-2">Ingresar</span>
             </a>
