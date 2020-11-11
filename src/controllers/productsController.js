@@ -34,19 +34,26 @@ exports.productCreated = function (req, res) {
 };
 
 exports.productUpDate = function (req, res) {
-  res.render("product_update", { old_data: dummy_data });
+  db_libros.forEach(libro => {
+    if(libro.id == req.params.id) {
+      res.render('product_update', {old_data: libro})
+    }
+  });
 };
 
 exports.productUpdated = function (req, res) {
   errors = validationResult(req);
-  console.log(errors.isEmpty());
   if (errors.isEmpty()) {
     res.send("Producto modificado con éxito! No implementado.");
   } else {
-    res.render("product_update", {
-      errors: errors.mapped(),
-      old_data: dummy_data,
-      body_data: req.body,
+    db_libros.forEach(libro => {
+      if(libro.id == req.body.id) {
+        res.render("product_update", {
+          errors: errors.mapped(),
+          old_data: libro,
+          body_data: req.body,
+        });
+      }
     });
   }
 };

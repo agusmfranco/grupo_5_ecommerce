@@ -20,7 +20,7 @@ router.post(
   products_controller.productCreated
 );
 
-router.get("/update", products_controller.productUpDate);
+router.get("/update/:id", products_controller.productUpDate);
 router.put(
   "/update",
   products_upload.upload,
