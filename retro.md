@@ -17,3 +17,12 @@ Dinámica Estrella de Mar:
 3- Tenemos que continuar trabajando en el Front End y la estética del proyecto.
 4- No encuentramos algun punto en el que debamos hacer menos, no consideramos que nos sobre trabajo de Back o Front.
 5- Debemos dejar de tener miedo a las modificaciones o implementaciones que queremos realizar y no se hacen por temor a "romper" el código actual.
+
+## Retrospectiva Sprint 4 ##
+Una vez más, varios puntos de este nuevo Sprint los teniamos hechos. Corregimos varias notas y correcciones que nos dejaron los profesores.
+Dinámica Estrella de Mar:
+1- Deberiamos comenzar a pensar en aplicar DB y Sequelize cuanto antes al proyecto.
+2- Hay que implementar mas seguido el conocimiento aprendido en el curso al proyecto, antes de los lanzamientos de los Sprints.
+3- Tenemos que continuar trabajando en el Front End y la estética del proyecto.
+4- No encuentramos algun punto en el que debamos hacer menos, no consideramos que nos sobre trabajo de Back o Front.
+5- Debemos dejar de trabajar con json y con código estático.
