@@ -18,6 +18,8 @@
     "method-override": "^3.0.0",
     "morgan": "~1.9.1",
     "multer": "^1.4.2",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5",
     "tailwindcss-shadow-outline-colors": "0.0.8",
     "typeface-open-sans": "^1.1.13"
   },
