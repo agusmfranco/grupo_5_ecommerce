@@ -27,9 +27,6 @@ module.exports = (sequelize, dataTypes) => {
         birth: {
             type: dataTypes.DATEONLY,
             allownull: false
-        },
-        purchase_id: {
-            type: dataTypes.INTEGER
         } 
     };
     let config = {
@@ -41,7 +38,7 @@ module.exports = (sequelize, dataTypes) => {
     Users.associate = function (models) {
         Users.belongsTo(models.Purchase, {
           as: 'purchase',
-          foreignKey: 'purchase_id',
+          foreignKey: 'user_id',
         });
     };
 

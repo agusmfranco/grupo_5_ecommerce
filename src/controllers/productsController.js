@@ -1,6 +1,7 @@
 const { check, validationResult, body } = require("express-validator");
 const fs = require('fs');
 const path = require('path');
+const db = require('../database/models');
 
 let db_libros = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'db_libros.json')));
 
@@ -64,5 +65,41 @@ exports.productUpdated = function (req, res) {
 exports.productDelete = function (req, res) {
   res.send("Delete no implementado");
 };
+
+//sq controllers
+
+exports.productDetailSq = function (req, res) {
+  db.Books.findByPk(req.params.id, {
+      include: [{ association: 'genre' }],
+    }).then(function (book) {
+      res.render('productdetail', { book: book });
+    });
+};
+
+exports.productList = function (req, res) {
+    db.Books.findAll({
+        include: [{ association: 'genre' }]
+    })
+        .then(function(books){
+            res.render('listadoLibros', {books:books})
+        });
+};
+
+exports.search = function (req, res) {
+  db.Books.findAll({
+    where: {
+      title: { [db.Sequelize.Op.substring]: req.body.title },
+    },
+    include: [{ association: 'genre' }],
+  }).then(function (books) {
+    res.render('listadoLibros', { books: books});
+  });
+};
+
+exports.busqueda = function(req, res) {
+    res.render('busqueda')
+};
+
+
 
 

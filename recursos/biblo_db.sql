@@ -26,7 +26,6 @@ CREATE TABLE `autors` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `bio` mediumtext,
-  `book_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -56,7 +55,11 @@ CREATE TABLE `books` (
   `amount` int DEFAULT NULL,
   `autor_id` int DEFAULT NULL,
   `genre_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `autor_id_idx` (`autor_id`),
+  KEY `genre_id_idx` (`genre_id`),
+  CONSTRAINT `autor_id` FOREIGN KEY (`autor_id`) REFERENCES `autors` (`id`),
+  CONSTRAINT `genre_id` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -80,7 +83,11 @@ CREATE TABLE `books_purchase` (
   `id` int NOT NULL AUTO_INCREMENT,
   `book_id` int DEFAULT NULL,
   `purchase_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `purchase_id_idx` (`purchase_id`),
+  KEY `book_id_idx` (`book_id`),
+  CONSTRAINT `book_id` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`),
+  CONSTRAINT `purchase_id` FOREIGN KEY (`purchase_id`) REFERENCES `purchase` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -128,7 +135,11 @@ CREATE TABLE `purchase` (
   `total` int DEFAULT NULL,
   `user_id` int DEFAULT NULL,
   `product_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `user_id_idx` (`user_id`),
+  KEY `product_id_idx` (`product_id`),
+  CONSTRAINT `product_id` FOREIGN KEY (`product_id`) REFERENCES `books_purchase` (`id`),
+  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -157,7 +168,8 @@ CREATE TABLE `users` (
   `password` varchar(45) NOT NULL,
   `birth` date NOT NULL,
   `purchase_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `purchase_id_idx` (`purchase_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -179,4 +191,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-25 17:05:51
+-- Dump completed on 2020-11-25 19:54:01
