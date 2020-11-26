@@ -128,12 +128,12 @@
                                 <label for="sinopsis" class="block mb-2">Sinopsis</label>
                                 <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
                                     <% if("sinopsis" in errors) { %>
-                                        <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"></textarea>    
+                                        <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block text-gray-800 text-xs form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"></textarea>    
                                         <% } else { %>
-                                            <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=body_data.sinopsis%></textarea>
+                                            <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block text-gray-800 text-xs form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=body_data.sinopsis%></textarea>
                                         <% } %>   
                                     <% } else { %>
-                                        <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=old_data.sinopsis%></textarea>
+                                        <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block text-gray-800 text-xs form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=old_data.sinopsis%></textarea>
                                     <% } %>  
                                     <% if(typeof errors !== "undefined") { %>
                                         <% if('sinopsis' in errors) { %>
@@ -145,12 +145,12 @@
                                         <label for="biografia" class="block mb-2">Biografía</label>
                                         <% if(typeof errors !== "undefined" && typeof body_data !== "undefined") { %>
                                             <% if("biografia" in errors) { %>
-                                                <textarea name="biografia" id="biografia" cols="30" rows="6" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"></textarea>    
+                                                <textarea name="biografia" id="biografia" cols="30" rows="6" class="block text-gray-800 text-xs form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"></textarea>    
                                                 <% } else { %>
-                                                <textarea name="biografia" id="biografia" cols="30" rows="6" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=body_data.sinopsis%></textarea>
+                                                <textarea name="biografia" id="biografia" cols="30" rows="6" class="block text-gray-800 text-xs form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=body_data.sinopsis%></textarea>
                                                 <% } %>   
                                         <% } else { %>
-                                            <textarea name="biografia" id="biografia" cols="30" rows="6" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=old_data.sinopsis%></textarea>
+                                            <textarea name="biografia" id="biografia" cols="30" rows="6" class="block text-gray-800 text-xs form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=old_data.sinopsis%></textarea>
                                             <% } %>  
                                         <% if(typeof errors !== "undefined") { %>
                                             <% if('biografia' in errors) { %>

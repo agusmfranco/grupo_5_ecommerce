@@ -4,6 +4,9 @@ const path = require('path');
 
 let db_libros = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'db_libros.json')));
 
+exports.productList = function (req, res) {
+  res.render('productslist', {libros:db_libros})
+};
 
 exports.productDetail = function (req, res) {
   db_libros.forEach(libro => {
@@ -18,7 +21,7 @@ exports.checkOut = function (req, res) {
 };
 
 exports.productCreate = function (req, res) {
-  res.render("product_create");
+  res.render("productcreate");
 };
 
 exports.productCreated = function (req, res) {
@@ -26,7 +29,7 @@ exports.productCreated = function (req, res) {
   if (errors.isEmpty()) {
     res.send("Producto creado con éxito!. No implementado");
   } else {
-    res.render("product_create", {
+    res.render("productcreate", {
       errors: errors.mapped(),
       body_data: req.body,
     });
@@ -36,7 +39,7 @@ exports.productCreated = function (req, res) {
 exports.productUpDate = function (req, res) {
   db_libros.forEach(libro => {
     if(libro.id == req.params.id) {
-      res.render('product_update', {old_data: libro})
+      res.render('productupdate', {old_data: libro})
     }
   });
 };
@@ -48,7 +51,7 @@ exports.productUpdated = function (req, res) {
   } else {
     db_libros.forEach(libro => {
       if(libro.id == req.body.id) {
-        res.render("product_update", {
+        res.render("productupdate", {
           errors: errors.mapped(),
           old_data: libro,
           body_data: req.body,

@@ -5,6 +5,9 @@ var products_controller = require("../controllers/productsController");
 var forms_validators = require("../middlewares/formsValidators");
 var products_upload = require("../middlewares/productsUpload");
 
+
+router.get("/", products_controller.productList)
+
 // Rutas para detalle
 router.get("/detail/:id", products_controller.productDetail);
 
