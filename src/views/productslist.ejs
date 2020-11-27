@@ -8,8 +8,48 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico" />
     <link href="/css/all.css" rel="stylesheet">
+    <script src="/scripts/script.js"></script>
 </head>
-<body>
-    
+<%- include('./partials/header') %>
+<body class="bg-biblogreen-100">
+    <div class="bg-white font-roboto mb-10 p-3 rounded-md shadow-md text-gray-800 lg:max-w-screen-lg lg:mx-auto lg:px-16 sm:px-5">
+        <table class="w-full text-left">
+            <tr>
+                <th class="">Portada</th>
+                <th class="text-gray-800 px-2">Título</th>
+                <th class="text-gray-800 pr-24 hidden md:table-cell lg:pr-16">Autor</th>
+                <th class="text-gray-800 hidden lg:table-cell">Editorial</th>
+                <th class="text-gray-800 hidden lg:table-cell">Género</th>
+                <th class="text-gray-800 hidden lg:table-cell lg:pr-20">ISBN</th>
+                <th class="text-gray-800 pr-8 hidden md:table-cell">Precio</th>
+                <th class="text-gray-800 pr-8 hidden md:table-cell">Estado</th>
+                <th>Acciones</th>
+            </tr>
+            <% libros.forEach(libro => { %> 
+                <tr  class="border-b border-t border-biblogreen-200">
+                    <td class="py-3" >
+                        <div class="w-12 mr-3 md:w-16">
+                            <img src="portadas/<%= libro.portada %> " alt="Portada <%= libro.titulo %> "></td>
+                        </div>
+                    <td class="text-xs px-2 py-3"><a href="products/<%= libro.id %> "><%= libro.titulo %> </a></td>
+                    <td class="text-xs text-left py-3 hidden md:table-cell"><%= libro.autor %> </td>
+                    <td class="text-xs text-left py-3 hidden lg:table-cell"><%= libro.editorial %> </td>
+                    <td class="text-xs py-3 hidden lg:table-cell lg:pr-10"><%= libro.genero %> </td>
+                    <td class="text-xs py-3 hidden lg:table-cell"><%= libro.isbn %> </td>
+                    <td class="text-xs text-left py-3 hidden md:table-cell"><%= libro.precio %> </td>
+                    <td class="text-xs text-left py-3 hidden md:table-cell"><%= libro.estado %> </td>
+                    <td>
+                        <div class="">
+                            <form action="" method="POST">
+                                <button type="submit" formaction="products/<%= libro.id %>/edit?_method=GET" class="text-xs w-full py-2 my-2 font-bold text-gray-800 form-input border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 focus:outline-none  focus:bg-biblogreen-200">MODIFICAR</button>
+                                <button type="submit" formaction="products/<%= libro.id %>?_method=DELETE" class="text-xs w-full py-2 font-bold text-gray-800 form-input border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 focus:outline-none  focus:bg-biblogreen-200">BORRAR</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>    
+            <% }); %> 
+        </table>
+    </div>
+    <%- include('./partials/footer') %>
 </body>
 </html>

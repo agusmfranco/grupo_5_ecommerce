@@ -25,8 +25,8 @@ module.exports = {
         biblofocus: "0 0 0 3px #b2dad5",
       },
       fontFamily: {
-        biblofont: ['Cabin', 'sans-serif'],
-        roboto: ['Roboto', 'sans-serif'],
+        biblofont: ["Cabin", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
       },
     },
   },

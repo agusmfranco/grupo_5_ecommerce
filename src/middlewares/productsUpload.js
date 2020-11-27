@@ -6,9 +6,9 @@ const multer = require("multer");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     if (file.fieldname == "portada") {
-      cb(null, "public/images/portadas");
+      cb(null, "public/portadas");
     } else {
-      cb(null, "public/images/fotos_autores");
+      cb(null, "public/fotos_autores");
     }
   },
   filename: function (req, file, cb) {

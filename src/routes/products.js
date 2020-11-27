@@ -5,17 +5,14 @@ var products_controller = require("../controllers/productsController");
 var forms_validators = require("../middlewares/formsValidators");
 var products_upload = require("../middlewares/productsUpload");
 
+router.get("/", products_controller.productList);
 
-router.get("/", products_controller.productList)
-
-// Rutas para detalle
-router.get("/detail/:id", products_controller.productDetail);
+// Rutas para crear producto
+router.get("/create", products_controller.productCreate);
 
 // Rutas para carrito
 router.get("/checkout", products_controller.checkOut);
 
-// Rutas para crear producto
-router.get("/create", products_controller.productCreate);
 router.post(
   "/create",
   products_upload.upload,
@@ -23,13 +20,18 @@ router.post(
   products_controller.productCreated
 );
 
-router.get("/update/:id", products_controller.productUpDate);
+// Rutas para detalle
+router.get("/:id", products_controller.productDetail);
+
+router.get("/:id/edit", products_controller.productUpDate);
+
 router.put(
-  "/update",
+  "/:id",
   products_upload.upload,
   forms_validators.validateNewBook,
   products_controller.productUpdated
 );
-router.delete("/delete", products_controller.productDelete);
+
+router.delete("/:id", products_controller.productDelete);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const { check, validationResult, body } = require("express-validator");
 const dummy_user = require("./dummy_user");
-const db = require('../database/models');
+const db = require("../database/models");
 
 exports.userRegister = function (req, res) {
   res.render("new_user");

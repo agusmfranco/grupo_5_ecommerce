@@ -21,10 +21,10 @@
                                     <% if('titulo' in errors) { %>
                                         <input id="titulo" type="text" name="titulo" autofocus placeholder="Título" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">         
                                     <% } else { %>
-                                        <input id="titulo" type="text" name="titulo" value= "<%= body_data.titulo %>"  placeholder="Nombre" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                        <input id="titulo" type="text" name="titulo" value= "<%= body_data.titulo %>"  placeholder="Título" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                     <% } %>  
                                 <% } else { %>
-                                    <input id="nombre" type="text" name="nombre" autofocus placeholder="Nombre" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"> 
+                                    <input id="titulo" type="text" name="titulo" autofocus placeholder="Título" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"> 
                                 <% } %> 
                                 <% if(typeof errors !== "undefined") { %>
                                     <% if('titulo' in errors) { %>
@@ -146,7 +146,7 @@
                                             <% if("biografia" in errors) { %>
                                                 <textarea name="biografia" id="biografia" cols="30" rows="6" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"></textarea>    
                                                 <% } else { %>
-                                                <textarea name="biografia" id="biografia" cols="30" rows="6" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=old_data.sinopsis%></textarea>
+                                                <textarea name="biografia" id="biografia" cols="30" rows="6" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=body_data.sinopsis%></textarea>
                                                 <% } %>   
                                         <% } else { %>
                                             <textarea name="biografia" id="biografia" cols="30" rows="6" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"></textarea>

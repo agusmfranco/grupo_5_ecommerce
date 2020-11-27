@@ -12,7 +12,7 @@
 <body class="bg-biblogreen-100">
         <div class="px-8 py-8 w-full font-roboto max-w-md md:max-w-screen-md mx-auto text-xs text-gray-800">
             <h1 class="text-gray-800 text-2xl font-bold tracking-wider mb-6 mt-6">Estas modificando: <span class="block text-4xl text-biblogreen-800"><%= old_data.titulo %></span></h1>
-                <form action="/products/update?_method=PUT" method="POST" enctype="multipart/form-data">    
+                <form action="/products/<%= old_data.id %> ?_method=PUT" method="POST" enctype="multipart/form-data">    
                     <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4 hover:shadow-lg md:flex md:flex-col">
                         <input type="text" id="id" name="id" value=<%= old_data.id %> class="hidden">
                         <div class="mb-5 md:flex">
@@ -166,7 +166,7 @@
                                             <i class="fas fa-cloud-upload-alt"></i>
                                         </span>
                                         <span class=" text-biblogreen-700 font-medium hover:text-biblogreen-800 text-opacity-75 text-xs">Portada del libro<span>
-                                        <input id="portada" type="file" name="portada" class="hidden">
+                                        <input id="portada" type="file" name="portada" class="hidden" value="<%= old_data.foto_autor %> ">
                                     </label>
                                 </div>
                                 <div class="mb-4 sm:w-1/2 sm:ml-3 rounded-md">
@@ -175,13 +175,13 @@
                                             <i class="fas fa-cloud-upload-alt"></i>
                                         </span>
                                         <span class="text-biblogreen-700 hover:text-biblogreen-800 font-medium text-opacity-75 text-xs">Foto del Autor<span>
-                                        <input id="foto_autor" type="file" name="foto_autor" class="hidden">
+                                        <input id="foto_autor" type="file" name="foto_autor" class="hidden" value="<%= old_data.foto_autor %> ">
                                     </label>
                                 </div>
                             </div>
                             <div class="md:flex">
                                 <button type="submit" class="block mb-4 md:mb-0 text-sm text-gray-800 form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 tracking-widest focus:outline-none  focus:bg-biblogreen-200 md:mr-3">GUARDAR</button>
-                                <button type="submit" formaction="/users/update?_method=DELETE" class="block text-sm text-gray-800 form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 tracking-widest focus:outline-none  focus:bg-biblogreen-200 md:ml-3">ELIMINAR</button>
+                                <button type="submit" formaction="/products/<%= old_data.id %>?_method=DELETE" class="block text-sm text-gray-800 form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 tracking-widest focus:outline-none  focus:bg-biblogreen-200 md:ml-3">ELIMINAR</button>
                             </div>
                     </div>
                 </form>
