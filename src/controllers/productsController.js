@@ -31,20 +31,20 @@ exports.productCreate = function (req, res) {
 exports.productCreated = function (req, res) {
   errors = validationResult(req);
   if (errors.isEmpty()) {
-    let new_book = req.body
-    new_book.id = db_libros[db_libros.length-1].id + 1
-    if(req.files.length > 0) {
-      new_book.portada = req.files[0].filename
+    let new_book = req.body;
+    new_book.id = db_libros[db_libros.length - 1].id + 1;
+    if (req.files.length > 0) {
+      new_book.portada = req.files[0].filename;
     }
-    if(req.files.length > 1) {
-      new_book.foto_autor = req.files[1].filename
+    if (req.files.length > 1) {
+      new_book.foto_autor = req.files[1].filename;
     }
-    db_libros.push(new_book)
+    db_libros.push(new_book);
     fs.writeFileSync(
       path.join(__dirname, "..", "data", "db_libros.json"),
-      JSON.stringify(db_libros, null, 4),
-    )
-    res.redirect("/products")
+      JSON.stringify(db_libros, null, 4)
+    );
+    res.redirect("/products");
   } else {
     res.render("productcreate", {
       errors: errors.mapped(),
@@ -63,20 +63,20 @@ exports.productUpDate = function (req, res) {
 
 exports.productUpdated = function (req, res) {
   errors = validationResult(req);
-  Object.keys(req.body).forEach(key => {
-    console.log(req.body[key])
+  Object.keys(req.body).forEach((key) => {
+    console.log(req.body[key]);
   });
   if (errors.isEmpty()) {
     db_libros = db_libros.map((libro) => {
       if (libro.id == req.body.id) {
-        Object.keys(req.body).forEach(key => {
-          libro[key] = req.body[key]
+        Object.keys(req.body).forEach((key) => {
+          libro[key] = req.body[key];
         });
-        if(req.files.length > 0) {
-          libro['portada'] = req.files[0].filename
+        if (req.files.length > 0) {
+          libro["portada"] = req.files[0].filename;
         }
-        if(req.files.length > 1) {
-          libro['foto_autor'] = req.files[1].filename
+        if (req.files.length > 1) {
+          libro["foto_autor"] = req.files[1].filename;
         }
         return libro;
       } else {
@@ -85,7 +85,7 @@ exports.productUpdated = function (req, res) {
     });
     fs.writeFileSync(
       path.join(__dirname, "..", "data", "db_libros.json"),
-      JSON.stringify(db_libros, null, 4),
+      JSON.stringify(db_libros, null, 4)
     );
     res.redirect("/products");
   } else {
