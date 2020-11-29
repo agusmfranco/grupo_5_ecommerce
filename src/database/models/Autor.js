@@ -10,8 +10,8 @@ module.exports = (sequelize, dataTypes) => {
     bio: {
       type: dataTypes.STRING,
     },
-    book_id: {
-      type: dataTypes.INTEGER,
+    autor_photo: {
+      type: dataTypes.STRING,
     },
   };
   let config = {
@@ -23,7 +23,7 @@ module.exports = (sequelize, dataTypes) => {
   Autors.associate = function (models) {
     Autors.hasMany(models.Books, {
       as: "books",
-      foreignKey: "book_id",
+      foreignKey: "autor_id",
     });
   };
   return Autors;

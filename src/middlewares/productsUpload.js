@@ -15,8 +15,11 @@ const storage = multer.diskStorage({
     if (file.fieldname == "portada") {
       cb(
         null,
-        req.body.titulo.toLowerCase().split(" ").join("") +
-          path.extname(file.originalname)
+        req.body.title
+          .toLowerCase()
+          .split(" ")
+          .join("")
+          .replace(/[^\w\s]|_/g, "") + path.extname(file.originalname)
       );
     } else {
       cb(

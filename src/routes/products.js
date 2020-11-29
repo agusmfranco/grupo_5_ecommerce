@@ -7,11 +7,11 @@ var products_upload = require("../middlewares/productsUpload");
 
 router.get("/", products_controller.productList);
 
-// Rutas para crear producto
-router.get("/create", products_controller.productCreate);
-
 // Rutas para carrito
 router.get("/checkout", products_controller.checkOut);
+
+// Rutas para crear producto
+router.get("/create", products_controller.productCreate);
 
 router.post(
   "/create",
@@ -19,6 +19,8 @@ router.post(
   forms_validators.validateNewBook,
   products_controller.productCreated
 );
+
+router.get("/search", products_controller.productSearch);
 
 // Rutas para detalle
 router.get("/:id", products_controller.productDetail);

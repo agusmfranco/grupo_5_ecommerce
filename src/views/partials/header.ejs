@@ -27,10 +27,12 @@
                 </div>
             </div>
             <div class="md:w-1/2">
-                <form action="#">
+                <form action="/products/search">
                     <div  class="flex items-center text-gray-800 text-sm form-input w-full mx-auto border-biblogreen-200">
-                        <input type="text" class=" text-gray-800 text-sm w-full mx-auto border-0 p-0 outline-none">
-                        <a href="#" class="text-biblogreen-300 text-base border-l pl-3 hover:text-biblogreen-600"><i class="fas fa-search"></i></a>
+                        <input type="text" name="search_field" class=" text-gray-800 text-sm w-full mx-auto border-0 p-0 outline-none ">
+                        <button type="submit" class="text-biblogreen-300 text-base border-l pl-3 hover:text-biblogreen-600 active:outline-none focus:outline-none">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
                 </form>
                 <div class="text-center pt-3 md:flex md:pt-4">

@@ -1,7 +1,7 @@
 const { sequelize, dataTypes } = require("sequelize");
 
 module.exports = (sequelize, dataTypes) => {
-  let alias = "Genres";
+  let alias = "Houses";
   let cols = {
     name: {
       type: dataTypes.STRING,
@@ -9,16 +9,16 @@ module.exports = (sequelize, dataTypes) => {
     },
   };
   let config = {
-    tablename: "genres",
+    tablename: "houses",
     timestamps: false,
   };
-  const Genres = sequelize.define(alias, cols, config);
+  const Houses = sequelize.define(alias, cols, config);
 
-  Genres.associate = function (models) {
-    Genres.hasMany(models.Books, {
+  Houses.associate = function (models) {
+    Houses.hasMany(models.Books, {
       as: "books",
-      foreignKey: "genre_id",
+      foreignKey: "house_id",
     });
   };
-  return Genres;
+  return Houses;
 };

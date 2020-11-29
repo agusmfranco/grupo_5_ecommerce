@@ -3,20 +3,36 @@ const fs = require("fs");
 const { join } = require("path");
 const path = require("path");
 const db = require("../database/models");
+const { Op } = require("sequelize");
 
 let db_libros = JSON.parse(
   fs.readFileSync(path.join(__dirname, "..", "data", "db_libros.json"))
 );
 
 exports.productList = function (req, res) {
-  res.render("productslist", { libros: db_libros });
+  db.Books.findAll({
+    include: [
+      { association: "genres" },
+      { association: "autors" },
+      { association: "houses" },
+      { association: "states" },
+    ],
+  }).then(function (books) {
+    res.render("productslist", { books: books });
+  });
 };
 
 exports.productDetail = function (req, res) {
-  db_libros.forEach((libro) => {
-    if (libro.id == req.params.id) {
-      res.render("productdetail", { libro: libro });
-    }
+  db.Books.findByPk(req.params.id, {
+    include: [
+      { association: "genres" },
+      { association: "autors" },
+      { association: "houses" },
+      { association: "states" },
+    ],
+  }).then(function (book) {
+    console.log(book.autors);
+    res.render("productdetail", { book: book });
   });
 };
 
@@ -25,89 +41,183 @@ exports.checkOut = function (req, res) {
 };
 
 exports.productCreate = function (req, res) {
-  res.render("productcreate");
+  let genresPromise = db.Genres.findAll();
+  let autorsPromise = db.Autors.findAll();
+  let housesPromise = db.Houses.findAll();
+  let statesPromise = db.States.findAll();
+
+  Promise.all([
+    genresPromise,
+    autorsPromise,
+    housesPromise,
+    statesPromise,
+  ]).then(function ([genres, autors, houses, states]) {
+    res.render("productcreate", {
+      genres: genres,
+      autors: autors,
+      houses: houses,
+      states: states,
+      errors: {},
+      data: {},
+    });
+  });
 };
 
 exports.productCreated = function (req, res) {
   errors = validationResult(req);
-  if (errors.isEmpty()) {
-    let new_book = req.body;
-    new_book.id = db_libros[db_libros.length - 1].id + 1;
-    if (req.files.length > 0) {
-      new_book.portada = req.files[0].filename;
-    }
-    if (req.files.length > 1) {
-      new_book.foto_autor = req.files[1].filename;
-    }
-    db_libros.push(new_book);
-    fs.writeFileSync(
-      path.join(__dirname, "..", "data", "db_libros.json"),
-      JSON.stringify(db_libros, null, 4)
-    );
-    res.redirect("/products");
+  let book_cover;
+  if (req.files.length > 0) {
+    book_cover = req.files[0].filename;
   } else {
-    res.render("productcreate", {
-      errors: errors.mapped(),
-      body_data: req.body,
+    book_cover = null;
+  }
+  if (errors.isEmpty()) {
+    db.Books.create({
+      title: req.body.title,
+      autor_id: req.body.autor_id,
+      house_id: req.body.house_id,
+      genre_id: req.body.genre_id,
+      isbn: req.body.isbn,
+      price: req.body.price,
+      state_id: req.body.state_id,
+      amount: req.body.amount,
+      sinopsis: req.body.sinopsis,
+      book_cover: book_cover,
+    });
+    res.send("Libro creado");
+  } else {
+    let genresPromise = db.Genres.findAll();
+    let autorsPromise = db.Autors.findAll();
+    let housesPromise = db.Houses.findAll();
+    let statesPromise = db.States.findAll();
+
+    Promise.all([
+      genresPromise,
+      autorsPromise,
+      housesPromise,
+      statesPromise,
+    ]).then(function ([genres, autors, houses, states]) {
+      res.render("productcreate", {
+        genres: genres,
+        autors: autors,
+        houses: houses,
+        states: states,
+        errors: errors.mapped(),
+        data: req.body,
+      });
     });
   }
 };
 
 exports.productUpDate = function (req, res) {
-  db_libros.forEach((libro) => {
-    if (libro.id == req.params.id) {
-      res.render("productupdate", { old_data: libro });
-    }
+  let bookPromise = db.Books.findByPk(req.params.id);
+  let genresPromise = db.Genres.findAll();
+  let autorsPromise = db.Autors.findAll();
+  let housesPromise = db.Houses.findAll();
+  let statesPromise = db.States.findAll();
+
+  Promise.all([
+    bookPromise,
+    genresPromise,
+    autorsPromise,
+    housesPromise,
+    statesPromise,
+  ]).then(function ([book, genres, autors, houses, states]) {
+    res.render("productupdate", {
+      genres: genres,
+      autors: autors,
+      houses: houses,
+      states: states,
+      errors: {},
+      data: book,
+    });
   });
 };
 
 exports.productUpdated = function (req, res) {
   errors = validationResult(req);
-  Object.keys(req.body).forEach((key) => {
-    console.log(req.body[key]);
-  });
-  if (errors.isEmpty()) {
-    db_libros = db_libros.map((libro) => {
-      if (libro.id == req.body.id) {
-        Object.keys(req.body).forEach((key) => {
-          libro[key] = req.body[key];
-        });
-        if (req.files.length > 0) {
-          libro["portada"] = req.files[0].filename;
-        }
-        if (req.files.length > 1) {
-          libro["foto_autor"] = req.files[1].filename;
-        }
-        return libro;
-      } else {
-        return libro;
-      }
-    });
-    fs.writeFileSync(
-      path.join(__dirname, "..", "data", "db_libros.json"),
-      JSON.stringify(db_libros, null, 4)
-    );
-    res.redirect("/products");
+  let book_cover;
+  if (req.files.length > 0) {
+    book_cover = req.files[0].filename;
   } else {
-    db_libros.forEach((libro) => {
-      if (libro.id == req.body.id) {
-        res.render("productupdate", {
-          errors: errors.mapped(),
-          old_data: libro,
-          body_data: req.body,
-        });
+    book_cover = req.body.book_cover;
+  }
+  if (errors.isEmpty()) {
+    db.Books.update(
+      {
+        title: req.body.title,
+        autor_id: req.body.autor_id,
+        house_id: req.body.house_id,
+        genre_id: req.body.genre_id,
+        isbn: req.body.isbn,
+        price: req.body.price,
+        state_id: req.body.state_id,
+        amount: req.body.amount,
+        sinopsis: req.body.sinopsis,
+        book_cover: book_cover,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
       }
+    );
+    res.redirect("/products?value=updated");
+  } else {
+    console.log(errors);
+    let genresPromise = db.Genres.findAll();
+    let autorsPromise = db.Autors.findAll();
+    let housesPromise = db.Houses.findAll();
+    let statesPromise = db.States.findAll();
+
+    Promise.all([
+      genresPromise,
+      autorsPromise,
+      housesPromise,
+      statesPromise,
+    ]).then(function ([genres, autors, houses, states]) {
+      res.render("productcreate", {
+        genres: genres,
+        autors: autors,
+        houses: houses,
+        states: states,
+        errors: errors.mapped(),
+        data: req.body,
+      });
     });
   }
 };
 
 exports.productDelete = function (req, res) {
-  new_db = db_libros.filter((libro) => libro.id != req.params.id);
-  fs.writeFileSync(
-    path.join(__dirname, "..", "data", "db_libros.json"),
-    JSON.stringify(new_db)
-  );
-  res.redirect("/products?state=updated");
+  db.Books.destroy({
+    where: {
+      id: req.params.id,
+    },
+  });
+  res.redirect("/products?value=updated");
+};
+
+exports.productSearch = function (req, res) {
+  db.Books.findAll({
+    where: {
+      [Op.or]:[
+      {title: { [db.Sequelize.Op.substring]: req.query.search_field }},
+      {isbn: { [db.Sequelize.Op.substring]: req.query.search_field }},
+      {'$autors.name$': { [db.Sequelize.Op.substring]: req.query.search_field }},
+      {'$houses.name$': { [db.Sequelize.Op.substring]: req.query.search_field }},
+      {'$genres.name$': { [db.Sequelize.Op.substring]: req.query.search_field }},
+      ]
+    },
+    include: [
+      { association: "genres" },
+      { association: "autors" },
+      { association: "houses" },
+      { association: "states" },
+    ],
+  }).then(function (books) {
+    console.log(books[0].book_cover)
+    res.render("productslist", { books, books });
+  });
 };
 
 //sq controllers

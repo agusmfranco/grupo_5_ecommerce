@@ -5,11 +5,9 @@ module.exports = (sequelize, dataTypes) => {
   let cols = {
     title: {
       type: dataTypes.STRING,
-      allownull: false,
     },
     isbn: {
       type: dataTypes.INTEGER,
-      allownull: false,
     },
     sinopsis: {
       type: dataTypes.STRING,
@@ -20,10 +18,19 @@ module.exports = (sequelize, dataTypes) => {
     amount: {
       type: dataTypes.INTEGER,
     },
+    book_cover: {
+      type: dataTypes.STRING,
+    },
     autor_id: {
       type: dataTypes.INTEGER,
     },
     genre_id: {
+      type: dataTypes.INTEGER,
+    },
+    house_id: {
+      type: dataTypes.INTEGER,
+    },
+    state_id: {
       type: dataTypes.INTEGER,
     },
   };
@@ -48,6 +55,14 @@ module.exports = (sequelize, dataTypes) => {
     Books.belongsTo(models.Genres, {
       as: "genres",
       foreignKey: "genre_id",
+    });
+    Books.belongsTo(models.Houses, {
+      as: "houses",
+      foreignKey: "house_id",
+    });
+    Books.belongsTo(models.States, {
+      as: "states",
+      foreignKey: "state_id",
     });
   };
 
