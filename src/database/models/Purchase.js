@@ -20,10 +20,6 @@ module.exports = (sequelize, dataTypes) => {
   const Purchase = sequelize.define(alias, cols, config);
 
   Purchase.associate = function (models) {
-    Purchase.hasMany(models.Users, {
-      as: "users",
-      foreignKey: "user_id",
-    });
     Purchase.belongsToMany(models.Books, {
       as: "books",
       through: "books_purchase",

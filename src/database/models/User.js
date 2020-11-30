@@ -7,7 +7,11 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.STRING,
       allownull: false,
     },
-    name: {
+    first_name: {
+      type: dataTypes.STRING,
+      allownull: false,
+    },
+    last_name: {
       type: dataTypes.STRING,
       allownull: false,
     },
@@ -15,7 +19,11 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.INTEGER,
       allownull: false,
     },
-    adress: {
+    address: {
+      type: dataTypes.STRING,
+      allownull: false,
+    },
+    cp: {
       type: dataTypes.STRING,
       allownull: false,
     },
@@ -27,6 +35,9 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.DATEONLY,
       allownull: false,
     },
+    user_type_id: {
+      type: dataTypes.INTEGER,
+    },
   };
   let config = {
     tablename: "users",
@@ -35,9 +46,9 @@ module.exports = (sequelize, dataTypes) => {
   const Users = sequelize.define(alias, cols, config);
 
   Users.associate = function (models) {
-    Users.belongsTo(models.Purchase, {
-      as: "purchase",
-      foreignKey: "user_id",
+    Users.belongsTo(models.Userstypes, {
+      as: "userstypes",
+      foreignKey: "user_type_id",
     });
   };
 

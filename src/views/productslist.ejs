@@ -16,13 +16,13 @@
         <table class="w-full text-left">
             <tr>
                 <th class="">Portada</th>
-                <th class="text-gray-800 px-2">Título</th>
-                <th class="text-gray-800 pr-24 hidden md:table-cell lg:pr-16">Autor</th>
-                <th class="text-gray-800 hidden lg:table-cell">Editorial</th>
-                <th class="text-gray-800 hidden lg:table-cell">Género</th>
+                <th class="text-gray-800 px-2 md:w-48">Título</th>
+                <th class="text-gray-800 hidden md:table-cell md:w-32 lg:w-40">Autor</th>
+                <th class="text-gray-800 hidden lg:table-cell lg:w-32">Editorial</th>
+                <th class="text-gray-800 hidden lg:table-cell lg:w-20">Género</th>
                 <th class="text-gray-800 hidden lg:table-cell lg:pr-20">ISBN</th>
-                <th class="text-gray-800 pr-8 hidden md:table-cell">Precio</th>
-                <th class="text-gray-800 pr-8 hidden md:table-cell">Estado</th>
+                <th class="text-gray-800 pr-8 hidden md:table-cell md:w-20">Precio</th>
+                <th class="text-gray-800 pr-8 hidden md:table-cell md:w-20">Estado</th>
                 <th>Acciones</th>
             </tr>
             <% books.forEach(book => { %> 
@@ -39,7 +39,7 @@
                     <td class="text-xs text-left py-3 hidden md:table-cell"><%= book.price %> </td>
                     <td class="text-xs text-left py-3 hidden md:table-cell"><%= book.states.name %> </td>
                     <td>
-                        <div class="">
+                        <div class="w-32">
                             <form action="" method="POST">
                                 <button type="submit" formaction="/products/<%= book.id %>/edit?_method=GET" class="text-xs w-full py-2 my-2 font-bold text-gray-800 form-input border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 focus:outline-none  focus:bg-biblogreen-200">MODIFICAR</button>
                                 <button type="submit" formaction="/products/<%= book.id %>?_method=DELETE" class="text-xs w-full py-2 font-bold text-gray-800 form-input border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 focus:outline-none  focus:bg-biblogreen-200">BORRAR</button>

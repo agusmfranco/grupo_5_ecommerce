@@ -21,13 +21,13 @@ exports.validateNewBook = [
 ];
 
 exports.validateNewUser = [
-  check("nombre").notEmpty().withMessage("El nombre debe estar completo"),
-  check("apellido").notEmpty().withMessage("El apellido debe estar completo"),
+  check("first_name").notEmpty().withMessage("El nombre debe estar completo"),
+  check("last_name").notEmpty().withMessage("El apellido debe estar completo"),
   check("dni").notEmpty().withMessage("El DNI debe estar completo"),
-  check("nacimiento")
+  check("birth")
     .notEmpty()
     .withMessage("La fecha de nacimiento debe estar completa"),
-  check("direccion").notEmpty().withMessage("La dirección debe estar completa"),
+  check("address").notEmpty().withMessage("La dirección debe estar completa"),
   check("cp").notEmpty().withMessage("El código postal debe estar completo"),
   check("email")
     .notEmpty()

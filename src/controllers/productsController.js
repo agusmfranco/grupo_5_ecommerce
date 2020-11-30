@@ -200,13 +200,25 @@ exports.productDelete = function (req, res) {
 exports.productSearch = function (req, res) {
   db.Books.findAll({
     where: {
-      [Op.or]:[
-      {title: { [db.Sequelize.Op.substring]: req.query.search_field }},
-      {isbn: { [db.Sequelize.Op.substring]: req.query.search_field }},
-      {'$autors.name$': { [db.Sequelize.Op.substring]: req.query.search_field }},
-      {'$houses.name$': { [db.Sequelize.Op.substring]: req.query.search_field }},
-      {'$genres.name$': { [db.Sequelize.Op.substring]: req.query.search_field }},
-      ]
+      [Op.or]: [
+        { title: { [db.Sequelize.Op.substring]: req.query.search_field } },
+        { isbn: { [db.Sequelize.Op.substring]: req.query.search_field } },
+        {
+          "$autors.name$": {
+            [db.Sequelize.Op.substring]: req.query.search_field,
+          },
+        },
+        {
+          "$houses.name$": {
+            [db.Sequelize.Op.substring]: req.query.search_field,
+          },
+        },
+        {
+          "$genres.name$": {
+            [db.Sequelize.Op.substring]: req.query.search_field,
+          },
+        },
+      ],
     },
     include: [
       { association: "genres" },
@@ -215,7 +227,7 @@ exports.productSearch = function (req, res) {
       { association: "states" },
     ],
   }).then(function (books) {
-    console.log(books[0].book_cover)
+    console.log(books[0].book_cover);
     res.render("productslist", { books, books });
   });
 };
