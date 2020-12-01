@@ -15,25 +15,47 @@ Apuntamos a que nuestro sitio web pueda ser navegado por cualquier tipo de perso
 (https://trello.com/b/abM3TLYK/proyecto-dh)
 
 ## Rutas
+
 ### Productos
+
 **Listado de productos:**
+
 GET: /products
+
 Detalle de productos:
+
 GET: /products/:id
+
 **Crear producto:**
+
 GET: /products/create
+
 POST: /products/create
+
 **Editar producto:**
+
 GET:  /products/:id/edit
+
 PUT: /products/:id
+
 DELETE: /products/:id
+
 ### Usuarios
+
 **Listado de usuarios:**
+
 GET: /users
+
 **Crear usuario:**
+
 GET: /users/create
+
 POST: /users/create
+
 **Editar usuario:**
+
 GET: /users/:id/edit
+
 PUT: /users/:id
+
 DELETE: /users/:id  
