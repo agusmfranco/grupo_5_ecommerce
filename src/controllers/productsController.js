@@ -5,10 +5,6 @@ const path = require("path");
 const db = require("../database/models");
 const { Op } = require("sequelize");
 
-let db_libros = JSON.parse(
-  fs.readFileSync(path.join(__dirname, "..", "data", "db_libros.json"))
-);
-
 exports.productList = function (req, res) {
   db.Books.findAll({
     include: [

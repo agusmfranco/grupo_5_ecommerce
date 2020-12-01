@@ -1,5 +1,4 @@
 const { check, validationResult, body } = require("express-validator");
-const dummy_user = require("./dummy_user");
 const db = require("../database/models");
 
 exports.userList = function(req, res) {
