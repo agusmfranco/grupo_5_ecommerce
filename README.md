@@ -22,7 +22,7 @@ Apuntamos a que nuestro sitio web pueda ser navegado por cualquier tipo de perso
 
 GET: /products
 
-Detalle de productos:
+**Detalle de productos:**
 
 GET: /products/:id
 
