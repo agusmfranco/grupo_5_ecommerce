@@ -227,38 +227,3 @@ exports.productSearch = function (req, res) {
     res.render("productslist", { books, books });
   });
 };
-
-//sq controllers
-
-/* exports.productDetailSq = function (req, res) {
-  db.Books.findByPk(req.params.id, {
-      include: [{ association: 'genre' }],
-    }).then(function (book) {
-      res.render('productdetail', { book: book });
-    });
-};
-
-exports.productList = function (req, res) {
-    db.Books.findAll({
-        include: [{ association: 'genre' }]
-    })
-        .then(function(books){
-            res.render('listadoLibros', {books:books})
-        });
-};
-
-exports.search = function (req, res) {
-  db.Books.findAll({
-    where: {
-      title: { [db.Sequelize.Op.substring]: req.body.title },
-    },
-    include: [{ association: 'genre' }],
-  }).then(function (books) {
-    res.render('listadoLibros', { books: books});
-  });
-};
-
-exports.busqueda = function(req, res) {
-    res.render('busqueda')
-};
- */
