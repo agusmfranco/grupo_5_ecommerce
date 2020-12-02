@@ -27,3 +27,13 @@ Dinámica Estrella de Mar:
 3- Tenemos que continuar trabajando en el Front End y la estética del proyecto.
 4- No encuentramos algun punto en el que debamos hacer menos, no consideramos que nos sobre trabajo de Back o Front.
 5- Debemos dejar de trabajar con json y con código estático.
+
+
+## Retrospectiva Sprint 6
+
+Dinámica Estrella de Mar:
+1- Tenemos que manejarnos un poco más con el tablero de Trello para no pisar nuestro trabajo, hicimos los tres el mismo trabajo en este Sprint, cuando no era necesario.
+2- Debemos comenzar a trabajar con el carrito de compras, ahora que sabemos como hacerlo del lado del front, hay que implementarlo cuanto antes. Es una de las funciones mas importantes de nuestro sitio.
+3- Hay que continuar trabajando en la comunicación del equipo, para no pisar tareas, y para ser mas equitativos con el trabajo.
+4- No encuentramos algun punto en el que debamos hacer menos, no consideramos que nos sobre trabajo de Back o Front.
+5- Tenemos que dejar de usar código estático y ser mas performantes. 
