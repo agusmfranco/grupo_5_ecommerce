@@ -1,5 +1,6 @@
 const { check, validationResult, body } = require("express-validator");
 const db = require("../database/models");
+const bcrypt = require('bcrypt');
 
 exports.userList = function(req, res) {
   db.Users.findAll(
@@ -27,6 +28,7 @@ exports.userCreate = function (req, res) {
 exports.userCreated = function (req, res) {
   errors = validationResult(req);
   console.log(req.body)
+  let passwordHash = bcrypt.hashSync(req.body.password, 10);
   if(errors.isEmpty()) {
     db.Users.create({
       first_name: req.body.first_name,
@@ -37,7 +39,7 @@ exports.userCreated = function (req, res) {
       cp: req.body.cp,
       email: req.body.email,
       user_type_id: req.body.user_type_id,
-      password: req.body.password,
+      password: passwordHash,
     });
     res.send("Usuario creado!");
   } else {
