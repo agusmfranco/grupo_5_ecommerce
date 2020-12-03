@@ -7,7 +7,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -224,7 +224,7 @@ CREATE TABLE `users` (
   `first_name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `dni` int NOT NULL,
   `address` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` mediumtext NOT NULL,
   `birth` date NOT NULL,
   `user_type_id` int DEFAULT NULL,
   `last_name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -232,7 +232,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `user_type_id` (`user_type_id`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_type_id`) REFERENCES `userstypes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,7 +241,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (6,'hernanponcetta@gmail.com','Hernan',31899546,'13 1397','123456','1985-09-26',1,'Poncetta','1900'),(7,'gbithany0@alibaba.com','Gibby',43021576,'306 Old Gate Parkway','SwppbU66ubnF','1991-02-06',2,'Bithany','03184'),(8,'gsanpere1@comcast.net','Gayleen',36450343,'41001 Bultman Trail','GIKa8Qad9c','2020-06-17',2,'Sanpere','8047'),(9,'igoodread2@360.cn','Inesita',19559016,'63 Norway Maple Point','5E5Y1NqhpNhW','1972-06-13',2,'Goodread','68-113'),(10,'j.pasetti@gmail.com','Julieta',32843807,'33 1397','123456','1987-01-10',2,'Pasetti','1900'),(13,'elteclafarias@gmail.com','Ernesto',30895462,'Calle 1 y 54','123456','1980-05-29',2,'Farias','1900');
+INSERT INTO `users` VALUES (6,'hernanponcetta@gmail.com','Hernan',31899546,'13 1397','123456','1985-09-26',1,'Poncetta','1900'),(7,'gbithany0@alibaba.com','Gibby',43021576,'306 Old Gate Parkway','SwppbU66ubnF','1991-02-06',2,'Bithany','03184'),(8,'gsanpere1@comcast.net','Gayleen',36450343,'41001 Bultman Trail','GIKa8Qad9c','2020-06-17',2,'Sanpere','8047'),(9,'igoodread2@360.cn','Inesita',19559016,'63 Norway Maple Point','5E5Y1NqhpNhW','1972-06-13',2,'Goodread','68-113'),(10,'j.pasetti@gmail.com','Julieta',32843807,'33 1397','123456','1987-01-10',2,'Pasetti','1900'),(13,'elteclafarias@gmail.com','Ernesto',30895462,'Calle 1 y 54','123456','1980-05-29',2,'Farias','1900'),(14,'agustinmfranco@hotmail.com','Agustin',36683229,'23 575','$2b$10$YRdnP8zj.rYcLzsDSfHj2OmBIJFm5kH9/TttR9Ej5j7iqGesuNdlu','1991-11-30',1,'Franco','1900');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,10 +268,6 @@ LOCK TABLES `userstypes` WRITE;
 INSERT INTO `userstypes` VALUES (1,'administrador'),(2,'cliente');
 /*!40000 ALTER TABLE `userstypes` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping routines for database 'biblo_db'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -282,4 +278,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-01 17:07:58
+-- Dump completed on 2020-12-03 16:29:40
