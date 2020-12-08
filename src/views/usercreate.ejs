@@ -6,6 +6,7 @@
     <title>BiBlo | Nuevo usuario</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style-login.css"> <!--lo agrego para repetir el estilo del login-->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico" />
 </head>
@@ -153,9 +154,28 @@
                         <% } %>   
                     </div>
                     </div>
+                <!--
+                        //botones viejos
                 <div>
-                    <button type="submit" class="block text-sm text-gray-800 form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 tracking-widest focus:outline-none  focus:bg-biblogreen-200 duration-300">GUARDAR</button>
+                    <button type="submit" class="block text-sm text-gray-800 form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 tracking-widest focus:outline-none  focus:bg-biblogreen-200 duration-300">CREAR</button>
                 </div>
+
+                <div>
+                    <a href="/users/login"> <button type="button" class="block text-sm text-gray-800 form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 tracking-widest focus:outline-none  focus:bg-biblogreen-200 duration-300">INICIAR SESION</button></a>
+                </div>
+    
+                -->
+        
+                <!--Creo que queda mejor con estos botones-->
+                <div class="container-boton-accept">
+                    <button type="submit" class="accept-button">CREAR CUENTA</button>
+                </div>
+
+                <div class="container-boton-registration">
+                    <a href="/users/login"><button type="button" class="registration-button">INICIAR SESION</button></a>
+                </div>
+
+                
                 </div>
             </form>
         </div>
