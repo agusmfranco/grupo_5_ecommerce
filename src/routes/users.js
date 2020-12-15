@@ -23,5 +23,16 @@ router.put(
 router.delete("/:id", users_controller.userDelete);
 
 router.get("/login", users_controller.userLogin);
+router.post('/login', forms_validators.validateLogin, users_controller.processLogin)
+
+//prueba
+
+router.get('/check', function(req, res){
+  if (req.cookies.recordarme == undefined && req.session.loggedUser == undefined){
+    res.send('no estas logeado')
+  } else if (req.cookies.recordarme != undefined || req.session.loggedUser != undefined) {
+    res.send('estas logeado')
+  }
+});
 
 module.exports = router;

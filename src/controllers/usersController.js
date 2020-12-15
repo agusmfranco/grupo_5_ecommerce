@@ -1,6 +1,7 @@
 const { check, validationResult, body } = require("express-validator");
 const db = require("../database/models");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
+const session = require('express-session');
 
 exports.userList = function (req, res) {
   db.Users.findAll({
@@ -104,4 +105,32 @@ exports.userDelete = function (req, res) {
 
 exports.userLogin = function (req, res) {
   res.render("login");
+};
+
+
+exports.processLogin = function (req, res) {
+  let errors = validationResult(req);
+  if ( errors.isEmpty()){
+    db.Users.findOne({ where: {email: req.body.email}})
+    .then(function(user){
+      if (user == null){
+        res.render('login', {errors: [
+          {msg: 'Usuario inválido'}
+        ]})
+      } else {
+          bcrypt.compare(req.body.password, user.password).then(function(result){
+            if (result) {
+              req.session.loggedUser = user;
+              if (req.body.rememberme != undefined){
+                res.cookie('recordarme', user.email, { maxAge: 60000 * 60});
+                res.cookie('id', user.id, { maxAge: 60000 * 60})
+              }
+              res.render('index')
+            } else {
+              return res.render('login', {errors: errors.errors})
+            }
+        });
+      };
+    });
+  };
 };
