@@ -34,3 +34,11 @@ exports.validateNewUser = [
     .withMessage("El correo electrónico debe estar completo"),
   check("password").notEmpty().withMessage("La contraseña debe estar completa"),
 ];
+
+exports.validateLogin = [
+  check("email")
+    .isEmail()
+    .notEmpty()
+    .withMessage("El correo electrónico debe ser válido"),
+  check("password").notEmpty().withMessage("La contraseña debe estar completa"),
+];

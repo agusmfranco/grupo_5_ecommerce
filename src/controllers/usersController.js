@@ -1,6 +1,7 @@
 const { check, validationResult, body } = require("express-validator");
 const db = require("../database/models");
 const bcrypt = require('bcrypt');
+const session = require('express-session');
 
 exports.userList = function(req, res) {
   db.Users.findAll(
@@ -116,3 +117,26 @@ exports.userLogin = function (req, res) {
   res.render("login");
 };
 
+
+exports.processLogin = function (req, res) {
+  let errors = validationResult(req);
+  if ( errors.isEmpty()){
+    db.Users.findOne({ where: {email: req.body.email}})
+    .then(function(user){
+      if (user == null){
+        res.render('login', {errors: [
+          {msg: 'Usuario inválido'}
+        ]})
+      } else {
+          bcrypt.compare(req.body.password, user.password).then(function(result){
+            if (result) {
+              req.session.loggedUser = user;
+              res.render('index')
+            } else {
+              return res.render('login', {errors: errors.errors})
+            }
+        });
+      };
+    });
+  };
+};
