@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico" />
-    <link href="/css/all.css" rel="stylesheet">
-</head>
 <header class="">
     <div class="bg-white shadow-md rounded-b-md">
     <div class="bg-white font-roboto px-3 pb-3 pt-2 lg:pt-5 mb-10 text-gray-800 lg:max-w-screen-lg lg:mx-auto md:flex md:items-center justify-between sm:px-5">
@@ -19,9 +8,11 @@
                 </div>
                 <div class="flex items-center md:hidden">
                     <a href="/users/create" class="text-biblogreen-500 hover:text-biblogreen-700 text-xl pr-3 border-r border-biblogreen-300 flex"><i class="fas fa-user"></i></a>
-                    <a href="" class="text-biblogreen-500 hover:text-biblogreen-700 text-xl pl-3 flex">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
+                    <div id="cart_div" class="relative w-15 pr-1">
+                        <a href="" class="text-biblogreen-500 hover:text-biblogreen-700 text-2xl pl-5 lg:text-center">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="md:w-1/2">
@@ -44,10 +35,26 @@
             <a href="/users/login" class="text-biblogreen-500 hover:text-biblogreen-700 text-2xl pr-5 border-r border-biblogreen-300 lg:text-center">
                 <i class="fas fa-user"></i>
             </a>
-            <a href="" class="text-biblogreen-500 hover:text-biblogreen-700 text-2xl pl-5 lg:text-center">
-                <i class="fas fa-shopping-cart"></i>
-            </a>
+            <div id="cart_div" class="relative w-15 pr-1">
+                <a href="" class="text-biblogreen-500 hover:text-biblogreen-700 text-2xl pl-5 lg:text-center">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
         </div>
     </div>
 </div>
+<script>
+    fetch('/products/checkout/data/?user_id=6')
+    .then(response => response.json())
+    .then(data => {
+        if(data.items.length > 0) {
+            document.querySelectorAll('#cart_div').forEach(element => {
+            element.innerHTML +=
+            '<span class="absolute bg-white box-border px-1 font-roboto rounded-full border-2 border-biblogreen-500 text-biblogreen-500 font-semibold text-xs right-0">' +
+            data.items.length +
+            '</span>';
+    });
+        }
+    })
+</script>
 </header>

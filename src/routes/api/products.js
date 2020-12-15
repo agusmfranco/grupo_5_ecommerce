@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var apiController = require("./../../controllers/api/apiController")
+var apiController = require("./../../controllers/api/apiController");
 
 router.get("/products", apiController.productList);
 

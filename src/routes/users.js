@@ -4,7 +4,7 @@ var router = express.Router();
 const users_controller = require("../controllers/usersController");
 const forms_validators = require("../middlewares/formsValidators");
 
-router.get("/", users_controller.userList)
+router.get("/", users_controller.userList);
 
 router.get("/create", users_controller.userCreate);
 router.post(
@@ -23,6 +23,5 @@ router.put(
 router.delete("/:id", users_controller.userDelete);
 
 router.get("/login", users_controller.userLogin);
-
 
 module.exports = router;

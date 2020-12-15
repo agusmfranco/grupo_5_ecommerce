@@ -4,6 +4,7 @@ const { join } = require("path");
 const path = require("path");
 const db = require("../database/models");
 const { Op } = require("sequelize");
+const { createBrotliDecompress } = require("zlib");
 
 exports.productList = function (req, res) {
   db.Books.findAll({
@@ -30,10 +31,6 @@ exports.productDetail = function (req, res) {
     console.log(book.autors);
     res.render("productdetail", { book: book });
   });
-};
-
-exports.checkOut = function (req, res) {
-  res.render("check_out");
 };
 
 exports.productCreate = function (req, res) {
@@ -225,5 +222,56 @@ exports.productSearch = function (req, res) {
   }).then(function (books) {
     console.log(books[0].book_cover);
     res.render("productslist", { books, books });
+  });
+};
+
+exports.checkOut = function (req, res) {
+  res.render("checkout");
+};
+
+exports.checkOutData = function (req, res) {
+  db.Checkouts.findAll({
+    where: {
+      user_id: req.query.user_id,
+    },
+  }).then(function (items) {
+    res.json({ items: items });
+  });
+};
+
+exports.checkOutSave = function (req, res) {
+  db.Checkouts.findAll({
+    where: {
+      book_id: req.body.book_id,
+      user_id: 6,
+    },
+  }).then(function (checkouts) {
+    if (checkouts.length == 0) {
+      db.Checkouts.create({
+        book_id: req.body.book_id,
+        user_id: 6,
+        quantity: req.body.quantity,
+      }).then(function () {
+        db.Checkouts.findAll({
+          where: {
+            user_id: 6,
+          },
+        }).then(function (items) {
+          res.json(JSON.stringify({ length: items.length }));
+        });
+      });
+    } else {
+      let book = checkouts[0];
+      book.quantity = req.body.quantity;
+      book.save().then(function () {
+        db.Checkouts.findAll({
+          where: {
+            user_id: 6,
+          },
+        }).then(function (items) {
+          res.json(JSON.stringify({ length: items.length }));
+        });
+      });
+    }
   });
 };

@@ -10,6 +10,10 @@ router.get("/", products_controller.productList);
 // Rutas para carrito
 router.get("/checkout", products_controller.checkOut);
 
+router.get("/checkout/data", products_controller.checkOutData);
+
+router.post("/checkout/data", products_controller.checkOutSave);
+
 // Rutas para crear producto
 router.get("/create", products_controller.productCreate);
 

@@ -1,19 +1,14 @@
 const { check, validationResult, body } = require("express-validator");
 const db = require("../database/models");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
-exports.userList = function(req, res) {
-  db.Users.findAll(
-    {
-      include: [
-        { association: "userstypes"}
-      ]
-    }
-  ).then(function(users) {
-    res.render("userslist", {users: users})
-  }
-  )
-}
+exports.userList = function (req, res) {
+  db.Users.findAll({
+    include: [{ association: "userstypes" }],
+  }).then(function (users) {
+    res.render("userslist", { users: users });
+  });
+};
 
 exports.userCreate = function (req, res) {
   db.Userstypes.findAll().then(function (types) {
@@ -27,9 +22,9 @@ exports.userCreate = function (req, res) {
 
 exports.userCreated = function (req, res) {
   errors = validationResult(req);
-  console.log(req.body)
+  console.log(req.body);
   let passwordHash = bcrypt.hashSync(req.body.password, 10);
-  if(errors.isEmpty()) {
+  if (errors.isEmpty()) {
     db.Users.create({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
@@ -43,32 +38,27 @@ exports.userCreated = function (req, res) {
     });
     res.send("Usuario creado!");
   } else {
-    db.Userstypes.findAll().then(function(types) {
+    db.Userstypes.findAll().then(function (types) {
       res.render("usercreate", {
         types: types,
         errors: errors.mapped(),
-        data: req.body
-      })
-    })
+        data: req.body,
+      });
+    });
   }
-
 };
 
 exports.userUpdate = function (req, res) {
-let userPromise = db.Users.findByPk(req.params.id)
-let typesPromise = db.Userstypes.findAll()
+  let userPromise = db.Users.findByPk(req.params.id);
+  let typesPromise = db.Userstypes.findAll();
 
-Promise.all([
-  userPromise,
-  typesPromise,
-]).then(function([user, types]){
-  res.render('userupdate',
-  {
-    types: types,
-    data: user,
-    errors: {}
-  })
-})
+  Promise.all([userPromise, typesPromise]).then(function ([user, types]) {
+    res.render("userupdate", {
+      types: types,
+      data: user,
+      errors: {},
+    });
+  });
 };
 
 exports.userUpdated = function (req, res) {
@@ -91,9 +81,9 @@ exports.userUpdated = function (req, res) {
           id: req.params.id,
         },
       }
-    ).then(function(){
-      res.send("Usuario modificado con éxito!")
-    })
+    ).then(function () {
+      res.send("Usuario modificado con éxito!");
+    });
   } else {
     res.render("user_update", {
       errors: errors.mapped(),
@@ -115,4 +105,3 @@ exports.userDelete = function (req, res) {
 exports.userLogin = function (req, res) {
   res.render("login");
 };
-

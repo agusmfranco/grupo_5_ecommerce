@@ -34,7 +34,7 @@ POST: /products/create
 
 **Editar producto:**
 
-GET:  /products/:id/edit
+GET: /products/:id/edit
 
 PUT: /products/:id
 
@@ -58,4 +58,4 @@ GET: /users/:id/edit
 
 PUT: /users/:id
 
-DELETE: /users/:id  
+DELETE: /users/:id
