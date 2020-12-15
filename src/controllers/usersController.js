@@ -131,6 +131,9 @@ exports.processLogin = function (req, res) {
           bcrypt.compare(req.body.password, user.password).then(function(result){
             if (result) {
               req.session.loggedUser = user;
+              if (req.body.rememberme != undefined){
+                res.cookie('recordarme', user.email, { maxAge: 60000 * 60})
+              }
               res.render('index')
             } else {
               return res.render('login', {errors: errors.errors})

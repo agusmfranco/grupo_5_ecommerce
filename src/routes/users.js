@@ -28,10 +28,10 @@ router.post('/login', forms_validators.validateLogin, users_controller.processLo
 //prueba
 
 router.get('/check', function(req, res){
-  if (req.session.loggedUser == undefined){
+  if (req.cookies.recordarme == undefined && req.session.loggedUser == undefined){
     res.send('no estas logeado')
-  } else {
-    res.send('estas logeado ' + req.session.loggedUser.first_name)
+  } else if (req.cookies.recordarme != undefined) {
+    res.send('estas logeado ' + req.cookies.recordarme)
   }
 })
 
