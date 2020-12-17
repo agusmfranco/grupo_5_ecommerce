@@ -38,6 +38,9 @@ module.exports = (sequelize, dataTypes) => {
     user_type_id: {
       type: dataTypes.INTEGER,
     },
+    user_photo: {
+      type: dataTypes.INTEGER,
+    },
   };
   let config = {
     tablename: "users",

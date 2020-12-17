@@ -23,7 +23,13 @@ exports.userCreate = function (req, res) {
 
 exports.userCreated = function (req, res) {
   errors = validationResult(req);
-  console.log(req.body);
+  let user_photo;
+  if (req.files.length > 0) {
+    user_photo = req.files[0].filename;
+  } else {
+    user_photo = "default-avatar.png";
+  }
+  console.log(user_photo)
   let passwordHash = bcrypt.hashSync(req.body.password, 10);
   if (errors.isEmpty()) {
     db.Users.create({
@@ -36,6 +42,7 @@ exports.userCreated = function (req, res) {
       email: req.body.email,
       user_type_id: req.body.user_type_id,
       password: passwordHash,
+      user_photo: user_photo,
     });
     res.send("Usuario creado!");
   } else {
@@ -64,6 +71,12 @@ exports.userUpdate = function (req, res) {
 
 exports.userUpdated = function (req, res) {
   errors = validationResult(req);
+  let user_photo;
+  if (req.files.length > 0) {
+    user_photo = req.files[0].filename;
+  } else {
+    user_photo = req.body.old_photo;
+  }
   if (errors.isEmpty()) {
     db.Users.update(
       {
@@ -76,6 +89,7 @@ exports.userUpdated = function (req, res) {
         user_type_id: req.body.user_type_id,
         cp: req.body.cp,
         password: req.body.password,
+        user_photo: user_photo,
       },
       {
         where: {
@@ -134,3 +148,10 @@ exports.processLogin = function (req, res) {
     });
   };
 };
+
+exports.userDetail = function (req, res) {
+  db.Users.findByPk(req.params.id)
+  .then(function(user){
+    res.render('userdetail', {data: user})
+  });
+}

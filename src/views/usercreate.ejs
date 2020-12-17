@@ -6,14 +6,13 @@
     <title>BiBlo | Nuevo usuario</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/stylesheets/style-login.css"> <!--lo agrego para repetir el estilo del login-->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico" />
+    <link href="/css/all.css" rel="stylesheet">
 </head>
 <body class="bg-biblogreen-100">
     <%- include('./partials/header') %>
         <div class=" py-8 w-full font-roboto max-w-md md:max-w-screen-md mx-auto text-xs">
-            <form action="/users/create" method="POST">    
+            <form action="/users/create" method="POST" enctype="multipart/form-data">    
                 <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4 hover:shadow-lg md:flex md:flex-col">
                     <div class="md:flex">
                         <div class="mb-5 md:w-1/2 md:mr-3">
@@ -154,28 +153,20 @@
                         <% } %>   
                     </div>
                     </div>
-                <!--
-                        //botones viejos
-                <div>
-                    <button type="submit" class="block text-sm text-gray-800 form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 tracking-widest focus:outline-none  focus:bg-biblogreen-200 duration-300">CREAR</button>
-                </div>
-
-                <div>
-                    <a href="/users/login"> <button type="button" class="block text-sm text-gray-800 form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 tracking-widest focus:outline-none  focus:bg-biblogreen-200 duration-300">INICIAR SESION</button></a>
-                </div>
-    
-                -->
-        
-                <!--Creo que queda mejor con estos botones-->
-                <div class="container-boton-accept">
-                    <button type="submit" class="accept-button">CREAR CUENTA</button>
-                </div>
-
-                <div class="container-boton-registration">
-                    <a href="/users/login"><button type="button" class="registration-button">INICIAR SESION</button></a>
-                </div>
-
-                
+                    <div class="sm:flex">
+                        <div class="mb-4 w-full rounded-md">
+                            <label for="user_photo" class="cursor-pointer text-center  block form-input border-biblogreen-300 border-dashed py-4 box-border tracking-wide rounded-md hover:bg-biblogreen-100 duration-300">
+                                <span class="text-biblogreen-700 text-3xl hover:text-biblogreen-800 block">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </span>
+                                <span class=" text-biblogreen-700 font-medium hover:text-biblogreen-800 text-opacity-75 text-xs">Foto de usuario<span>
+                                <input id="user_photo" type="file" name="portada" class="hidden">
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="block text-sm text-gray-800 form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 tracking-widest focus:outline-none  focus:bg-biblogreen-200">GUARDAR</button>
+                    </div>
                 </div>
             </form>
         </div>

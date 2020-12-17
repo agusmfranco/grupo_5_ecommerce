@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var users_upload = require("../middlewares/UsersUpload");
 
 const users_controller = require("../controllers/usersController");
 const forms_validators = require("../middlewares/formsValidators");
@@ -9,6 +10,7 @@ router.get("/", users_controller.userList);
 router.get("/create", users_controller.userCreate);
 router.post(
   "/create",
+  users_upload.upload,
   forms_validators.validateNewUser,
   users_controller.userCreated
 );
@@ -16,6 +18,7 @@ router.post(
 router.get("/:id/edit", users_controller.userUpdate);
 router.put(
   "/:id",
+  users_upload.upload,
   forms_validators.validateNewUser,
   users_controller.userUpdated
 );
@@ -34,5 +37,7 @@ router.get('/check', function(req, res){
     res.send('estas logeado')
   }
 });
+
+router.get("/:id", users_controller.userDetail)
 
 module.exports = router;
