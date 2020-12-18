@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
-var users_upload = require("../middlewares/UsersUpload");
+var loginAuth = require('../middlewares/loginAuth');
+var users_upload = require("../middlewares/usersUpload");
 
 const users_controller = require("../controllers/usersController");
 const forms_validators = require("../middlewares/formsValidators");
@@ -15,15 +16,15 @@ router.post(
   users_controller.userCreated
 );
 
-router.get("/edit", users_controller.userUpdate);
+router.get("/edit", loginAuth, users_controller.userUpdate);
 router.put(
-  "/:id",
+  "/:id", loginAuth,
   users_upload.upload,
   forms_validators.validateNewUser,
   users_controller.userUpdated
 );
 
-router.delete("/:id", users_controller.userDelete);
+router.delete("/:id", loginAuth, users_controller.userDelete);
 
 router.get("/login", users_controller.userLogin);
 router.post(
@@ -48,8 +49,8 @@ router.get("/check", function (req, res) {
   }
 });
 
-router.get("/detail", users_controller.userDetail);
+router.get("/detail", loginAuth, users_controller.userDetail);
 
-router.get("/data", users_controller.userData);
+router.get("/data", loginAuth, users_controller.userData);
 
 module.exports = router;
