@@ -98,10 +98,12 @@ exports.userUpdated = function (req, res) {
       res.send("Usuario modificado con éxito!");
     });
   } else {
-    res.render("user_update", {
-      errors: errors.mapped(),
-      old_data: dummy_user,
-      body_data: req.body,
+    db.Userstypes.findAll().then(function (types) {
+      res.render("userupdate", {
+        types: types,
+        errors: errors.mapped(),
+        data: req.body,
+      });
     });
   }
 };

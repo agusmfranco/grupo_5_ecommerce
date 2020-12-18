@@ -20,7 +20,7 @@ router.get("/edit", loginAuth, users_controller.userUpdate);
 router.put(
   "/:id", loginAuth,
   users_upload.upload,
-  forms_validators.validateNewUser,
+  forms_validators.validateUserEdit,
   users_controller.userUpdated
 );
 
