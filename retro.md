@@ -36,3 +36,14 @@ Dinámica Estrella de Mar:
 3- Hay que continuar trabajando en la comunicación del equipo, para no pisar tareas, y para ser mas equitativos con el trabajo.
 4- No encuentramos algun punto en el que debamos hacer menos, no consideramos que nos sobre trabajo de Back o Front.
 5- Tenemos que dejar de usar código estático y ser mas performantes.
+
+
+## Retrospectiva Srint 5
+
+Dinámica Estrella de Mar:
+1- Tenemos que comenzar a pulir pequeños errores y detalles ya que el proyecto esta siendo terminado de a poco.
+2- Hay que comenzar a navegar el sitio de arriba a abajo para detectar su total funcionamiento y navegación intuitiva.
+3- Tenemos que seguir trabajando en el Index aplicando los nuevos conocimientos en Front End, estamos muy interesados en aplicar React.
+4- No encuentramos algun punto en el que debamos hacer menos, no consideramos que nos sobre trabajo de Back o Front.
+5- Debemos dejar de pensar en el Home como vista de EJS estática y comenzar a pensar en convertirlo a React, dinámico e interactivo.
+Este Sprint nos manejamos mucho mejor con el tablero de Trello y la división de responsabilidades, convertimos al tablero en nuestro principal compañero para no pisarnos con el trabajo, ya que muchas veces haciamos dos veces la misma tarea.
