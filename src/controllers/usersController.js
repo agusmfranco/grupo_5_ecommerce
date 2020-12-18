@@ -136,6 +136,9 @@ exports.processLogin = function (req, res) {
           .then(function (result) {
             if (result) {
               req.session.loggedUser = user;
+              if (user.user_type_id == 1) {
+                req.session.admin = true;
+              }
               if (req.body.rememberme != undefined){
                 res.cookie('recordarme', user.email, { maxAge: 60000 * 60});
               };

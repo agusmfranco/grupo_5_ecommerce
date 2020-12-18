@@ -1,10 +1,11 @@
 const session = require('express-session');
 const db = require("../database/models");
+const { check, validationResult, body } = require("express-validator");
 
 const adminAuth = function(req, res, next){
-    
-    if (req.cookies.recordarme == undefined && req.session.loggedUser == undefined){
-        res.render('login', {error: {msg: 'Debes iniciar sesión'}})
+    errors = validationResult(req);
+    if (req.session.loggedUser == undefined){
+        res.render('login', {errors : errors})
     };
     next();
 };
