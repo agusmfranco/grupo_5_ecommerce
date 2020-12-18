@@ -41,6 +41,8 @@ router.get("/check", function (req, res) {
     req.session.loggedUser == undefined
   ) {
     res.send("no estas logeado");
+  } else if (req.session.loggedUser != undefined && req.session.loggedUser.user_type_id == 1){
+    res.send('estas logeado admin')
   } else if (
     req.cookies.recordarme != undefined ||
     req.session.loggedUser != undefined
