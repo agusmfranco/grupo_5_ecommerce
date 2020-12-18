@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var loginAuth = require('../middlewares/loginAuth');
 
 const users_controller = require("../controllers/usersController");
 const forms_validators = require("../middlewares/formsValidators");
@@ -13,14 +14,14 @@ router.post(
   users_controller.userCreated
 );
 
-router.get("/:id/edit", users_controller.userUpdate);
+router.get("/:id/edit", loginAuth, users_controller.userUpdate);
 router.put(
   "/:id",
   forms_validators.validateNewUser,
   users_controller.userUpdated
 );
 
-router.delete("/:id", users_controller.userDelete);
+router.delete("/:id", loginAuth, users_controller.userDelete);
 
 router.get("/login", users_controller.userLogin);
 router.post('/login', forms_validators.validateLogin, users_controller.processLogin)
