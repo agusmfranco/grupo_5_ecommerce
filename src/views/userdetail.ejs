@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de usario</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico" />
+    <link href="/css/all.css" rel="stylesheet">
+</head>
+<body class="bg-biblogreen-100">
+    <%- include('./partials/header') %>
+    <div class=" py-8 w-full font-roboto max-w-md md:max-w-screen-md mx-auto text-xs">
+        <div class="bg-white rounded-md shadow-md mb-4 hover:shadow-lg md:flex md:flex-col relative">
+            <div class="h-32 bg-biblogreen-200 mb-16 rounded-t"></div>
+            <div class="mb-6 absolute inset-x-0 top-0 mt-12">
+                <img src="/users_photo/<%= data.user_photo %>" alt="Foto de usuario" class="rounded-full w-32 mx-auto">
+            </div>
+            <h1 class="text-gray-800 text-xl text-center font-bold pb-2"><%= data.first_name + " " + data.last_name %></h1>
+            <div class="px-6">
+                <ul class="pb-6">
+                    <li class="text-center pb-1"><span class="font-bold">e-mail </span><Span class="text-gray-600"><%=data.email  %></Span></li>
+                    <li class="text-center pb-1"><span class="font-bold">DNI </span><Span class="text-gray-600"><%=data.dni  %></Span></li>
+                    <li class="text-center pb-1"><span class="font-bold">Dirección </span><Span class="text-gray-600"><%=data.address  %></Span></li>
+                    <li class="text-center pb-1"><span class="font-bold">Codigo postal </span><Span class="text-gray-600"><%=data.cp  %></Span></li>
+                </ul>
+                <div class="text-center pb-5">
+                    <a href="edit" class="text-sm text-biblogreen-600 pl-3 hover:text-biblogreen-800">modificar datos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./partials/footer') %>
+</body>
+</html>

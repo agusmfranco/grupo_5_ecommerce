@@ -29,16 +29,15 @@ exports.validateNewUser = [
     .withMessage("La fecha de nacimiento debe estar completa"),
   check("address").notEmpty().withMessage("La dirección debe estar completa"),
   check("cp").notEmpty().withMessage("El código postal debe estar completo"),
-  check("email")
-    .notEmpty()
-    .withMessage("El correo electrónico debe estar completo"),
+  check("email").notEmpty().withMessage("La contraseña debe estar completa"),
   check("password").notEmpty().withMessage("La contraseña debe estar completa"),
 ];
 
 exports.validateLogin = [
   check("email")
-    .isEmail()
     .notEmpty()
+    .withMessage("El corre electrónico debe estar completo")
+    .isEmail()
     .withMessage("El correo electrónico debe ser válido"),
   check("password").notEmpty().withMessage("La contraseña debe estar completa"),
 ];
