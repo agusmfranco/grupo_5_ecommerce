@@ -5,6 +5,7 @@ const path = require("path");
 const db = require("../database/models");
 const { Op } = require("sequelize");
 const { createBrotliDecompress } = require("zlib");
+const session = require("express-session");
 
 exports.productList = function (req, res) {
   db.Books.findAll({
@@ -230,31 +231,35 @@ exports.checkOut = function (req, res) {
 };
 
 exports.checkOutData = function (req, res) {
-  db.Checkouts.findAll({
-    where: {
-      user_id: req.query.user_id,
-    },
-  }).then(function (items) {
-    res.json({ items: items });
-  });
+  if (req.session.loggedUser) {
+    db.Checkouts.findAll({
+      where: {
+        user_id: req.session.loggedUser.id,
+      },
+    }).then(function (items) {
+      res.json({ items: items });
+    });
+  } else {
+    res.json({ items: [] });
+  }
 };
 
 exports.checkOutSave = function (req, res) {
   db.Checkouts.findAll({
     where: {
       book_id: req.body.book_id,
-      user_id: 6,
+      user_id: req.session.loggedUser.id,
     },
   }).then(function (checkouts) {
     if (checkouts.length == 0) {
       db.Checkouts.create({
         book_id: req.body.book_id,
-        user_id: 6,
+        user_id: req.session.loggedUser.id,
         quantity: req.body.quantity,
       }).then(function () {
         db.Checkouts.findAll({
           where: {
-            user_id: 6,
+            user_id: req.session.loggedUser.id,
           },
         }).then(function (items) {
           res.json(JSON.stringify({ length: items.length }));
@@ -266,7 +271,7 @@ exports.checkOutSave = function (req, res) {
       book.save().then(function () {
         db.Checkouts.findAll({
           where: {
-            user_id: 6,
+            user_id: req.session.loggedUser.id,
           },
         }).then(function (items) {
           res.json(JSON.stringify({ length: items.length }));

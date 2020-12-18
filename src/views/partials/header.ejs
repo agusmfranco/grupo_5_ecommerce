@@ -7,7 +7,9 @@
                     <a href="/"> <img src="/logo/biblo_05.svg" class="w-16 md:w-20 lg:w-20" alt="Biblo Logo"></a>
                 </div>
                 <div class="flex items-center md:hidden">
-                    <a href="/users/create" class="text-biblogreen-500 hover:text-biblogreen-700 text-xl pr-3 border-r border-biblogreen-300 flex"><i class="fas fa-user"></i></a>
+                    <div id="user_div">
+                        <a href="/users/login" id="user_redirect" class="text-biblogreen-500 hover:text-biblogreen-700 text-xl pr-3 border-r border-biblogreen-300 flex"><i class="fas fa-user"></i></a>
+                    </div>
                     <div id="cart_div" class="relative w-15 pr-1">
                         <a href="" class="text-biblogreen-500 hover:text-biblogreen-700 text-2xl pl-5 lg:text-center">
                             <i class="fas fa-shopping-cart"></i>
@@ -32,8 +34,10 @@
             </div>
         </div>
         <div class="hidden md:flex">
-            <a href="/users/login" class="text-biblogreen-500 hover:text-biblogreen-700 text-2xl pr-5 border-r border-biblogreen-300 lg:text-center">
-                <i class="fas fa-user"></i>
+            <a href="/users/login" id="user_redirect" class="text-biblogreen-500 hover:text-biblogreen-700 text-2xl pr-5 border-r border-biblogreen-300 lg:text-center">
+                <div id="user_div">
+                    <i class="fas fa-user"></i>
+                </div>
             </a>
             <div id="cart_div" class="relative w-15 pr-1">
                 <a href="" class="text-biblogreen-500 hover:text-biblogreen-700 text-2xl pl-5 lg:text-center">
@@ -43,18 +47,5 @@
         </div>
     </div>
 </div>
-<script>
-    fetch('/products/checkout/data/?user_id=6')
-    .then(response => response.json())
-    .then(data => {
-        if(data.items.length > 0) {
-            document.querySelectorAll('#cart_div').forEach(element => {
-            element.innerHTML +=
-            '<span class="absolute bg-white box-border px-1 font-roboto rounded-full border-2 border-biblogreen-500 text-biblogreen-500 font-semibold text-xs right-0">' +
-            data.items.length +
-            '</span>';
-    });
-        }
-    })
-</script>
+<script src="/scripts/HeaderScript.js"></script>
 </header>

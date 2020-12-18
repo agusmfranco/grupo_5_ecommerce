@@ -14,10 +14,10 @@ const storage = multer.diskStorage({
         .join("")
         .replace(/[^\w\s]|_/g, "") +
         req.body.last_name
-        .toLowerCase()
-        .split(" ")
-        .join("")
-        .replace(/[^\w\s]|_/g, "") + 
+          .toLowerCase()
+          .split(" ")
+          .join("")
+          .replace(/[^\w\s]|_/g, "") +
         path.extname(file.originalname)
     );
   },

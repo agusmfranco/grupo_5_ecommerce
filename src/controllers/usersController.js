@@ -1,7 +1,7 @@
 const { check, validationResult, body } = require("express-validator");
 const db = require("../database/models");
-const bcrypt = require('bcrypt');
-const session = require('express-session');
+const bcrypt = require("bcrypt");
+const session = require("express-session");
 
 exports.userList = function (req, res) {
   db.Users.findAll({
@@ -29,7 +29,6 @@ exports.userCreated = function (req, res) {
   } else {
     user_photo = "default-avatar.png";
   }
-  console.log(user_photo)
   let passwordHash = bcrypt.hashSync(req.body.password, 10);
   if (errors.isEmpty()) {
     db.Users.create({
@@ -57,7 +56,7 @@ exports.userCreated = function (req, res) {
 };
 
 exports.userUpdate = function (req, res) {
-  let userPromise = db.Users.findByPk(req.params.id);
+  let userPromise = db.Users.findByPk(req.session.loggedUser.id);
   let typesPromise = db.Userstypes.findAll();
 
   Promise.all([userPromise, typesPromise]).then(function ([user, types]) {
@@ -88,7 +87,6 @@ exports.userUpdated = function (req, res) {
         birth: req.body.birth,
         user_type_id: req.body.user_type_id,
         cp: req.body.cp,
-        password: req.body.password,
         user_photo: user_photo,
       },
       {
@@ -118,40 +116,60 @@ exports.userDelete = function (req, res) {
 };
 
 exports.userLogin = function (req, res) {
-  res.render("login");
+  res.render("login", { errors: {}, data: {} });
 };
-
 
 exports.processLogin = function (req, res) {
   let errors = validationResult(req);
-  if ( errors.isEmpty()){
-    db.Users.findOne({ where: {email: req.body.email}})
-    .then(function(user){
-      if (user == null){
-        res.render('login', {errors: [
-          {msg: 'Usuario inválido'}
-        ]})
+  if (errors.isEmpty()) {
+    db.Users.findOne({ where: { email: req.body.email } }).then(function (
+      user
+    ) {
+      if (user == null) {
+        res.render("login", {
+          errors: { email: { msg: "Usuario inválido" } },
+          data: {},
+        });
       } else {
-          bcrypt.compare(req.body.password, user.password).then(function(result){
+        bcrypt
+          .compare(req.body.password, user.password)
+          .then(function (result) {
             if (result) {
               req.session.loggedUser = user;
-              if (req.body.rememberme != undefined){
-                res.cookie('recordarme', user.email, { maxAge: 60000 * 60});
-                res.cookie('id', user.id, { maxAge: 60000 * 60})
+              if (req.body.rememberme != undefined) {
+                res.cookie("recordarme", user.email, { maxAge: 60000 * 60 });
+                res.cookie("id", user.id, { maxAge: 60000 * 60 });
               }
-              res.render('index')
+              res.render("index");
             } else {
-              return res.render('login', {errors: errors.errors})
+              res.render("login", {
+                errors: { password: { msg: "Usuario inválido" } },
+                data: {},
+              });
             }
-        });
-      };
+          });
+      }
     });
-  };
+  } else {
+    res.render("login", {
+      errors: errors.mapped(),
+      data: req.body,
+    });
+  }
 };
 
 exports.userDetail = function (req, res) {
-  db.Users.findByPk(req.params.id)
-  .then(function(user){
-    res.render('userdetail', {data: user})
+  db.Users.findByPk(req.session.loggedUser.id).then(function (user) {
+    res.render("userdetail", { data: user });
   });
-}
+};
+
+exports.userData = function (req, res) {
+  if (req.session.loggedUser) {
+    db.Users.findByPk(req.session.loggedUser.id).then(function (user) {
+      res.json(user);
+    });
+  } else {
+    res.json({});
+  }
+};
