@@ -13,7 +13,7 @@
 <body class="bg-biblogreen-100">
     <%- include('./partials/header') %>
     <div class="py-8 w-full font-roboto max-w-md md:px-4 mx-auto text-xs text-gray-800">
-        <form action="/users/login" method="POST">
+        <form action="/users/login" method="POST" class="formulario">
             <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4 hover:shadow-lg md:flex md:flex-col">
                 <div class="mb-8">
                     <div class="mb-5">
@@ -58,5 +58,7 @@
         </form>
     </div>
     <%- include('./partials/footer') %> 
+
+    <script src="/js/login.js"></script>    
 </body>
 </html>
