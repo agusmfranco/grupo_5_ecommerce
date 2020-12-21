@@ -145,7 +145,7 @@ exports.processLogin = function (req, res) {
               res.render("index");
             } else {
               res.render("login", {
-                errors: { password: { msg: "Usuario inválido" } },
+                errors: { password: { msg: "Password inválido" } },
                 data: {},
               });
             }
