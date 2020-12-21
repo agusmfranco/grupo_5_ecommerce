@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var loginAuth = require('../middlewares/loginAuth');
+var loginAuth = require("../middlewares/loginAuth");
 var users_upload = require("../middlewares/usersUpload");
 
 const users_controller = require("../controllers/usersController");
@@ -18,7 +18,8 @@ router.post(
 
 router.get("/edit", loginAuth, users_controller.userUpdate);
 router.put(
-  "/:id", loginAuth,
+  "/:id",
+  loginAuth,
   users_upload.upload,
   forms_validators.validateUserEdit,
   users_controller.userUpdated
@@ -41,8 +42,11 @@ router.get("/check", function (req, res) {
     req.session.loggedUser == undefined
   ) {
     res.send("no estas logeado");
-  } else if (req.session.loggedUser != undefined && req.session.loggedUser.user_type_id == 1){
-    res.send('estas logeado admin')
+  } else if (
+    req.session.loggedUser != undefined &&
+    req.session.loggedUser.user_type_id == 1
+  ) {
+    res.send("estas logeado admin");
   } else if (
     req.cookies.recordarme != undefined ||
     req.session.loggedUser != undefined
@@ -51,8 +55,8 @@ router.get("/check", function (req, res) {
   }
 });
 
-router.get("/detail", loginAuth, users_controller.userDetail);
+router.get("/detail", users_controller.userDetail);
 
-router.get("/data", loginAuth, users_controller.userData);
+router.get("/data", users_controller.userData);
 
 module.exports = router;
