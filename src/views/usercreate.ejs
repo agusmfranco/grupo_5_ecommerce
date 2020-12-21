@@ -12,7 +12,7 @@
 <body class="bg-biblogreen-100">
     <%- include('./partials/header') %>
         <div class=" py-8 w-full font-roboto max-w-md md:max-w-screen-md mx-auto text-xs">
-            <form action="/users/create" method="POST" enctype="multipart/form-data">    
+            <form action="/users/create" method="POST" enctype="multipart/form-data" class="formulario">    
                 <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4 hover:shadow-lg md:flex md:flex-col">
                     <div class="md:flex">
                         <div class="mb-5 md:w-1/2 md:mr-3">
@@ -171,5 +171,6 @@
             </form>
         </div>
         <%- include('./partials/footer') %>
+        <script src="/js/register.js"></script>    
     </body>
     </html>

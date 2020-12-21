@@ -138,9 +138,9 @@ exports.processLogin = function (req, res) {
           .then(function (result) {
             if (result) {
               req.session.loggedUser = user;
-              if (req.body.rememberme != undefined){
-                res.cookie('recordarme', user.email, { maxAge: 60000 * 60});
-              };
+              if (req.body.rememberme != undefined) {
+                res.cookie("recordarme", user.email, { maxAge: 60000 * 60 });
+              }
               res.render("index");
             } else {
               res.render("login", {

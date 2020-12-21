@@ -37,7 +37,6 @@ Dinámica Estrella de Mar:
 4- No encuentramos algun punto en el que debamos hacer menos, no consideramos que nos sobre trabajo de Back o Front.
 5- Tenemos que dejar de usar código estático y ser mas performantes.
 
-
 ## Retrospectiva Srint 5
 
 Dinámica Estrella de Mar:
