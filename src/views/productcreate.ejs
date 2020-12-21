@@ -8,23 +8,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico" />
     <link href="/css/all.css" rel="stylesheet">
+    <script src="/scripts/ProductCreate.js" defer></script>
 </head>
 <body class="bg-biblogreen-100">
     <%- include('./partials/header') %>
         <div class="py-8 w-full font-roboto max-w-md md:max-w-screen-md mx-auto text-xs text-gray-800">
-            <form action="/products/create" method="POST"  enctype="multipart/form-data" class="formulario">
+            <form id="product_form" action="/products/create" method="POST"  enctype="multipart/form-data" class="formulario" novalidate>
                 <div class="bg-white px-4 py-6 rounded-md shadow-md mb-4 hover:shadow-lg md:flex md:flex-col">
                     <div class="md:flex">
                         <div class="mb-5 md:w-1/2 md:mr-3">
                             <label for="title" class="block  mb-2">Título</label>
                             <% if(Object.keys(errors).length === 0) {%>
-                                <input id="title" type="text" name="title" value="<%= data.title %>" autofocus placeholder="Título" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">          
+                                <input id="title" type="text" name="title" value="<%= data.title %>" autofocus placeholder="Título" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <span id="title_error" class="text-xs text-red-600"></span>          
                             <% } else {%>
                                 <% if("title" in errors) {%>
                                     <input id="title" type="text" name="title" autofocus placeholder="Título" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
-                                    <span class="text-xs text-red-600"> <%= errors.title.msg %>  </span>
+                                    <span id="title_error" class="text-xs text-red-600"> <%= errors.title.msg %>  </span>
                                 <% } else {%>
                                     <input id="title" type="text" name="title" value="<%= data.title %>" autofocus placeholder="Título" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                    <span id="title_error" class="text-xs text-red-600"></span>
                                 <% } %>   
                             <% } %>  
                         </div>
@@ -72,12 +75,14 @@
                             <label for="isbn" class="block mb-2">ISBN</label>
                             <% if(Object.keys(errors).length === 0) { %>
                                 <input id="isbn" type="number" name="isbn" value="<%=data.isbn%>" min="0000000000" max="9999999999999" placeholder="ISBN" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <span id="isbn_error" class="text-xs text-red-600"></span>
                             <% } else { %>
                                 <% if("isbn" in errors) { %>
                                     <input id="isbn" type="number" name="isbn" min="0000000000" max="9999999999999" placeholder="ISBN" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
-                                    <span class="text-xs text-red-600"> <%= errors.isbn.msg %>  </span>
+                                    <span id="isbn_error" class="text-xs text-red-600"> <%= errors.isbn.msg %>  </span>
                                 <% } else { %>
                                     <input id="isbn" type="number" name="isbn" value="<%=data.isbn%>" min="0000000000" max="9999999999999" placeholder="ISBN" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                    <span id="isbn_error" class="text-xs text-red-600"></span>
                                 <% } %>  
                             <% } %>   
                         </div>
@@ -85,12 +90,14 @@
                             <label for="price" class="block mb-2">Precio</label>
                             <% if(Object.keys(errors).length == 0) {%>
                             <input id="price" type="number" name="price" value="<%=data.price%>" min="0.01" step="0.01" placeholder="Precio" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                            <span id="price_error" class="text-xs text-red-600"></span>
                             <% } else {%>
                                 <% if("price" in errors) { %>
                                     <input id="price" type="number" name="price" min="0.01" step="0.01" placeholder="Precio" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
-                                    <span class="text-xs text-red-600"> <%= errors.price.msg %> </span>
+                                    <span id="price_error" class="text-xs text-red-600"> <%= errors.price.msg %> </span>
                                 <% } else { %>
                                     <input id="price" type="number" name="price" value="<%=data.price%>" min="0.01" step="0.01" placeholder="Precio" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                    <span id="price_error" class="text-xs text-red-600"> <%= errors.price.msg %> </span>
                                 <% } %>     
                             <% } %>
                         </div>
@@ -111,13 +118,15 @@
                         <div class="mb-5 md:w-1/2 md:ml-3">
                             <label for="amount" class="block mb-2">Cantidad</label>
                             <% if(Object.keys(errors).length === 0) {%>
-                                <input id="amount" type="number" value="<%= data.amount %>" name="amount" min="0" step="1" placeholder="Cantidad" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"> 
+                                <input id="amount" type="number" value="<%= data.amount %>" name="amount" min="0" step="1" placeholder="Cantidad" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <span id="amount_error" class="text-xs text-red-600"></span> 
                         <% } else {%>
                                 <% if("amount" in errors) { %>
                                     <input id="amount" type="number" name="amount" min="0" step="1" placeholder="Cantidad" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
-                                    <span class="text-xs text-red-600"> <%= errors.amount.msg %> </span>
+                                    <span id="amount_error" class="text-xs text-red-600"> <%= errors.amount.msg %> </span>
                                 <% } else {%>
                                     <input id="amount" type="number" value="<%= data.amount %>" name="amount" min="0" step="1" placeholder="Cantidad" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                    <span id="amount_error" class="text-xs text-red-600"></span>
                                 <% } %>   
                             <% } %> 
                         </div>
@@ -126,12 +135,14 @@
                         <label for="sinopsis" class="block mb-2">Sinopsis</label>
                         <% if(Object.keys(errors).length === 0) {%>
                             <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%= data.sinopsis %></textarea>
+                            <span id="sinopsis_error" class="text-xs text-red-600"></span>
                         <% } else { %>
                             <% if("sinopsis" in errors) { %>
                                 <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"></textarea>
-                                <span class="text-xs text-red-600"> <%= errors.sinopsis.msg %> </span>    
+                                <span id="sinopsis_error" class="text-xs text-red-600"> <%= errors.sinopsis.msg %> </span>    
                                 <% } else { %>
                                     <textarea name="sinopsis" id="sinopsis" cols="20" rows="6" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300"><%=data.sinopsis%></textarea>
+                                    <span id="sinopsis_error" class="text-xs text-red-600"></span>
                                 <% } %>
                         <% } %>    
                         </div>
@@ -147,7 +158,7 @@
                             </div>
                         </div>
                         <div>
-                            <button type="submit" class="block text-sm text-gray-800 form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 tracking-widest focus:outline-none  focus:bg-biblogreen-200">GUARDAR</button>
+                            <button id="submit_button" type="submit" class="block text-sm text-gray-800 form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300 hover:bg-biblogreen-100 tracking-widest focus:outline-none  focus:bg-biblogreen-200">GUARDAR</button>
                         </div> 
                     </div>
                     </form>

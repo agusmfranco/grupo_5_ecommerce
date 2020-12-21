@@ -78,7 +78,7 @@ exports.productCreated = function (req, res) {
       sinopsis: req.body.sinopsis,
       book_cover: book_cover,
     });
-    res.render("bookcheckmark", { msg: "Libro creado con exito!" });
+    res.render("checkmark", { msg: "Libro creado con exito!" });
   } else {
     let genresPromise = db.Genres.findAll();
     let autorsPromise = db.Autors.findAll();
@@ -156,7 +156,7 @@ exports.productUpdated = function (req, res) {
         },
       }
     );
-    res.render("bookcheckmark", { msg: "Libro modificado con exito!" });
+    res.render("checkmark", { msg: "Libro modificado con exito!" });
   } else {
     console.log(errors);
     let genresPromise = db.Genres.findAll();
@@ -240,7 +240,7 @@ exports.checkOutData = function (req, res) {
       res.json({ items: items });
     });
   } else {
-    res.json({ items: [] });
+    res.send();
   }
 };
 

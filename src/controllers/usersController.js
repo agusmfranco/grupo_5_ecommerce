@@ -43,7 +43,7 @@ exports.userCreated = function (req, res) {
       password: passwordHash,
       user_photo: user_photo,
     });
-    res.send("Usuario creado!");
+    res.render("checkmark", { msg: "Usuario creado con éxito" });
   } else {
     db.Userstypes.findAll().then(function (types) {
       res.render("usercreate", {
@@ -95,7 +95,7 @@ exports.userUpdated = function (req, res) {
         },
       }
     ).then(function () {
-      res.send("Usuario modificado con éxito!");
+      res.render("checkmark", { msg: "Usuario modificado con éxito" });
     });
   } else {
     db.Userstypes.findAll().then(function (types) {
@@ -127,6 +127,7 @@ exports.processLogin = function (req, res) {
     db.Users.findOne({ where: { email: req.body.email } }).then(function (
       user
     ) {
+      console.log(user);
       if (user == null) {
         res.render("login", {
           errors: { email: { msg: "Usuario inválido" } },

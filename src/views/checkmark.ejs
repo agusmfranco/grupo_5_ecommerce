@@ -11,15 +11,17 @@
 </head>
 <body class="bg-biblogreen-100">
     <%- include('./partials/header') %>
-    <div class="bg-white font-roboto mb-10 p-3 rounded-md shadow-md text-gray-800 lg:max-w-screen-lg lg:mx-auto lg:px-16 sm:px-5">
-        <div class="text-biblogreen-400 text-6xl">
-            <i class="fas fa-check-square"></i>
-            <span class="text-lg font-bold inline-block align-middle"><%= msg %> </span>
+    <div class="min-h-screen">
+        <div class="bg-white font-roboto mb-10 p-3 rounded-md shadow-md text-gray-800 lg:max-w-screen-lg lg:py-20 lg:mx-auto lg:px-16 sm:px-5">
+            <div class="text-biblogreen-400 text-6xl">
+                <i class="fas fa-check-square"></i>
+                <span class="text-lg font-bold inline-block align-middle"><%= msg %> </span>
+            </div>
         </div>
     </div>
     <script>
         setTimeout(function(){
-           window.location.href = '/products';
+           window.location.href = '/';
         }, 3000);
      </script>
     <%- include('./partials/footer') %>
