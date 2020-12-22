@@ -19,14 +19,14 @@
                         <div class="mb-5 md:w-1/2 md:mr-3">
                             <label for="title" class="block  mb-2">Título</label>
                             <% if(Object.keys(errors).length === 0) {%>
-                                <input id="title" type="text" name="title" value="<%= data.title %>" autofocus placeholder="Título" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <input id="title" type="text" name="title" value="<%= data.title %>" placeholder="Título" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                 <span id="title_error" class="text-xs text-red-600"></span>          
                             <% } else {%>
                                 <% if("title" in errors) {%>
-                                    <input id="title" type="text" name="title" autofocus placeholder="Título" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                    <input id="title" type="text" name="title" placeholder="Título" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                     <span id="title_error" class="text-xs text-red-600"> <%= errors.title.msg %>  </span>
                                 <% } else {%>
-                                    <input id="title" type="text" name="title" value="<%= data.title %>" autofocus placeholder="Título" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                    <input id="title" type="text" name="title" value="<%= data.title %>" placeholder="Título" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                     <span id="title_error" class="text-xs text-red-600"></span>
                                 <% } %>   
                             <% } %>  

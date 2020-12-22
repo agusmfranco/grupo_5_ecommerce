@@ -20,14 +20,14 @@
                     <div class="mb-5">
                         <label for="email" class="block  mb-2">E-mail</label>
                         <% if(Object.keys(errors).length === 0) {%>
-                            <input id="email" type="email" name="email" value="<%= data.email %>" autofocus placeholder="e-mail" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                            <input id="email" type="email" name="email" value="<%= data.email %>" placeholder="e-mail" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                             <span id="email_error" class="text-xs text-red-600"></span>          
                         <% } else {%>
                             <% if("email" in errors) {%>
-                                <input id="email" type="email" name="email" autofocus placeholder="e-mail" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <input id="email" type="email" name="email" placeholder="e-mail" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                 <span id="email_error" class="text-xs text-red-600"> <%= errors.email.msg %>  </span>
                             <% } else {%>
-                                <input id="email" type="email" name="email" value="<%= data.email %>" autofocus placeholder="e-mail" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <input id="email" type="email" name="email" value="<%= data.email %>" placeholder="e-mail" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                 <span id="email_error" class="text-xs text-red-600"></span>
                             <% } %>   
                         <% } %>  
@@ -35,14 +35,14 @@
                     <div class="mb-5">
                         <label for="password" class="block  mb-2">Contraseña</label>
                         <% if(Object.keys(errors).length === 0) {%>
-                            <input id="password" type="password" name="password" value="<%= data.password %>" autofocus placeholder="Contraseña" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                            <input id="password" type="password" name="password" value="<%= data.password %>" placeholder="Contraseña" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                             <span id="password_error" class="text-xs text-red-600"></span>          
                         <% } else {%>
                             <% if("password" in errors) {%>
-                                <input id="password" type="password" name="password" autofocus placeholder="Contraseña" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <input id="password" type="password" name="password" placeholder="Contraseña" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                 <span id="password_error" class="text-xs text-red-600"> <%= errors.password.msg %>  </span>
                             <% } else {%>
-                                <input id="password" type="password" name="password" value="<%= data.password %>" autofocus placeholder="Contraseña" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <input id="password" type="password" name="password" value="<%= data.password %>" placeholder="Contraseña" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
                                 <span id="password_error" class="text-xs text-red-600"></span>
                             <% } %>   
                         <% } %>  
