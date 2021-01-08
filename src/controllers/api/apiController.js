@@ -9,10 +9,7 @@ exports.productList = function (req, res) {
   db.Books.findAll({
     attributes: ["id", "title", "sinopsis", "genre_id"],
     include: [
-      { association: "genres", attributes: ["name"] },
-      { association: "autors", attributes: ["name"] },
-      { association: "houses" },
-      { association: "states" },
+      { association: "genres", attributes: ["name"] }
     ],
   }).then(function (books) {
     let response = {
@@ -41,7 +38,7 @@ exports.productDetail = function (req, res) {
         status: 200,
         url: "/api/products/" + req.params.id,
       },
-      data: [{img: __dirname + books.book_cover,
+      data: [{img: '/public/portadas/' + books.book_cover,
               properties: books
       }]
     };
@@ -51,13 +48,13 @@ exports.productDetail = function (req, res) {
 
 exports.userList = function (req, res) {
   db.Users.findAll({
-    include: [{ association: "userstypes" }],
+    attributes: ["id", "first_name", "email"],
   }).then(function (users) {
     let response = {
       meta: {
         status: 200,
         count: users.length,
-        url: "/api/users",
+        url: "/api/users"
       },
       data: users
     };
@@ -67,13 +64,13 @@ exports.userList = function (req, res) {
 
 exports.userDetail = function (req, res) {
   db.Users.findByPk(req.params.id, {
-    include: [{ association: "userstypes" }],
+    attributes: ["id", "first_name", "email", "user_photo"],
   }).then(function (users) {
     let response = {
       meta: {
         status: 200,
         url: "/api/users/" + req.params.id,
-        profile_pic: __dirname + users.user_photo
+        profile_pic: '/public/users_photo/' + users.user_photo
       },
       data: users
     };
