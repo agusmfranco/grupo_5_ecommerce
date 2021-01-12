@@ -7,10 +7,28 @@ const { Op } = require("sequelize");
 
 exports.productList = function (req, res) {
   db.Books.findAll({
-    attributes: ["title", "price"],
+    attributes: ["id", "title", "sinopsis", "genre_id"],
     include: [
-      { association: "genres", attributes: ["name"] },
-      { association: "autors", attributes: ["name"] },
+      { association: "genres", attributes: ["name"] }
+    ],
+  }).then(function (books) {
+    let response = {
+      meta: {
+        status: 200,
+        count: books.length,
+        url: "/api/products",
+      },
+      data: books
+    };
+    res.json(response);
+  });
+};
+
+exports.productDetail = function (req, res) {
+  db.Books.findByPk(req.params.id, {
+    include: [
+      { association: "genres" },
+      { association: "autors" },
       { association: "houses" },
       { association: "states" },
     ],
@@ -18,11 +36,46 @@ exports.productList = function (req, res) {
     let response = {
       meta: {
         status: 200,
-        total: books.length,
-        url: "/api/products",
+        url: "/api/products/" + req.params.id,
       },
-      data: books,
+      data: [{img: '/public/portadas/' + books.book_cover,
+              properties: books
+      }]
     };
     res.json(response);
   });
 };
+
+exports.userList = function (req, res) {
+  db.Users.findAll({
+    attributes: ["id", "first_name", "email"],
+  }).then(function (users) {
+    let response = {
+      meta: {
+        status: 200,
+        count: users.length,
+        url: "/api/users"
+      },
+      data: users
+    };
+    res.json(response);
+  });
+};
+
+exports.userDetail = function (req, res) {
+  db.Users.findByPk(req.params.id, {
+    attributes: ["id", "first_name", "email", "user_photo"],
+  }).then(function (users) {
+    let response = {
+      meta: {
+        status: 200,
+        url: "/api/users/" + req.params.id,
+        profile_pic: '/public/users_photo/' + users.user_photo
+      },
+      data: users
+    };
+    res.json(response);
+  });
+};
+
+
