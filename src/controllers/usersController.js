@@ -175,3 +175,7 @@ exports.userData = function (req, res) {
     res.json({});
   }
 };
+
+exports.userAdmin = function (req,res) {
+  res.render('adminpanel')
+};
