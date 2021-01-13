@@ -9,22 +9,19 @@ module.exports = (sequelize, dataTypes) => {
     user_id: {
       type: dataTypes.INTEGER,
     },
-    product_id: {
-      type: dataTypes.INTEGER,
-    },
   };
   let config = {
     tablename: "purchase",
     timestamps: false,
+    freezeTableName: true,
   };
   const Purchase = sequelize.define(alias, cols, config);
 
   Purchase.associate = function (models) {
     Purchase.belongsToMany(models.Books, {
       as: "books",
-      through: "books_purchase",
-      foreignKey: "book_id",
-      otherKey: "purchase_id",
+      through: "BooksPurchase",
+      foreignKey: "purchase_id",
       timestamps: false,
     });
   };

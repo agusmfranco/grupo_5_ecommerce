@@ -16,6 +16,18 @@ router.get("/checkout/data", loginAuth, products_controller.checkOutData);
 
 router.post("/checkout/data", loginAuth, products_controller.checkOutSave);
 
+router.post(
+  "/checkout/purchase",
+  loginAuth,
+  products_controller.checkOutPurchase
+);
+
+router.post("/checkout/delete", loginAuth, products_controller.checkOutDelete);
+
+router.get("/checkout/checkmark", loginAuth, function (req, res) {
+  res.render("checkmark", { msg: "Gracias por comprar en Biblo!" });
+});
+
 // Rutas para crear producto
 router.get("/create", loginAuth, adminAuth, products_controller.productCreate);
 

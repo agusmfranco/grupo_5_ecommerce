@@ -43,9 +43,8 @@ module.exports = (sequelize, dataTypes) => {
   Books.associate = function (models) {
     Books.belongsToMany(models.Purchase, {
       as: "purchase",
-      through: "book_purchase",
-      foreignKey: "purchase_id",
-      otherKey: "book_id",
+      through: "BooksPurchase",
+      foreignKey: "book_id",
       timestamps: false,
     });
     Books.belongsTo(models.Autors, {

@@ -221,13 +221,39 @@ exports.productSearch = function (req, res) {
       { association: "states" },
     ],
   }).then(function (books) {
-    console.log(books[0].book_cover);
     res.render("productslist", { books, books });
   });
 };
 
 exports.checkOut = function (req, res) {
-  res.render("checkout");
+  db.Checkouts.findAll({
+    where: {
+      user_id: req.session.loggedUser.id,
+    },
+  }).then(function (items) {
+    let books_id = [];
+    items.forEach((item) => {
+      books_id.push(item.dataValues.book_id);
+    });
+    db.Books.findAll({
+      where: {
+        id: {
+          [Op.or]: books_id,
+        },
+      },
+      include: [
+        { association: "genres" },
+        { association: "autors" },
+        { association: "houses" },
+        { association: "states" },
+      ],
+    }).then(function (books) {
+      res.render("checkout", {
+        books: books,
+        items: items,
+      });
+    });
+  });
 };
 
 exports.checkOutData = function (req, res) {
@@ -278,5 +304,39 @@ exports.checkOutSave = function (req, res) {
         });
       });
     }
+  });
+};
+
+exports.checkOutDelete = function (req, res) {
+  db.Checkouts.destroy({
+    where: {
+      id: req.body.item_id,
+      user_id: req.session.loggedUser.id,
+    },
+  }).then(function () {
+    res.json({
+      status: 200,
+      item: req.body.item_id,
+    });
+  });
+};
+
+exports.checkOutPurchase = function (req, res) {
+  db.Purchase.create({
+    user_id: req.session.loggedUser.id,
+    total: req.body.total,
+  }).then((purchase) => {
+    Object.entries(req.body.detail).forEach((ent) => {
+      db.BooksPurchase.create({
+        purchase_id: purchase.id,
+        book_id: ent[0],
+        quantity: ent[1],
+      });
+    });
+    db.Checkouts.destroy({
+      where: {
+        user_id: req.session.loggedUser.id,
+      },
+    });
   });
 };
