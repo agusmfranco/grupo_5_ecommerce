@@ -46,6 +46,10 @@ DELETE: /products/:id
 
 GET: /users
 
+**Admin Panel**
+
+GET: /users/adminpanel
+
 **Crear usuario:**
 
 GET: /users/create
