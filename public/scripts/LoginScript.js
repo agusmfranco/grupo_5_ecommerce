@@ -24,7 +24,7 @@ let password = document.getElementById("password");
 password.addEventListener("blur", function (event) {
   if (event.target.value == "") {
     document.getElementById("password_error").textContent =
-      "Debe instroducir una contraseña";
+      "Debe introducir una contraseña";
   } else {
     document.getElementById("password_error").textContent = "";
     errors = errors.filter((id) => {
