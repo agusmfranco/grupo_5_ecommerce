@@ -29,14 +29,19 @@ module.exports = {
         roboto: ["Roboto", "sans-serif"],
       },
     },
+    cursor: {
+      grab: "grab",
+    },
   },
   variants: {
     backgroundColor: ["responsive", "hover", "focus", "active"],
     boxShadow: ["responsive", "hover", "focus", "active"],
     borderStyle: ["responsive", "hover", "focus", "active"],
+    scrollbar: ["responsive", "hover", "focus", "active"],
   },
   plugins: [
     require("@tailwindcss/custom-forms"),
     require("tailwindcss-shadow-outline-colors")(),
+    require("tailwind-scrollbar"),
   ],
 };

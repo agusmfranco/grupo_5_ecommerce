@@ -66,8 +66,7 @@ for (let index = 0; index < items.length; index++) {
       })
         .then((response) => response.json())
         .then((data) => {
-          let item = document.getElementById(index + "_item");
-          item.parentNode.removeChild(item);
+          window.location.reload();
         });
     });
 }

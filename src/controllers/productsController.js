@@ -7,6 +7,25 @@ const { Op } = require("sequelize");
 const { createBrotliDecompress } = require("zlib");
 const session = require("express-session");
 
+exports.productIndex = function (req, res) {
+  const booksPromise = db.Books.findAll({
+    include: [
+      { association: "genres" },
+      { association: "autors" },
+      { association: "houses" },
+      { association: "states" },
+    ],
+  });
+  const genresPromise = db.Genres.findAll();
+
+  Promise.all([booksPromise, genresPromise]).then(function ([books, genres]) {
+    res.render("index", {
+      books: books,
+      genres: genres,
+    });
+  });
+};
+
 exports.productList = function (req, res) {
   db.Books.findAll({
     include: [
@@ -248,6 +267,7 @@ exports.checkOut = function (req, res) {
         { association: "states" },
       ],
     }).then(function (books) {
+      console.log(items);
       res.render("checkout", {
         books: books,
         items: items,
