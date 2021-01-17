@@ -158,6 +158,7 @@ exports.processLogin = function (req, res) {
       data: req.body,
     });
   }
+  
 };
 
 exports.userDetail = function (req, res) {

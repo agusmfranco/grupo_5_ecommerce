@@ -63,3 +63,9 @@ GET: /users/:id/edit
 PUT: /users/:id
 
 DELETE: /users/:id
+
+### Extras
+
+**Login check**
+
+GET: /users/check
