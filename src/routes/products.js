@@ -7,10 +7,12 @@ var products_controller = require("../controllers/productsController");
 var forms_validators = require("../middlewares/formsValidators");
 var products_upload = require("../middlewares/productsUpload");
 
-router.get("/", adminAuth, products_controller.productList);
+router.get("/", loginAuth, adminAuth, products_controller.productList);
 
 // Rutas para carrito
-router.get("/checkout", loginAuth, products_controller.checkOut);
+router.post("/checkout", loginAuth, products_controller.checkOut);
+
+router.get("/checkout/cart", loginAuth, products_controller.checkOutCart);
 
 router.get("/checkout/data", loginAuth, products_controller.checkOutData);
 

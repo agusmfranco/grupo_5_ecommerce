@@ -247,6 +247,129 @@ exports.productSearch = function (req, res) {
 exports.checkOut = function (req, res) {
   db.Checkouts.findAll({
     where: {
+      book_id: req.body.book_id,
+      user_id: req.session.loggedUser.id,
+    },
+  }).then(function (checkouts) {
+    if (checkouts.length == 0) {
+      db.Checkouts.create({
+        book_id: req.body.book_id,
+        user_id: req.session.loggedUser.id,
+        quantity: req.body.quantity,
+      }).then(function () {
+        db.Checkouts.findAll({
+          where: {
+            user_id: req.session.loggedUser.id,
+          },
+        }).then(function (items) {
+          db.Checkouts.findAll({
+            where: {
+              user_id: req.session.loggedUser.id,
+            },
+          }).then(function (items) {
+            let books_id = [];
+            items.forEach((item) => {
+              books_id.push(item.dataValues.book_id);
+            });
+            db.Books.findAll({
+              where: {
+                id: {
+                  [Op.or]: books_id,
+                },
+              },
+              include: [
+                { association: "genres" },
+                { association: "autors" },
+                { association: "houses" },
+                { association: "states" },
+              ],
+            }).then(function (books) {
+              console.log(items);
+              res.render("checkout", {
+                books: books,
+                items: items,
+              });
+            });
+          });
+        });
+      });
+    } else {
+      let book = checkouts[0];
+      book.quantity = req.body.quantity;
+      book.save().then(function () {
+        db.Checkouts.findAll({
+          where: {
+            user_id: req.session.loggedUser.id,
+          },
+        }).then(function (items) {
+          db.Checkouts.findAll({
+            where: {
+              user_id: req.session.loggedUser.id,
+            },
+          }).then(function (items) {
+            let books_id = [];
+            items.forEach((item) => {
+              books_id.push(item.dataValues.book_id);
+            });
+            db.Books.findAll({
+              where: {
+                id: {
+                  [Op.or]: books_id,
+                },
+              },
+              include: [
+                { association: "genres" },
+                { association: "autors" },
+                { association: "houses" },
+                { association: "states" },
+              ],
+            }).then(function (books) {
+              console.log(items);
+              res.render("checkout", {
+                books: books,
+                items: items,
+              });
+            });
+          });
+        });
+      });
+    }
+  });
+
+  // db.Checkouts.findAll({
+  //   where: {
+  //     user_id: req.session.loggedUser.id,
+  //   },
+  // }).then(function (items) {
+  //   let books_id = [];
+  //   items.forEach((item) => {
+  //     books_id.push(item.dataValues.book_id);
+  //   });
+  //   db.Books.findAll({
+  //     where: {
+  //       id: {
+  //         [Op.or]: books_id,
+  //       },
+  //     },
+  //     include: [
+  //       { association: "genres" },
+  //       { association: "autors" },
+  //       { association: "houses" },
+  //       { association: "states" },
+  //     ],
+  //   }).then(function (books) {
+  //     console.log(items);
+  //     res.render("checkout", {
+  //       books: books,
+  //       items: items,
+  //     });
+  //   });
+  // });
+};
+
+exports.checkOutCart = function (req, res) {
+  db.Checkouts.findAll({
+    where: {
       user_id: req.session.loggedUser.id,
     },
   }).then(function (items) {
@@ -286,7 +409,7 @@ exports.checkOutData = function (req, res) {
       res.json({ items: items });
     });
   } else {
-    res.send();
+    res.end();
   }
 };
 
@@ -330,13 +453,37 @@ exports.checkOutSave = function (req, res) {
 exports.checkOutDelete = function (req, res) {
   db.Checkouts.destroy({
     where: {
-      id: req.body.item_id,
+      book_id: req.body.item_id,
       user_id: req.session.loggedUser.id,
     },
   }).then(function () {
-    res.json({
-      status: 200,
-      item: req.body.item_id,
+    db.Checkouts.findAll({
+      where: {
+        user_id: req.session.loggedUser.id,
+      },
+    }).then(function (items) {
+      let books_id = [];
+      items.forEach((item) => {
+        books_id.push(item.dataValues.book_id);
+      });
+      db.Books.findAll({
+        where: {
+          id: {
+            [Op.or]: books_id,
+          },
+        },
+        include: [
+          { association: "genres" },
+          { association: "autors" },
+          { association: "houses" },
+          { association: "states" },
+        ],
+      }).then(function (books) {
+        res.render("checkout", {
+          books: books,
+          items: items,
+        });
+      });
     });
   });
 };
@@ -346,6 +493,7 @@ exports.checkOutPurchase = function (req, res) {
     user_id: req.session.loggedUser.id,
     total: req.body.total,
   }).then((purchase) => {
+    console.log(purchase);
     Object.entries(req.body.detail).forEach((ent) => {
       db.BooksPurchase.create({
         purchase_id: purchase.id,

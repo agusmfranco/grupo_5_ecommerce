@@ -28,7 +28,7 @@
                 <div class="mb-4">
                     <span class="text-xl font-medium text-biblogreen-700"><%= book.states.name %> </span>
                 </div>
-                <form id="product_form" action="/products/checkout" method="GET" id="buy_form">
+                <form id="product_form" action="/products/checkout" method="POST" id="buy_form">
                     <div class="mb-3">
                         <label for="quantity" class="block text-gray-800 mb-2">Cantidad</label>
                         <input id="quantity" type="number" name="quantity" id="cantidad" value="1" class="block text-gray-800 text-sm form-input w-1/4 lg:w-1/2 border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">

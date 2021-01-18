@@ -127,7 +127,6 @@ exports.processLogin = function (req, res) {
     db.Users.findOne({ where: { email: req.body.email } }).then(function (
       user
     ) {
-      console.log(user);
       if (user == null) {
         res.render("login", {
           errors: { email: { msg: "Usuario inválido" } },
@@ -142,7 +141,7 @@ exports.processLogin = function (req, res) {
               if (req.body.rememberme != undefined) {
                 res.cookie("recordarme", user.email, { maxAge: 60000 * 60 });
               }
-              res.render("index");
+              res.redirect("/");
             } else {
               res.render("login", {
                 errors: { password: { msg: "Password inválido" } },
@@ -176,6 +175,6 @@ exports.userData = function (req, res) {
   }
 };
 
-exports.userAdmin = function (req,res) {
-  res.render('adminpanel')
+exports.userAdmin = function (req, res) {
+  res.render("adminpanel");
 };

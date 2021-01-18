@@ -1,16 +1,19 @@
 window.addEventListener("load", function () {
-  fetch("/products/checkout/data")
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.items.length > 0) {
-        document.querySelectorAll("#cart_div").forEach((element) => {
-          element.innerHTML +=
-            '<span class="absolute bg-white box-border px-1 font-roboto rounded-full border-2 border-biblogreen-500 text-biblogreen-500 font-semibold text-xs right-0">' +
-            data.items.length +
-            "</span>";
-        });
-      }
-    });
+  fetch("/products/checkout/data").then((response) => {
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.indexOf("application/json") !== -1) {
+      response.json().then((data) => {
+        if (data.items.length > 0) {
+          document.querySelectorAll("#cart_div").forEach((element) => {
+            element.innerHTML +=
+              '<span class="absolute bg-white box-border px-1 font-roboto rounded-full border-2 border-biblogreen-500 text-biblogreen-500 font-semibold text-xs right-0">' +
+              data.items.length +
+              "</span>";
+          });
+        }
+      });
+    }
+  });
 
   fetch("/users/data")
     .then((response) => response.json())

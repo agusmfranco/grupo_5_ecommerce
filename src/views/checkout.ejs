@@ -54,7 +54,10 @@
                                 </div>
                             </div>
                             <div class="mt-3 text-biblogreen-500 text-sm">
-                                <a id="<%= index + "_delete" %>" href="#">Eliminar</a>
+                                <form action="/products/checkout/delete" method="POST">
+                                    <input name="item_id" value="<%= book.id %>" type="text" hidden>
+                                    <button type="submit" id="<%= index + "_delete" %>" href="#" class="hover:text-biblogreen-800 focus:outline-none" >Eliminar</button>
+                                </form>
                             </div>
                         </div>
                     </div>

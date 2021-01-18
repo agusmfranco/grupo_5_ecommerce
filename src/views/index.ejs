@@ -23,7 +23,7 @@
           <% books.forEach(book => { %>
             <% if(book.genre_id == genre.id) { %>
               <div class="swiper-slide">
-                <a href="#">
+                <a href="<%= "products/" + book.id %> ">
                   <div class="w-40 flex-none px-3">
                       <div class="mb-6 h-item">
                           <img src="<%= "/portadas/" + book.book_cover %>" alt="">
