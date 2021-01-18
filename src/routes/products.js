@@ -47,6 +47,10 @@ router.get("/checkmark", function (req, res) {
   res.render("bookcheckmark");
 });
 
+router.get("/genres", products_controller.genresList);
+
+router.get("/genres/:id", products_controller.booksByGenre);
+
 // Rutas para detalle
 router.get("/:id", products_controller.productDetail);
 

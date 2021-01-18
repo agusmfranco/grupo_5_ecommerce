@@ -508,3 +508,31 @@ exports.checkOutPurchase = function (req, res) {
     });
   });
 };
+
+exports.genresList = function (req, res) {
+  db.Genres.findAll().then(function (genres) {
+    res.json(genres);
+  });
+};
+
+exports.booksByGenre = function (req, res) {
+  let genrePromise = db.Genres.findByPk(req.params.id);
+  let booksPromise = db.Books.findAll({
+    where: {
+      genre_id: req.params.id,
+    },
+    include: [
+      { association: "genres" },
+      { association: "autors" },
+      { association: "houses" },
+      { association: "states" },
+    ],
+  });
+  Promise.all([booksPromise, genrePromise]).then(function ([books, genre]) {
+    console.log(genre);
+    res.render("genrebooks", {
+      books: books,
+      genre: genre,
+    });
+  });
+};

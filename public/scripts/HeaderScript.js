@@ -36,6 +36,22 @@ window.addEventListener("load", function () {
       }
     });
 
+  let genresBox = document.getElementById("genres_box");
+
+  fetch("/products/genres")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((element) => {
+        genresBox.innerHTML +=
+          '<a href="/products/genres/' +
+          element.id +
+          '"' +
+          ' class="block text-sm text-biblogreen-600 pr-3 mb-1 hover:text-biblogreen-800">' +
+          element.name +
+          "</a>";
+      });
+    });
+
   headerContainer = document.getElementById("header_container");
   genresLink = document.getElementById("genres_link");
   genresArrow = document.getElementById("genres_arrow");
