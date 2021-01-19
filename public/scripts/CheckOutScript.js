@@ -49,28 +49,6 @@ for (let index = 0; index < items.length; index++) {
     });
 }
 
-for (let index = 0; index < items.length; index++) {
-  document
-    .getElementById(index + "_delete")
-    .addEventListener("mouseup", (event) => {
-      event.preventDefault();
-      fetch("checkout/delete", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          item_id: document.getElementById(index + "_item_id").innerText,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          window.location.reload();
-        });
-    });
-}
-
 let buyButton = document.getElementById("buy_button");
 
 buyButton.addEventListener("mouseup", (event) => {
@@ -82,7 +60,7 @@ buyButton.addEventListener("mouseup", (event) => {
     detail[id] = document.getElementById(index + "_quantity").value;
   }
 
-  fetch("checkout/purchase", {
+  fetch("/products/checkout/purchase", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -94,5 +72,5 @@ buyButton.addEventListener("mouseup", (event) => {
     }),
   });
 
-  window.location.replace("checkout/checkmark");
+  window.location.replace("/products/checkout/checkmark");
 });

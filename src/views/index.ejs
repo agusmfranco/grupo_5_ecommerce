@@ -15,15 +15,15 @@
 <body class="bg-biblogreen-100 font-roboto">
     <%- include('./partials/header') %>
     <% genres.forEach((genre, index) => { %>
-      <div class="lg:max-w-screen-xl lg:mx-auto px-5">
-        <h1 class="mb-4 text-gray-800 text-lg font-semibold tracking-wide px-3"><%= genre.name.toUpperCase() %> </h1>
+      <div class="lg:max-w-screen-xl lg:mx-auto px-5 mb-2">
+        <a href="<%= "/products/genres/" + genre.id %>" class="mb-4 text-gray-800 text-lg font-semibold tracking-wide px-3"><%= genre.name.toUpperCase() %> </a>
       </div>
       <div class="swiper-container bg-white font-roboto mb-10 pb-3 pt-5 rounded-md shadow-md text-gray-800 lg:max-w-screen-xl lg:mx-auto lg:px- sm:px-5 overflow-x-hidden">
         <div class="swiper-wrapper flex">
           <% books.forEach(book => { %>
             <% if(book.genre_id == genre.id) { %>
               <div class="swiper-slide">
-                <a href="#">
+                <a href="<%= "products/" + book.id %> ">
                   <div class="w-40 flex-none px-3">
                       <div class="mb-6 h-item">
                           <img src="<%= "/portadas/" + book.book_cover %>" alt="">
