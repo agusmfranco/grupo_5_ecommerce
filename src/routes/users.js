@@ -2,7 +2,9 @@ var express = require("express");
 var router = express.Router();
 var loginAuth = require("../middlewares/loginAuth");
 var adminAuth = require('../middlewares/adminAuth');
+var logOff = require('../middlewares/logOff');
 var users_upload = require("../middlewares/usersUpload");
+
 
 
 const users_controller = require("../controllers/usersController");
@@ -27,8 +29,7 @@ router.put(
   users_controller.userUpdated
 );
 
-router.get("/logoff", function(req, res, next) {
-  req.session.destroy(); res.redirect('/')} , users_controller.userLogOff);
+router.get("/logoff", logOff, users_controller.userLogOff);
 
 router.delete("/:id", loginAuth, users_controller.userDelete);
 

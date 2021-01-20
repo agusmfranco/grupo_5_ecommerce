@@ -2,7 +2,7 @@ const session = require("express-session");
 const db = require("../database/models");
 
 const cookieAuth = function (req, res, next) {
-  next();
+  
 
   if (
     req.cookies.recordarme != undefined &&
@@ -14,6 +14,7 @@ const cookieAuth = function (req, res, next) {
       }
     );
   }
+  next(); 
 };
 
 module.exports = cookieAuth;
