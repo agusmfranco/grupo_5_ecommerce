@@ -179,3 +179,12 @@ exports.userData = function (req, res) {
 exports.userAdmin = function (req, res) {
   res.render("adminpanel");
 };
+
+exports.logOff = function (req, res)  {
+  req.session.destroy()
+  res.redirect('/logoff')
+};
+
+exports.userLogOff = function (req, res){
+  res.render("logoff")
+}

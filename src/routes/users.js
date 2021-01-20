@@ -27,6 +27,9 @@ router.put(
   users_controller.userUpdated
 );
 
+router.get("/logoff", function(req, res, next) {
+  req.session.destroy(); res.redirect('/')} , users_controller.userLogOff);
+
 router.delete("/:id", loginAuth, users_controller.userDelete);
 
 router.get("/login", users_controller.userLogin);
