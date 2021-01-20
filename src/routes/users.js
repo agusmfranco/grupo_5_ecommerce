@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var loginAuth = require("../middlewares/loginAuth");
 var adminAuth = require("../middlewares/adminAuth");
+var logOff = require("../middlewares/logOff");
 var users_upload = require("../middlewares/usersUpload");
 
 const users_controller = require("../controllers/usersController");
@@ -26,6 +27,8 @@ router.put(
   forms_validators.validateUserEdit,
   users_controller.userUpdated
 );
+
+router.get("/logoff", logOff, users_controller.userLogOff);
 
 router.delete("/:id", loginAuth, users_controller.userDelete);
 

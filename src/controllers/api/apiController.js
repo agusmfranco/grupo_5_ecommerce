@@ -48,7 +48,7 @@ exports.productDetail = function (req, res) {
 
 exports.userList = function (req, res) {
   db.Users.findAll({
-    attributes: ["id", "first_name", "email"],
+    attributes: ["id", "first_name", "email", "user_type_id"],
   }).then(function (users) {
     let response = {
       meta: {
