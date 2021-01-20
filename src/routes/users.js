@@ -1,9 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var loginAuth = require("../middlewares/loginAuth");
-var adminAuth = require('../middlewares/adminAuth');
+var adminAuth = require("../middlewares/adminAuth");
 var users_upload = require("../middlewares/usersUpload");
-
 
 const users_controller = require("../controllers/usersController");
 const forms_validators = require("../middlewares/formsValidators");
@@ -18,7 +17,8 @@ router.post(
   users_controller.userCreated
 );
 
-router.get("/edit", loginAuth, users_controller.userUpdate);
+router.get("/edit/:id", loginAuth, users_controller.userUpdate);
+
 router.put(
   "/:id",
   loginAuth,
@@ -35,7 +35,6 @@ router.post(
   forms_validators.validateLogin,
   users_controller.processLogin
 );
-
 
 //prueba
 
@@ -60,8 +59,6 @@ router.get("/check", function (req, res) {
 
 router.get("/detail", users_controller.userDetail);
 
-router.get("/data", users_controller.userData);
-
-router.get('/adminpanel', adminAuth, users_controller.userAdmin);
+router.get("/adminpanel", adminAuth, users_controller.userAdmin);
 
 module.exports = router;

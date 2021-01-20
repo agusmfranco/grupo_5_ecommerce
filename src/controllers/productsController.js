@@ -7,7 +7,19 @@ const { Op } = require("sequelize");
 const { createBrotliDecompress } = require("zlib");
 const session = require("express-session");
 
-exports.productIndex = function (req, res) {
+exports.productList = function (req, res) {
+  let itemsPromise = [];
+  let userPromise = {};
+
+  if (req.session.loggedUser) {
+    itemsPromise = db.Items.findAll({
+      where: {
+        user_id: req.session.loggedUser.id,
+      },
+    });
+    userPromise = db.Users.findByPk(req.session.loggedUser.id);
+  }
+
   const booksPromise = db.Books.findAll({
     include: [
       { association: "genres" },
@@ -16,41 +28,55 @@ exports.productIndex = function (req, res) {
       { association: "states" },
     ],
   });
+
   const genresPromise = db.Genres.findAll();
 
-  Promise.all([booksPromise, genresPromise]).then(function ([books, genres]) {
-    res.render("index", {
-      books: books,
-      genres: genres,
-    });
-  });
-};
-
-exports.productList = function (req, res) {
-  db.Books.findAll({
-    include: [
-      { association: "genres" },
-      { association: "autors" },
-      { association: "houses" },
-      { association: "states" },
-    ],
-  }).then(function (books) {
-    res.render("productslist", { books: books });
-  });
+  Promise.all([booksPromise, genresPromise, itemsPromise, userPromise]).then(
+    function ([books, genres, items, user]) {
+      res.render("productslist", {
+        books: books,
+        genres: genres,
+        items: items,
+        user: user,
+      });
+    }
+  );
 };
 
 exports.productDetail = function (req, res) {
-  db.Books.findByPk(req.params.id, {
+  let itemsPromise = [];
+  let userPromise = {};
+
+  if (req.session.loggedUser) {
+    itemsPromise = db.Items.findAll({
+      where: {
+        user_id: req.session.loggedUser.id,
+      },
+    });
+    userPromise = db.Users.findByPk(req.session.loggedUser.id);
+  }
+
+  const genresPromise = db.Genres.findAll();
+
+  const bookPromise = db.Books.findByPk(req.params.id, {
     include: [
       { association: "genres" },
       { association: "autors" },
       { association: "houses" },
       { association: "states" },
     ],
-  }).then(function (book) {
-    console.log(book.autors);
-    res.render("productdetail", { book: book });
   });
+
+  Promise.all([bookPromise, genresPromise, itemsPromise, userPromise]).then(
+    function ([book, genres, items, user]) {
+      res.render("productdetail", {
+        book: book,
+        genres: genres,
+        items: items,
+        user: user,
+      });
+    }
+  );
 };
 
 exports.productCreate = function (req, res) {
@@ -129,13 +155,27 @@ exports.productUpDate = function (req, res) {
   let housesPromise = db.Houses.findAll();
   let statesPromise = db.States.findAll();
 
+  let itemsPromise = [];
+  let userPromise = {};
+
+  if (req.session.loggedUser) {
+    itemsPromise = db.Items.findAll({
+      where: {
+        user_id: req.session.loggedUser.id,
+      },
+    });
+    userPromise = db.Users.findByPk(req.session.loggedUser.id);
+  }
+
   Promise.all([
     bookPromise,
     genresPromise,
     autorsPromise,
     housesPromise,
     statesPromise,
-  ]).then(function ([book, genres, autors, houses, states]) {
+    itemsPromise,
+    userPromise,
+  ]).then(function ([book, genres, autors, houses, states, items, user]) {
     res.render("productupdate", {
       genres: genres,
       autors: autors,
@@ -143,6 +183,8 @@ exports.productUpDate = function (req, res) {
       states: states,
       errors: {},
       data: book,
+      items: items,
+      user: user,
     });
   });
 };
@@ -175,7 +217,32 @@ exports.productUpdated = function (req, res) {
         },
       }
     );
-    res.render("checkmark", { msg: "Libro modificado con exito!" });
+    let itemsPromise = [];
+    let userPromise = {};
+
+    if (req.session.loggedUser) {
+      itemsPromise = db.Items.findAll({
+        where: {
+          user_id: req.session.loggedUser.id,
+        },
+      });
+      userPromise = db.Users.findByPk(req.session.loggedUser.id);
+    }
+
+    const genresPromise = db.Genres.findAll();
+
+    Promise.all([itemsPromise, userPromise, genresPromise]).then(function ([
+      items,
+      user,
+      genres,
+    ]) {
+      res.render("checkmark", {
+        msg: "Libro modificado con exito!",
+        items: items,
+        genres: genres,
+        user: user,
+      });
+    });
   } else {
     console.log(errors);
     let genresPromise = db.Genres.findAll();
@@ -183,12 +250,26 @@ exports.productUpdated = function (req, res) {
     let housesPromise = db.Houses.findAll();
     let statesPromise = db.States.findAll();
 
+    let itemsPromise = [];
+    let userPromise = {};
+
+    if (req.session.loggedUser) {
+      itemsPromise = db.Items.findAll({
+        where: {
+          user_id: req.session.loggedUser.id,
+        },
+      });
+      userPromise = db.Users.findByPk(req.session.loggedUser.id);
+    }
+
     Promise.all([
       genresPromise,
       autorsPromise,
       housesPromise,
       statesPromise,
-    ]).then(function ([genres, autors, houses, states]) {
+      itemsPromise,
+      userPromise,
+    ]).then(function ([genres, autors, houses, states, items, user]) {
       res.render("productcreate", {
         genres: genres,
         autors: autors,
@@ -196,6 +277,8 @@ exports.productUpdated = function (req, res) {
         states: states,
         errors: errors.mapped(),
         data: req.body,
+        items: items,
+        user: user,
       });
     });
   }
@@ -208,6 +291,28 @@ exports.productDelete = function (req, res) {
     },
   });
   res.render("bookcheckmark", { msg: "Libro eliminado con exito!" });
+};
+
+exports.booksByGenre = function (req, res) {
+  let genrePromise = db.Genres.findByPk(req.params.id);
+  let booksPromise = db.Books.findAll({
+    where: {
+      genre_id: req.params.id,
+    },
+    include: [
+      { association: "genres" },
+      { association: "autors" },
+      { association: "houses" },
+      { association: "states" },
+    ],
+  });
+  Promise.all([booksPromise, genrePromise]).then(function ([books, genre]) {
+    console.log(genre);
+    res.render("genrebooks", {
+      books: books,
+      genre: genre,
+    });
+  });
 };
 
 exports.productSearch = function (req, res) {
@@ -241,298 +346,5 @@ exports.productSearch = function (req, res) {
     ],
   }).then(function (books) {
     res.render("productslist", { books, books });
-  });
-};
-
-exports.checkOut = function (req, res) {
-  db.Checkouts.findAll({
-    where: {
-      book_id: req.body.book_id,
-      user_id: req.session.loggedUser.id,
-    },
-  }).then(function (checkouts) {
-    if (checkouts.length == 0) {
-      db.Checkouts.create({
-        book_id: req.body.book_id,
-        user_id: req.session.loggedUser.id,
-        quantity: req.body.quantity,
-      }).then(function () {
-        db.Checkouts.findAll({
-          where: {
-            user_id: req.session.loggedUser.id,
-          },
-        }).then(function (items) {
-          db.Checkouts.findAll({
-            where: {
-              user_id: req.session.loggedUser.id,
-            },
-          }).then(function (items) {
-            let books_id = [];
-            items.forEach((item) => {
-              books_id.push(item.dataValues.book_id);
-            });
-            db.Books.findAll({
-              where: {
-                id: {
-                  [Op.or]: books_id,
-                },
-              },
-              include: [
-                { association: "genres" },
-                { association: "autors" },
-                { association: "houses" },
-                { association: "states" },
-              ],
-            }).then(function (books) {
-              console.log(items);
-              res.render("checkout", {
-                books: books,
-                items: items,
-              });
-            });
-          });
-        });
-      });
-    } else {
-      let book = checkouts[0];
-      book.quantity = req.body.quantity;
-      book.save().then(function () {
-        db.Checkouts.findAll({
-          where: {
-            user_id: req.session.loggedUser.id,
-          },
-        }).then(function (items) {
-          db.Checkouts.findAll({
-            where: {
-              user_id: req.session.loggedUser.id,
-            },
-          }).then(function (items) {
-            let books_id = [];
-            items.forEach((item) => {
-              books_id.push(item.dataValues.book_id);
-            });
-            db.Books.findAll({
-              where: {
-                id: {
-                  [Op.or]: books_id,
-                },
-              },
-              include: [
-                { association: "genres" },
-                { association: "autors" },
-                { association: "houses" },
-                { association: "states" },
-              ],
-            }).then(function (books) {
-              console.log(items);
-              res.render("checkout", {
-                books: books,
-                items: items,
-              });
-            });
-          });
-        });
-      });
-    }
-  });
-
-  // db.Checkouts.findAll({
-  //   where: {
-  //     user_id: req.session.loggedUser.id,
-  //   },
-  // }).then(function (items) {
-  //   let books_id = [];
-  //   items.forEach((item) => {
-  //     books_id.push(item.dataValues.book_id);
-  //   });
-  //   db.Books.findAll({
-  //     where: {
-  //       id: {
-  //         [Op.or]: books_id,
-  //       },
-  //     },
-  //     include: [
-  //       { association: "genres" },
-  //       { association: "autors" },
-  //       { association: "houses" },
-  //       { association: "states" },
-  //     ],
-  //   }).then(function (books) {
-  //     console.log(items);
-  //     res.render("checkout", {
-  //       books: books,
-  //       items: items,
-  //     });
-  //   });
-  // });
-};
-
-exports.checkOutCart = function (req, res) {
-  db.Checkouts.findAll({
-    where: {
-      user_id: req.session.loggedUser.id,
-    },
-  }).then(function (items) {
-    let books_id = [];
-    items.forEach((item) => {
-      books_id.push(item.dataValues.book_id);
-    });
-    db.Books.findAll({
-      where: {
-        id: {
-          [Op.or]: books_id,
-        },
-      },
-      include: [
-        { association: "genres" },
-        { association: "autors" },
-        { association: "houses" },
-        { association: "states" },
-      ],
-    }).then(function (books) {
-      console.log(items);
-      res.render("checkout", {
-        books: books,
-        items: items,
-      });
-    });
-  });
-};
-
-exports.checkOutData = function (req, res) {
-  if (req.session.loggedUser) {
-    db.Checkouts.findAll({
-      where: {
-        user_id: req.session.loggedUser.id,
-      },
-    }).then(function (items) {
-      res.json({ items: items });
-    });
-  } else {
-    res.end();
-  }
-};
-
-exports.checkOutSave = function (req, res) {
-  db.Checkouts.findAll({
-    where: {
-      book_id: req.body.book_id,
-      user_id: req.session.loggedUser.id,
-    },
-  }).then(function (checkouts) {
-    if (checkouts.length == 0) {
-      db.Checkouts.create({
-        book_id: req.body.book_id,
-        user_id: req.session.loggedUser.id,
-        quantity: req.body.quantity,
-      }).then(function () {
-        db.Checkouts.findAll({
-          where: {
-            user_id: req.session.loggedUser.id,
-          },
-        }).then(function (items) {
-          res.json(JSON.stringify({ length: items.length }));
-        });
-      });
-    } else {
-      let book = checkouts[0];
-      book.quantity = req.body.quantity;
-      book.save().then(function () {
-        db.Checkouts.findAll({
-          where: {
-            user_id: req.session.loggedUser.id,
-          },
-        }).then(function (items) {
-          res.json(JSON.stringify({ length: items.length }));
-        });
-      });
-    }
-  });
-};
-
-exports.checkOutDelete = function (req, res) {
-  db.Checkouts.destroy({
-    where: {
-      book_id: req.body.item_id,
-      user_id: req.session.loggedUser.id,
-    },
-  }).then(function () {
-    db.Checkouts.findAll({
-      where: {
-        user_id: req.session.loggedUser.id,
-      },
-    }).then(function (items) {
-      let books_id = [];
-      items.forEach((item) => {
-        books_id.push(item.dataValues.book_id);
-      });
-      db.Books.findAll({
-        where: {
-          id: {
-            [Op.or]: books_id,
-          },
-        },
-        include: [
-          { association: "genres" },
-          { association: "autors" },
-          { association: "houses" },
-          { association: "states" },
-        ],
-      }).then(function (books) {
-        res.render("checkout", {
-          books: books,
-          items: items,
-        });
-      });
-    });
-  });
-};
-
-exports.checkOutPurchase = function (req, res) {
-  db.Purchase.create({
-    user_id: req.session.loggedUser.id,
-    total: req.body.total,
-  }).then((purchase) => {
-    console.log(purchase);
-    Object.entries(req.body.detail).forEach((ent) => {
-      db.BooksPurchase.create({
-        purchase_id: purchase.id,
-        book_id: ent[0],
-        quantity: ent[1],
-      });
-    });
-    db.Checkouts.destroy({
-      where: {
-        user_id: req.session.loggedUser.id,
-      },
-    });
-  });
-};
-
-exports.genresList = function (req, res) {
-  db.Genres.findAll().then(function (genres) {
-    res.json(genres);
-  });
-};
-
-exports.booksByGenre = function (req, res) {
-  let genrePromise = db.Genres.findByPk(req.params.id);
-  let booksPromise = db.Books.findAll({
-    where: {
-      genre_id: req.params.id,
-    },
-    include: [
-      { association: "genres" },
-      { association: "autors" },
-      { association: "houses" },
-      { association: "states" },
-    ],
-  });
-  Promise.all([booksPromise, genrePromise]).then(function ([books, genre]) {
-    console.log(genre);
-    res.render("genrebooks", {
-      books: books,
-      genre: genre,
-    });
   });
 };

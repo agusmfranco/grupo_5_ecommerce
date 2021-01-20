@@ -47,6 +47,12 @@ module.exports = (sequelize, dataTypes) => {
       foreignKey: "book_id",
       timestamps: false,
     });
+    Books.belongsToMany(models.Users, {
+      as: "books",
+      through: "Items",
+      foreignKey: "book_id",
+      timestamps: false,
+    });
     Books.belongsTo(models.Autors, {
       as: "autors",
       foreignKey: "autor_id",

@@ -60,7 +60,7 @@ buyButton.addEventListener("mouseup", (event) => {
     detail[id] = document.getElementById(index + "_quantity").value;
   }
 
-  fetch("/products/checkout/purchase", {
+  fetch("/purchase", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -72,5 +72,5 @@ buyButton.addEventListener("mouseup", (event) => {
     }),
   });
 
-  window.location.replace("/products/checkout/checkmark");
+  window.location.replace("/products/checkmark");
 });

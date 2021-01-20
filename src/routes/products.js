@@ -10,25 +10,6 @@ var products_upload = require("../middlewares/productsUpload");
 router.get("/", loginAuth, adminAuth, products_controller.productList);
 
 // Rutas para carrito
-router.post("/checkout", loginAuth, products_controller.checkOut);
-
-router.get("/checkout/cart", loginAuth, products_controller.checkOutCart);
-
-router.get("/checkout/data", loginAuth, products_controller.checkOutData);
-
-router.post("/checkout/data", loginAuth, products_controller.checkOutSave);
-
-router.post(
-  "/checkout/purchase",
-  loginAuth,
-  products_controller.checkOutPurchase
-);
-
-router.post("/checkout/delete", loginAuth, products_controller.checkOutDelete);
-
-router.get("/checkout/checkmark", loginAuth, function (req, res) {
-  res.render("checkmark", { msg: "Gracias por comprar en Biblo!" });
-});
 
 // Rutas para crear producto
 router.get("/create", loginAuth, adminAuth, products_controller.productCreate);
@@ -46,8 +27,6 @@ router.get("/search", products_controller.productSearch);
 router.get("/checkmark", function (req, res) {
   res.render("bookcheckmark");
 });
-
-router.get("/genres", products_controller.genresList);
 
 router.get("/genres/:id", products_controller.booksByGenre);
 

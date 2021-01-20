@@ -29,7 +29,11 @@ exports.validateNewUser = [
     .withMessage("La fecha de nacimiento debe estar completa"),
   check("address").notEmpty().withMessage("La dirección debe estar completa"),
   check("cp").notEmpty().withMessage("El código postal debe estar completo"),
-  check("email").notEmpty().withMessage("La contraseña debe estar completa"),
+  check("email")
+    .notEmpty()
+    .withMessage("La contraseña debe estar completa")
+    .isEmail()
+    .withMessage("No es un email válido"),
   check("password").notEmpty().withMessage("La contraseña debe estar completa"),
 ];
 
@@ -42,7 +46,11 @@ exports.validateUserEdit = [
     .withMessage("La fecha de nacimiento debe estar completa"),
   check("address").notEmpty().withMessage("La dirección debe estar completa"),
   check("cp").notEmpty().withMessage("El código postal debe estar completo"),
-  check("email").notEmpty().withMessage("La contraseña debe estar completa"),
+  check("email")
+    .notEmpty()
+    .withMessage("La contraseña debe estar completa")
+    .isEmail()
+    .withMessage("No es un email válido"),
 ];
 
 exports.validateLogin = [

@@ -15,18 +15,18 @@
         <div class="bg-white rounded-md shadow-md mb-4 hover:shadow-lg md:flex md:flex-col relative">
             <div class="h-32 bg-biblogreen-200 mb-16 rounded-t"></div>
             <div class="mb-6 absolute inset-x-0 top-0 mt-12">
-                <img src="/users_photo/<%= data.user_photo %>" alt="Foto de usuario" class="rounded-full w-32 mx-auto">
+                <img src="/users_photo/<%= user.user_photo %>" alt="Foto de usuario" class="rounded-full w-32 mx-auto">
             </div>
-            <h1 class="text-gray-800 text-xl text-center font-bold pb-2"><%= data.first_name + " " + data.last_name %></h1>
+            <h1 class="text-gray-800 text-xl text-center font-bold pb-2"><%= user.first_name + " " + user.last_name %></h1>
             <div class="px-6">
                 <ul class="pb-6">
-                    <li class="text-center pb-1"><span class="font-bold">E-mail </span><Span class="text-gray-600"><%=data.email  %></Span></li>
-                    <li class="text-center pb-1"><span class="font-bold">DNI </span><Span class="text-gray-600"><%=data.dni  %></Span></li>
-                    <li class="text-center pb-1"><span class="font-bold">Dirección </span><Span class="text-gray-600"><%=data.address  %></Span></li>
-                    <li class="text-center pb-1"><span class="font-bold">Codigo postal </span><Span class="text-gray-600"><%=data.cp  %></Span></li>
+                    <li class="text-center pb-1"><span class="font-bold">E-mail </span><Span class="text-gray-600"><%=user.email  %></Span></li>
+                    <li class="text-center pb-1"><span class="font-bold">DNI </span><Span class="text-gray-600"><%=user.dni  %></Span></li>
+                    <li class="text-center pb-1"><span class="font-bold">Dirección </span><Span class="text-gray-600"><%=user.address  %></Span></li>
+                    <li class="text-center pb-1"><span class="font-bold">Codigo postal </span><Span class="text-gray-600"><%=user.cp  %></Span></li>
                 </ul>
                 <div class="text-center pb-5">
-                    <a href="edit" class="text-sm text-biblogreen-600 pl-3 hover:text-biblogreen-800">Modificar datos</a>
+                    <a href="edit/<%= user.id %>" class="text-sm text-biblogreen-600 pl-3 hover:text-biblogreen-800">Modificar datos</a>
                 </div>
             </div>
         </div>

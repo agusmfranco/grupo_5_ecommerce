@@ -53,6 +53,13 @@ module.exports = (sequelize, dataTypes) => {
       as: "userstypes",
       foreignKey: "user_type_id",
     });
+
+    Users.belongsToMany(models.Books, {
+      as: "books",
+      through: "Items",
+      foreignKey: "user_id",
+      timestamps: false,
+    });
   };
 
   return Users;
