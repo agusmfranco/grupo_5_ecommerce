@@ -127,6 +127,7 @@
                                 <% } %>   
                             <% } %>   
                         </div>
+                        <% if(user.user_type_id == 1){ %>
                         <div class="mb-5 md:w-1/2 md:ml-3">
                             <label for="user_type_id" class="block mb-2">Tipo</label>
                             <select name="user_type_id" id="user_type_id" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
@@ -139,6 +140,9 @@
                             <% }); %> 
                             </select> 
                         </div>
+                        <% } else { %>
+                            <div class="mb-5 md:w-1/2 md:ml-3"></div>
+                        <% } %>   
                     </div>
                     <div class="mb-4 w-full rounded-md">
                         <label for="user_photo" class="cursor-pointer text-center  block form-input border-biblogreen-300 border-dashed py-4 box-border tracking-wide rounded-md hover:bg-biblogreen-100 duration-300">

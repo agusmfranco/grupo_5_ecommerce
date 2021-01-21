@@ -37,6 +37,7 @@ module.exports = (sequelize, dataTypes) => {
     },
     user_type_id: {
       type: dataTypes.INTEGER,
+      defaultValue: "2",
     },
     user_photo: {
       type: dataTypes.INTEGER,

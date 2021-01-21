@@ -18,6 +18,9 @@ exports.validateNewBook = [
     .withMessage("El precio debe contener solamente números"),
   check("sinopsis").notEmpty().withMessage("La sinopsis debe estar completa"),
   check("amount").notEmpty().withMessage("La cantidad debe estar completa."),
+  check("autor_id").notEmpty().withMessage("Seleccione un auto válido"),
+  check("house_id").notEmpty().withMessage("Seleccion una editorial válida"),
+  check("genre_id").notEmpty().withMessage("Seleccione un género válido"),
 ];
 
 exports.validateNewUser = [

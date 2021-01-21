@@ -8,7 +8,6 @@ const { createBrotliDecompress } = require("zlib");
 const session = require("express-session");
 
 exports.productList = function (req, res) {
-  console.log("llega");
   let itemsPromise = [];
   let userPromise = {};
 
@@ -140,19 +139,59 @@ exports.productCreated = function (req, res) {
       sinopsis: req.body.sinopsis,
       book_cover: book_cover,
     });
-    res.render("checkmark", { msg: "Libro creado con exito!" });
+
+    let itemsPromise = [];
+    let userPromise = {};
+
+    if (req.session.loggedUser) {
+      itemsPromise = db.Items.findAll({
+        where: {
+          user_id: req.session.loggedUser.id,
+        },
+      });
+      userPromise = db.Users.findByPk(req.session.loggedUser.id);
+    }
+
+    const genresPromise = db.Genres.findAll();
+
+    Promise.all([itemsPromise, userPromise, genresPromise]).then(function ([
+      items,
+      user,
+      genres,
+    ]) {
+      res.render("checkmark", {
+        msg: "Libro creado con exito!",
+        items: items,
+        user: user,
+        genres: genres,
+      });
+    });
   } else {
     let genresPromise = db.Genres.findAll();
     let autorsPromise = db.Autors.findAll();
     let housesPromise = db.Houses.findAll();
     let statesPromise = db.States.findAll();
 
+    let itemsPromise = [];
+    let userPromise = {};
+
+    if (req.session.loggedUser) {
+      itemsPromise = db.Items.findAll({
+        where: {
+          user_id: req.session.loggedUser.id,
+        },
+      });
+      userPromise = db.Users.findByPk(req.session.loggedUser.id);
+    }
+
     Promise.all([
       genresPromise,
       autorsPromise,
       housesPromise,
       statesPromise,
-    ]).then(function ([genres, autors, houses, states]) {
+      userPromise,
+      itemsPromise,
+    ]).then(function ([genres, autors, houses, states, user, items]) {
       res.render("productcreate", {
         genres: genres,
         autors: autors,
@@ -160,6 +199,8 @@ exports.productCreated = function (req, res) {
         states: states,
         errors: errors.mapped(),
         data: req.body,
+        user: user,
+        items: items,
       });
     });
   }
@@ -337,7 +378,7 @@ exports.productDelete = function (req, res) {
 };
 
 exports.productSearch = function (req, res) {
-  db.Books.findAll({
+  const booksPromise = db.Books.findAll({
     where: {
       [Op.or]: [
         { title: { [db.Sequelize.Op.substring]: req.query.search_field } },
@@ -365,7 +406,29 @@ exports.productSearch = function (req, res) {
       { association: "houses" },
       { association: "states" },
     ],
-  }).then(function (books) {
-    res.render("productslist", { books, books });
   });
+
+  let itemsPromise = [];
+  let userPromise = {};
+
+  if (req.session.loggedUser) {
+    itemsPromise = db.Items.findAll({
+      where: {
+        user_id: req.session.loggedUser.id,
+      },
+    });
+    userPromise = db.Users.findByPk(req.session.loggedUser.id);
+  }
+  const genresPromise = db.Genres.findAll();
+
+  Promise.all([booksPromise, itemsPromise, userPromise, genresPromise]).then(
+    function ([books, items, user, genres]) {
+      res.render("search", {
+        books: books,
+        items: items,
+        user: user,
+        genres: genres,
+      });
+    }
+  );
 };

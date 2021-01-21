@@ -8,9 +8,9 @@ var users_upload = require("../middlewares/usersUpload");
 const users_controller = require("../controllers/usersController");
 const forms_validators = require("../middlewares/formsValidators");
 
-router.get("/", users_controller.userList);
+router.get("/", loginAuth, adminAuth, users_controller.userList);
 
-router.get("/create", loginAuth, adminAuth, users_controller.userCreate);
+router.get("/create", users_controller.userCreate);
 router.post(
   "/create",
   users_upload.upload,
@@ -63,5 +63,7 @@ router.get("/check", function (req, res) {
 router.get("/detail", users_controller.userDetail);
 
 router.get("/adminpanel", adminAuth, users_controller.userAdmin);
+
+router.get("/notadmin", users_controller.notAdmin);
 
 module.exports = router;

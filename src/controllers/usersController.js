@@ -19,7 +19,7 @@ exports.userList = function (req, res) {
   const genresPromise = db.Genres.findAll();
 
   const usersPromise = db.Users.findAll({
-    include: [{ association: "userstypes" }],
+    include: { association: "userstypes" },
   });
 
   Promise.all([usersPromise, genresPromise, itemsPromise, userPromise]).then(
@@ -163,6 +163,7 @@ exports.userCreated = function (req, res) {
 
 exports.userUpdate = function (req, res) {
   let userPromise = db.Users.findByPk(req.session.loggedUser.id);
+
   let typesPromise = db.Userstypes.findAll();
 
   let itemsPromise = [];
@@ -489,16 +490,6 @@ exports.userDetail = function (req, res) {
   });
 };
 
-exports.userData = function (req, res) {
-  if (req.session.loggedUser) {
-    db.Users.findByPk(req.session.loggedUser.id).then(function (user) {
-      res.json(user);
-    });
-  } else {
-    res.json({});
-  }
-};
-
 exports.userAdmin = function (req, res) {
   let itemsPromise = [];
   let userPromise = {};
@@ -534,4 +525,33 @@ exports.logOff = function (req, res) {
 
 exports.userLogOff = function (req, res) {
   res.render("logoff");
+};
+
+exports.notAdmin = function (req, res) {
+  let itemsPromise = [];
+  let userPromise = {};
+
+  if (req.session.loggedUser) {
+    itemsPromise = db.Items.findAll({
+      where: {
+        user_id: req.session.loggedUser.id,
+      },
+    });
+    userPromise = db.Users.findByPk(req.session.loggedUser.id);
+  }
+
+  const genresPromise = db.Genres.findAll();
+
+  Promise.all([userPromise, genresPromise, itemsPromise]).then(function ([
+    user,
+    genres,
+    items,
+  ]) {
+    res.render("notadmin", {
+      msg: "El usuario no tiene permiso para acceder a esta sección",
+      items: items,
+      genres: genres,
+      user: user,
+    });
+  });
 };

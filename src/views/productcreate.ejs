@@ -34,6 +34,7 @@
                         <div class="mb-5 md:w-1/2 md:ml-3">
                             <label for="autor_id" class="block mb-2">Autor</label>
                             <select name="autor_id" id="autor_id"  class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                        <option value="" selected>Autor</option>
                                 <% autors.forEach(autor => { %>
                                     <% if(autor.id == data.autor_id) {%>
                                         <option value="<%= autor.id %>" selected><%= autor.name %> </option> 
@@ -41,13 +42,17 @@
                                         <option value="<%= autor.id %>"><%= autor.name %> </option>
                                     <% } %>   
                                 <% }); %>   
-                            </select>  
+                            </select>
+                            <% if("autor_id" in errors){ %>
+                                <span id="autor_error" class="text-xs text-red-600"><%= errors.autor_id.msg %> </span>  
+                            <% } %>    
                         </div>
                     </div>
                     <div class="md:flex">
                         <div class="mb-5 md:w-1/2 md:mr-3">
                             <label for="house_id" class="block mb-2">Editorial</label>
                             <select name="house_id" id="house_id" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
+                                <option value="">Editorial</option>
                                 <% houses.forEach(house => { %>
                                     <% if(house.id == data.house_id) {%>
                                         <option value="<%= house.id %>" selected><%= house.name %> </option>
@@ -56,18 +61,25 @@
                                     <% } %>    
                                 <% }); %>   
                             </select>
+                            <% if("house_id" in errors){ %>
+                                <span id="autor_error" class="text-xs text-red-600"><%= errors.house_id.msg %> </span>  
+                            <% } %> 
                         </div>
                         <div class="mb-5 md:w-1/2 md:ml-3">
                             <label for="genre_id" class="block mb-2">Género</label>
                             <select name="genre_id" id="genre_id" class="block text-gray-800 text-sm form-input w-full border-biblogreen-200 focus:shadow-biblofocus focus:border-biblogreen-300">
-                            <% genres.forEach(genre => { %>
+                            <option value="">Género</option>
+                                <% genres.forEach(genre => { %>
                                 <% if(genre.id == data.genre_id) {%>
                                     <option value="<%= genre.id %>" selected><%= genre.name %> </option>
                                 <% } else { %>
                                     <option value="<%= genre.id %>"><%= genre.name %> </option>
                                 <% } %>   
                             <% }); %> 
-                            </select> 
+                            </select>
+                            <% if("genre_id" in errors){ %>
+                                <span id="autor_error" class="text-xs text-red-600"><%= errors.genre_id.msg %> </span>  
+                            <% } %> 
                         </div>
                     </div>
                     <div class="md:flex">
