@@ -52,6 +52,8 @@ for (let index = 0; index < items.length; index++) {
 let buyButton = document.getElementById("buy_button");
 
 buyButton.addEventListener("mouseup", (event) => {
+  event.preventDefault();
+
   let total = document.getElementById("total").innerText.replace("$ ", "");
   let detail = {};
 
@@ -72,5 +74,5 @@ buyButton.addEventListener("mouseup", (event) => {
     }),
   });
 
-  window.location.replace("/products/checkmark");
+  window.location.href = "/purchase/checkmark";
 });

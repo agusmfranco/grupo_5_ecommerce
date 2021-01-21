@@ -347,6 +347,7 @@ exports.userLogin = function (req, res) {
 };
 
 exports.processLogin = function (req, res) {
+  console.log(req.headers);
   let errors = validationResult(req);
   if (errors.isEmpty()) {
     db.Users.findOne({ where: { email: req.body.email } }).then(function (
@@ -449,7 +450,6 @@ exports.processLogin = function (req, res) {
       });
     });
   }
-  
 };
 
 exports.userDetail = function (req, res) {
@@ -500,14 +500,38 @@ exports.userData = function (req, res) {
 };
 
 exports.userAdmin = function (req, res) {
-  res.render("adminpanel");
+  let itemsPromise = [];
+  let userPromise = {};
+
+  if (req.session.loggedUser) {
+    itemsPromise = db.Items.findAll({
+      where: {
+        user_id: req.session.loggedUser.id,
+      },
+    });
+    userPromise = db.Users.findByPk(req.session.loggedUser.id);
+  }
+
+  const genresPromise = db.Genres.findAll();
+
+  Promise.all([genresPromise, itemsPromise, userPromise]).then(function ([
+    genres,
+    items,
+    user,
+  ]) {
+    res.render("adminpanel", {
+      genres: genres,
+      items: items,
+      user: user,
+    });
+  });
 };
 
-exports.logOff = function (req, res)  {
-  req.session.destroy()
-  res.redirect('/logoff')
+exports.logOff = function (req, res) {
+  req.session.destroy();
+  res.redirect("/logoff");
 };
 
-exports.userLogOff = function (req, res){
-  res.render("logoff")
-}
+exports.userLogOff = function (req, res) {
+  res.render("logoff");
+};

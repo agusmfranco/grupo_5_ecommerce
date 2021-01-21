@@ -6,10 +6,7 @@ const loginAuth = function (req, res, next) {
     req.cookies.recordarme == undefined &&
     req.session.loggedUser == undefined
   ) {
-    res.render("login", {
-      errors: {},
-      data: {},
-    });
+    res.redirect("/users/login");
   }
   next();
 };

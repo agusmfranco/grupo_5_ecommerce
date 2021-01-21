@@ -29,7 +29,6 @@ exports.cart = function (req, res) {
     user,
     genres,
   ]) {
-    console.log(items);
     res.render("cart", {
       items: items,
       user: user,
@@ -65,7 +64,6 @@ exports.buyItem = function (req, res) {
 };
 
 exports.addItem = function (req, res) {
-  console.log(req.body);
   db.Items.findAll({
     where: {
       book_id: req.body.book_id,

@@ -7,11 +7,11 @@ var users_upload = require("../middlewares/usersUpload");
 const cartController = require("../controllers/cartController");
 const forms_validators = require("../middlewares/formsValidators");
 
-router.get("/", cartController.cart);
+router.get("/", loginAuth, cartController.cart);
 
 router.post("/", cartController.buyItem);
 
-router.put("/", cartController.addItem);
+router.put("/", loginAuth, cartController.addItem);
 
 router.delete("/", cartController.deleteItem);
 

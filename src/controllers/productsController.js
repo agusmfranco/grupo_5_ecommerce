@@ -8,6 +8,7 @@ const { createBrotliDecompress } = require("zlib");
 const session = require("express-session");
 
 exports.productList = function (req, res) {
+  console.log("llega");
   let itemsPromise = [];
   let userPromise = {};
 
@@ -85,12 +86,26 @@ exports.productCreate = function (req, res) {
   let housesPromise = db.Houses.findAll();
   let statesPromise = db.States.findAll();
 
+  let itemsPromise = [];
+  let userPromise = {};
+
+  if (req.session.loggedUser) {
+    itemsPromise = db.Items.findAll({
+      where: {
+        user_id: req.session.loggedUser.id,
+      },
+    });
+    userPromise = db.Users.findByPk(req.session.loggedUser.id);
+  }
+
   Promise.all([
     genresPromise,
     autorsPromise,
     housesPromise,
     statesPromise,
-  ]).then(function ([genres, autors, houses, states]) {
+    userPromise,
+    itemsPromise,
+  ]).then(function ([genres, autors, houses, states, user, items]) {
     res.render("productcreate", {
       genres: genres,
       autors: autors,
@@ -98,6 +113,8 @@ exports.productCreate = function (req, res) {
       states: states,
       errors: {},
       data: {},
+      user: user,
+      items: items,
     });
   });
 };
@@ -290,27 +307,31 @@ exports.productDelete = function (req, res) {
       id: req.params.id,
     },
   });
-  res.render("bookcheckmark", { msg: "Libro eliminado con exito!" });
-};
 
-exports.booksByGenre = function (req, res) {
-  let genrePromise = db.Genres.findByPk(req.params.id);
-  let booksPromise = db.Books.findAll({
-    where: {
-      genre_id: req.params.id,
-    },
-    include: [
-      { association: "genres" },
-      { association: "autors" },
-      { association: "houses" },
-      { association: "states" },
-    ],
-  });
-  Promise.all([booksPromise, genrePromise]).then(function ([books, genre]) {
-    console.log(genre);
-    res.render("genrebooks", {
-      books: books,
-      genre: genre,
+  let itemsPromise = [];
+  let userPromise = {};
+
+  if (req.session.loggedUser) {
+    itemsPromise = db.Items.findAll({
+      where: {
+        user_id: req.session.loggedUser.id,
+      },
+    });
+    userPromise = db.Users.findByPk(req.session.loggedUser.id);
+  }
+
+  const genresPromise = db.Genres.findAll();
+
+  Promise.all([itemsPromise, userPromise, genresPromise]).then(function ([
+    items,
+    user,
+    genres,
+  ]) {
+    res.render("checkmark", {
+      msg: "Libro eliminado con exito!",
+      items: items,
+      user: user,
+      genres: genres,
     });
   });
 };

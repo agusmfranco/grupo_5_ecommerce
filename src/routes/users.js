@@ -10,7 +10,7 @@ const forms_validators = require("../middlewares/formsValidators");
 
 router.get("/", users_controller.userList);
 
-router.get("/create", users_controller.userCreate);
+router.get("/create", loginAuth, adminAuth, users_controller.userCreate);
 router.post(
   "/create",
   users_upload.upload,

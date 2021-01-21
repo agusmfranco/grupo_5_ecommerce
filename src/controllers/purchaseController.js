@@ -8,10 +8,6 @@ const { createBrotliDecompress } = require("zlib");
 const session = require("express-session");
 
 exports.newPurchase = function (req, res) {
-  console.log("-----------nueva compra------------------");
-  console.log("-----------nueva compra------------------");
-  console.log("-----------nueva compra------------------");
-  console.log("-----------nueva compra------------------");
   db.Purchase.create({
     user_id: req.session.loggedUser.id,
     total: req.body.total,
@@ -23,10 +19,39 @@ exports.newPurchase = function (req, res) {
         quantity: ent[1],
       });
     });
-    db.Checkouts.destroy({
+    db.Items.destroy({
       where: {
         user_id: req.session.loggedUser.id,
       },
+    });
+  });
+};
+
+exports.checkMark = function (req, res) {
+  let itemsPromise = [];
+  let userPromise = {};
+
+  if (req.session.loggedUser) {
+    itemsPromise = db.Items.findAll({
+      where: {
+        user_id: req.session.loggedUser.id,
+      },
+    });
+    userPromise = db.Users.findByPk(req.session.loggedUser.id);
+  }
+
+  const genresPromise = db.Genres.findAll();
+
+  Promise.all([genresPromise, itemsPromise, userPromise]).then(function ([
+    genres,
+    items,
+    user,
+  ]) {
+    res.render("checkmark", {
+      msg: "Compra realizada con exito",
+      genres: genres,
+      items: items,
+      user: user,
     });
   });
 };

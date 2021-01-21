@@ -42,3 +42,37 @@ exports.indexBooks = function (req, res) {
     }
   );
 };
+
+exports.booksByGenre = function (req, res) {
+  let genrePromise = db.Genres.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: [{ association: "books", include: [{ association: "autors" }] }],
+  });
+
+  let itemsPromise = [];
+  let userPromise = {};
+
+  if (req.session.loggedUser) {
+    itemsPromise = db.Items.findAll({
+      where: {
+        user_id: req.session.loggedUser.id,
+      },
+    });
+    userPromise = db.Users.findByPk(req.session.loggedUser.id);
+  }
+
+  const genresPromise = db.Genres.findAll();
+
+  Promise.all([genrePromise, genresPromise, itemsPromise, userPromise]).then(
+    function ([genre, genres, items, user]) {
+      res.render("genrebooks", {
+        genre: genre,
+        genres: genres,
+        items: items,
+        user: user,
+      });
+    }
+  );
+};

@@ -9,4 +9,6 @@ const forms_validators = require("../middlewares/formsValidators");
 
 router.post("/", purchaseController.newPurchase);
 
+router.get("/checkmark", purchaseController.checkMark);
+
 module.exports = router;

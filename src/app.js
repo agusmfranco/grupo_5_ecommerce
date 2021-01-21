@@ -13,7 +13,7 @@ var productsRouter = require("./routes/products");
 var apiProductsRouter = require("./routes/api/products");
 var apiUsersRouter = require("./routes/api/users");
 var cartRouter = require("./routes/cart");
-var purchaseRouter = require("./routes/cart");
+var purchaseRouter = require("./routes/purchase");
 
 var app = express();
 
@@ -38,13 +38,13 @@ app.use(cookieAuth);
 
 //Rutas
 
-app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 app.use("/cart", cartRouter);
 app.use("/purchase", purchaseRouter);
 app.use("/api", apiProductsRouter);
 app.use("/api", apiUsersRouter);
+app.use("/", indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

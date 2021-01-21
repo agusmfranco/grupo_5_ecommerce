@@ -9,8 +9,6 @@ var products_upload = require("../middlewares/productsUpload");
 
 router.get("/", loginAuth, adminAuth, products_controller.productList);
 
-// Rutas para carrito
-
 // Rutas para crear producto
 router.get("/create", loginAuth, adminAuth, products_controller.productCreate);
 
@@ -23,12 +21,6 @@ router.post(
 );
 
 router.get("/search", products_controller.productSearch);
-
-router.get("/checkmark", function (req, res) {
-  res.render("bookcheckmark");
-});
-
-router.get("/genres/:id", products_controller.booksByGenre);
 
 // Rutas para detalle
 router.get("/:id", products_controller.productDetail);
