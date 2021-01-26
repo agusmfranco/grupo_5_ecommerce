@@ -7,7 +7,7 @@ const { Op } = require("sequelize");
 
 exports.productList = function (req, res) {
   db.Books.findAll({
-    attributes: ["id", "title", "sinopsis", "genre_id", "price"],
+    attributes: ["id", "title", "sinopsis", "genre_id", "price", "book_cover"],
     include: [
       { association: "genres", attributes: ["name"] }
     ],
