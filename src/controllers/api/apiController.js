@@ -16,7 +16,7 @@ exports.productList = function (req, res) {
       meta: {
         status: 200,
         count: books.length,
-        url: "/api/products",
+        url: "/api/products"
       },
       data: books
     };
